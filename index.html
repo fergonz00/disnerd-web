@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Disnerd — Sofi Valle Mayorga</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --ivory:     #faf8f4;
+      --cream:     #f2ede4;
+      --warm:      #e8e0d2;
+      --sky-pale:  #eaf3f8;
+      --sky-mid:   #cce0ed;
+      --sky-soft:  #7ab5cc;
+      --text:      #2c2825;
+      --text-mid:  #6b6259;
+      --text-soft: #9e9189;
+      --gold:      #b8a082;
+    }
+
+    html, body {
+      background: var(--ivory);
+      color: var(--text);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.4rem 4rem;
+      background: rgba(250,248,244,0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(232,224,210,0.5);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.3rem;
+      font-weight: 300;
+      color: var(--text);
+    }
+    .nav-logo span {
+      font-style: normal;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      display: block;
+      margin-top: -2px;
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ivory);
+      background: var(--sky-soft);
+      text-decoration: none;
+      padding: 0.6rem 1.4rem;
+      border-radius: 100px;
+      transition: background 0.3s;
+    }
+    .nav-cta:hover { background: var(--sky-mid); }
+
+    /* ── HERO ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6rem 4rem 6rem 5rem;
+      position: relative;
+    }
+
+    /* Sky blue blob bottom left */
+    .blob-left {
+      position: absolute;
+      width: 380px; height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(204,224,237,0.3) 0%, transparent 70%);
+      bottom: -60px; left: -80px;
+      pointer-events: none;
+      animation: floatBlob 10s ease-in-out infinite;
+    }
+    @keyframes floatBlob {
+      0%,100% { transform: scale(1) translate(0,0); }
+      50%      { transform: scale(1.06) translate(10px,-10px); }
+    }
+
+    .deco-line {
+      width: 1px; height: 50px;
+      background: linear-gradient(to bottom, transparent, var(--sky-soft), transparent);
+      margin-bottom: 2.2rem;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .eyebrow {
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      margin-bottom: 1.3rem;
+      animation: fadeUp 0.8s 0.1s ease both;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 3.5vw, 3.7rem);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 1.6rem;
+      animation: fadeUp 0.9s 0.15s ease both;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--sky-soft);
+    }
+
+    .hero-body {
+      font-size: 0.9rem;
+      line-height: 1.85;
+      color: var(--text-mid);
+      max-width: 400px;
+      margin-bottom: 2.8rem;
+      animation: fadeUp 1s 0.2s ease both;
+    }
+
+    .cta-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: flex-start;
+      animation: fadeUp 1s 0.3s ease both;
+    }
+
+    .btn-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      background: var(--sky-soft);
+      color: var(--ivory);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.9rem 2.2rem;
+      border-radius: 100px;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .btn-wa:hover { background: var(--sky-mid); transform: translateX(3px); }
+
+    .btn-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      text-decoration: none;
+      border-bottom: 1px solid var(--warm);
+      padding-bottom: 2px;
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .btn-link:hover { color: var(--text); border-color: var(--sky-soft); }
+
+    .stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 3.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--warm);
+      animation: fadeUp 1s 0.4s ease both;
+    }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      margin-top: 0.2rem;
+    }
+
+    /* ── HERO RIGHT — Photo columns ── */
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+      background: var(--cream);
+      display: flex;
+      gap: 12px;
+      padding: 12px;
+      padding-top: 80px; /* account for nav */
+      height: 100vh;
+      max-height: 100vh;
+    }
+
+    /* Fade masks top & bottom */
+    .hero-right::before,
+    .hero-right::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0;
+      height: 120px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .hero-right::before { top: 0;    background: linear-gradient(to bottom, var(--cream), transparent); }
+    .hero-right::after  { bottom: 0; background: linear-gradient(to top,   var(--cream), transparent); }
+
+    .photo-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      will-change: transform;
+      min-width: 0;
+    }
+
+    /* Col A scrolls up, Col B scrolls down */
+    .photo-col-a { animation: scrollUp   28s linear infinite; }
+    .photo-col-b { animation: scrollDown 28s linear infinite; }
+
+    @keyframes scrollUp {
+      from { transform: translateY(0); }
+      to   { transform: translateY(-50%); }
+    }
+    @keyframes scrollDown {
+      from { transform: translateY(-50%); }
+      to   { transform: translateY(0); }
+    }
+
+    .photo-col img {
+      width: 100%;
+      border-radius: 14px;
+      object-fit: cover;
+      display: block;
+      aspect-ratio: 3/4;
+      background: var(--warm); /* shows while loading */
+    }
+
+    /* IG badge */
+    .ig-badge {
+      position: absolute;
+      bottom: 2.2rem; right: 1.8rem;
+      display: flex; align-items: center; gap: 0.55rem;
+      background: rgba(255,255,255,0.82);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.95);
+      border-radius: 100px;
+      padding: 0.55rem 1.1rem;
+      text-decoration: none;
+      z-index: 4;
+      box-shadow: 0 4px 20px rgba(44,40,37,0.08);
+      transition: transform 0.2s;
+    }
+    .ig-badge:hover { transform: translateY(-2px); }
+    .ig-text  { font-size:0.68rem; letter-spacing:0.08em; color:var(--text); }
+    .ig-sub   { font-size:0.58rem; color:var(--text-soft); }
+
+    /* Scroll hint */
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.2rem; left: 5rem;
+      display: flex; align-items: center; gap: 0.8rem;
+      animation: fadeUp 1s 0.6s ease both;
+    }
+    .scroll-line { width:40px;height:1px; background:linear-gradient(to right,var(--sky-soft),transparent); }
+    .scroll-text { font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-soft); }
+
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(14px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    /* ══════════════════════════════════
+       FORMULARIO COTIZACIÓN
+    ══════════════════════════════════ */
+    .cq-group { margin-bottom: 1.4rem; }
+    .cq-label {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      margin-bottom: 0.6rem;
+    }
+    .cq-dest-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.7rem;
+    }
+    .cq-dest-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 0.5rem;
+      border: 1.5px solid var(--warm);
+      border-radius: 14px;
+      background: white;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .cq-dest-btn:hover { border-color: var(--sky-soft); }
+    .cq-dest-btn.selected { border-color: var(--sky-soft); background: var(--sky-pale); }
+    .cq-dest-icon { font-size: 1.8rem; }
+    .cq-dest-name { font-size: 0.6rem; letter-spacing: 0.15em; font-weight: 600; color: var(--text-mid); }
+    .cq-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .cq-select, .cq-input, .cq-textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid var(--warm);
+      border-radius: 10px;
+      background: white;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.85rem;
+      color: var(--text);
+      appearance: none;
+      -webkit-appearance: none;
+      box-sizing: border-box;
+      transition: border-color 0.2s;
+    }
+    .cq-select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239e9189' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.9rem center; padding-right: 2.2rem; }
+    .cq-select:focus, .cq-input:focus, .cq-textarea:focus { outline: none; border-color: var(--sky-soft); }
+    .cq-textarea { resize: vertical; min-height: 80px; }
+    .cq-check-label {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      cursor: pointer;
+    }
+    .cq-check-label input { width: 16px; height: 16px; accent-color: var(--sky-soft); cursor: pointer; }
+    .cq-submit {
+      width: 100%;
+      padding: 1rem;
+      background: var(--sky-soft);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      transition: background 0.2s;
+    }
+    .cq-submit:hover { background: var(--sky-mid); filter: brightness(0.92); }
+
+    /* ══════════════════════════════════
+       PRICING SECTION
+    ══════════════════════════════════ */
+    .pricing-section {
+      background: var(--ivory);
+      padding: 7rem 5rem;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .section-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--sky-soft);
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 300;
+      color: var(--text);
+      margin-bottom: 0.8rem;
+    }
+    .section-title em { font-style: italic; }
+    .section-body {
+      font-size: 0.88rem;
+      line-height: 1.8;
+      color: var(--text-mid);
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* Category tabs */
+    .cat-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    .cat-tab {
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      background: var(--cream);
+      border: 1px solid var(--warm);
+      border-radius: 100px;
+      padding: 0.5rem 1.3rem;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .cat-tab.active, .cat-tab:hover {
+      background: var(--text);
+      color: var(--ivory);
+      border-color: var(--text);
+    }
+
+    /* Grid */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .price-card {
+      background: white;
+      border: 1px solid var(--warm);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: transform 0.25s, box-shadow 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .price-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(44,40,37,0.09);
+    }
+    /* Sky blue top accent */
+    .price-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(to right, var(--sky-pale), var(--sky-mid));
+    }
+
+    .pc-icon { font-size: 1.6rem; margin-bottom: 1rem; }
+    .pc-dest {
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sky-soft);
+      margin-bottom: 0.4rem;
+    }
+    .pc-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+    .pc-desc {
+      font-size: 0.8rem;
+      line-height: 1.7;
+      color: var(--text-mid);
+      margin-bottom: 1.2rem;
+    }
+
+    .pc-divider {
+      height: 1px;
+      background: var(--warm);
+      margin-bottom: 1.2rem;
+    }
+
+    .pc-includes {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 1.4rem;
+    }
+    .pc-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      color: var(--text-mid);
+    }
+    .pc-item::before {
+      content: '';
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--sky-mid);
+      flex-shrink: 0;
+    }
+
+    .pc-hotel {
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: var(--sky-soft);
+      margin-bottom: 0.8rem;
+    }
+
+    .pc-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.4rem;
+      margin-bottom: 1.4rem;
+    }
+    .pc-from {
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+    }
+    .pc-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--text);
+    }
+    .pc-per {
+      font-size: 0.68rem;
+      color: var(--text-soft);
+    }
+
+    .pc-disclaimer {
+      font-size: 0.68rem;
+      color: var(--text-soft);
+      font-style: italic;
+      line-height: 1.5;
+      margin-bottom: 1.4rem;
+    }
+
+    .pc-wa-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      width: 100%;
+      background: var(--sky-pale);
+      color: var(--text);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.85rem;
+      border-radius: 100px;
+      border: 1px solid var(--sky-mid);
+      transition: background 0.25s, transform 0.2s;
+    }
+    .pc-wa-btn:hover {
+      background: var(--sky-mid);
+      transform: translateX(2px);
+    }
+
+    /* Desplegable */
+    .pc-extra {
+      display: none;
+      margin-top: 0;
+    }
+    .pc-extra.open {
+      display: block;
+    }
+    .pc-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sky-soft);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.6rem 0 1rem;
+      width: 100%;
+      transition: color 0.2s;
+    }
+    .pc-toggle:hover { color: var(--text-mid); }
+    .pc-toggle svg { transition: transform 0.3s; }
+    .pc-toggle.open svg { transform: rotate(180deg); }
+
+    /* ── FOOTER STRIP ── */
+    .footer-strip {
+      background: var(--sky-soft);
+      color: var(--ivory);
+      padding: 3rem 5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.4rem;
+      font-weight: 300;
+    }
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .footer-links a {
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(250,248,244,0.55);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .footer-links a:hover { color: var(--ivory); }
+    .footer-copy {
+      font-size: 0.65rem;
+      color: rgba(250,248,244,0.35);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { height: 50vh; order: -1; padding: 8px; padding-top: 8px; }
+      .hero-left  { padding: 3rem 1.5rem 4rem; }
+      nav { padding: 1.1rem 1.5rem; }
+      .nav-links { display: none; }
+      .stats { gap: 1.5rem; }
+      .scroll-hint { display: none; }
+      .pricing-section { padding: 5rem 1.5rem; }
+      .footer-strip { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    Disnerd
+    <span>Sofi Valle Mayorga</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#precios">Destinos y precios</a></li>
+    <li><a href="https://instagram.com/disnerd.sofi" target="_blank">Instagram</a></li>
+  </ul>
+  <a href="https://wa.me/5491132924274?text=Hola%20Sofi!%20Vi%20tu%20página%20y%20quiero%20cotizar%20mi%20viaje%20a%20Disney%20✨" class="nav-cta">Escribime</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+
+  <div class="hero-left">
+    <div class="blob-left"></div>
+    <div class="deco-line"></div>
+    <p class="eyebrow">Agente Disney · Universal · Cruceros</p>
+    <h1 class="hero-title">
+      ¿Soñás con Disney?<br/>
+      <em>Yo te lo armo,</em><br/>
+      vos lo disfrutás.
+    </h1>
+    <p class="hero-body">
+      Buenas, buenas! Soy Sofi.<br/>
+      Agente de viajes especializada en Disney y Universal, pero también mamá, viajera, bailarina y eterna curiosa de la vida.<br/><br/>
+      Viajar es una de mis grandes pasiones, y hoy mi misión es ayudarte a que tu viaje sea tan mágico como lo imaginás.<br/><br/>
+      Vos soñá el viaje.<br/>
+      Yo me encargo de hacerlo realidad.<br/><br/>
+      ¡Empecemos!
+    </p>
+    <div class="cta-group">
+      <a href="https://wa.me/5491132924274?text=Hola%20Sofi!%20Vi%20tu%20página%20y%20quiero%20cotizar%20mi%20viaje%20a%20Disney%20✨" class="btn-wa">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.558 4.136 1.535 5.874L.057 23.882a.5.5 0 0 0 .61.61l6.008-1.478A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a10 10 0 0 1-5.13-1.406l-.367-.22-3.566.878.893-3.458-.24-.377A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        Cotizá tu viaje gratis
+      </a>
+      <a href="#precios" class="btn-link">
+        Ver precios orientativos
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+    <div class="stats">
+      <div>
+        <div class="stat-num">+35k</div>
+        <div class="stat-label">seguidores</div>
+      </div>
+      <div>
+        <div class="stat-num">7+</div>
+        <div class="stat-label">años de experiencia</div>
+      </div>
+      <div>
+        <div class="stat-num">4</div>
+        <div class="stat-label">destinos Disney</div>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      <span class="scroll-text">Ver destinos</span>
+    </div>
+  </div>
+
+  <div class="hero-right">
+
+    <!-- COLUMNA A — sube -->
+    <div class="photo-col photo-col-a" id="colA">
+      <img src="WhatsApp Image 2026-03-11 at 09.24.38 (1).jpeg" alt="Disney foto 1"/>
+      <img src="WhatsApp Image 2026-03-11 at 09.24.38.jpeg" alt="Disney foto 2"/>
+      <img src="WhatsApp Image 2026-03-11 at 09.25.21.jpeg" alt="Disney foto 3"/>
+      <img src="WhatsApp Image 2026-03-11 at 09.26.02.jpeg" alt="Disney foto 4"/>
+      <img src="WhatsApp Image 2026-03-11 at 09.34.57 (1).jpeg" alt="Disney foto 5"/>
+      <img src="WhatsApp Image 2026-03-11 at 09.34.57.jpeg" alt="Disney foto 6"/>
+      <!-- Duplicados para loop infinito -->
+      <img src="WhatsApp Image 2026-03-11 at 09.24.38 (1).jpeg" alt="Disney foto 1"/>
+      <img src="WhatsApp Image 2026-03-11 at 09.24.38.jpeg" alt="Disney foto 2"/>
+      <img src="WhatsApp Image 2026-03-11 at 09.25.21.jpeg" alt="Disney foto 3"/>
+      <img src="WhatsApp Image 2026-03-11 at 09.26.02.jpeg" alt="Disney foto 4"/>
+      <img src="WhatsApp Image 2026-03-11 at 09.34.57 (1).jpeg" alt="Disney foto 5"/>
+      <img src="WhatsApp Image 2026-03-11 at 09.34.57.jpeg" alt="Disney foto 6"/>
+    </div>
+
+    <!-- COLUMNA B — baja -->
+    <div class="photo-col photo-col-b" id="colB">
+      <img src="WhatsApp Image 2026-03-11 at 09.34.58 (1).jpeg" alt="Disney foto 7"/>
+      <img src="WhatsApp Image 2026-03-11 at 09.34.58 (2).jpeg" alt="Disney foto 8"/>
+      <img src="WhatsApp Image 2026-03-11 at 09.34.58 (3).jpeg" alt="Disney foto 9"/>
+      <img src="WhatsApp Image 2026-03-11 at 09.34.58 (4).jpeg" alt="Disney foto 10"/>
+      <img src="WhatsApp Image 2026-03-11 at 09.34.58.jpeg" alt="Disney foto 11"/>
+      <img src="WhatsApp Image 2026-03-11 at 09.34.59.jpeg" alt="Disney foto 12"/>
+      <!-- Duplicados para loop infinito -->
+      <img src="WhatsApp Image 2026-03-11 at 09.34.58 (1).jpeg" alt="Disney foto 7"/>
+      <img src="WhatsApp Image 2026-03-11 at 09.34.58 (2).jpeg" alt="Disney foto 8"/>
+      <img src="WhatsApp Image 2026-03-11 at 09.34.58 (3).jpeg" alt="Disney foto 9"/>
+      <img src="WhatsApp Image 2026-03-11 at 09.34.58 (4).jpeg" alt="Disney foto 10"/>
+      <img src="WhatsApp Image 2026-03-11 at 09.34.58.jpeg" alt="Disney foto 11"/>
+      <img src="WhatsApp Image 2026-03-11 at 09.34.59.jpeg" alt="Disney foto 12"/>
+    </div>
+
+    <a href="https://instagram.com/disnerd.sofi" target="_blank" class="ig-badge">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2c2825" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="#2c2825" stroke="none"/></svg>
+      <div>
+        <div class="ig-text">@disnerd.sofi</div>
+        <div class="ig-sub">+35k seguidores</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     COTIZÁ TU VIAJE
+═══════════════════════════════════ -->
+<section class="pricing-section" id="cotiza" style="background:var(--ivory);padding-bottom:0;padding-top:3rem;">
+  <div class="section-header" style="margin-bottom:2.5rem;">
+    <span class="section-tag">✨ Es gratis y sin compromiso</span>
+    <h2 class="section-title">Cotizá tu <em style="font-family:'Playfair Display',serif;font-style:italic;color:var(--sky-soft);">viaje</em></h2>
+    <p class="section-body">Completá el formulario y te escribo por WhatsApp con todos los detalles.</p>
+  </div>
+
+  <div style="max-width:560px;margin:0 auto;padding:0 1.5rem 4rem;">
+
+    <!-- DESTINO -->
+    <div class="cq-group">
+      <label class="cq-label">¿A dónde querés ir?</label>
+      <div class="cq-dest-grid">
+        <button class="cq-dest-btn" onclick="selectDest(this,'Orlando')" data-dest="Orlando">
+          <span class="cq-dest-icon">🏰</span>
+          <span class="cq-dest-name">ORLANDO</span>
+        </button>
+        <button class="cq-dest-btn" onclick="selectDest(this,'París')" data-dest="París">
+          <span class="cq-dest-icon">🗼</span>
+          <span class="cq-dest-name">PARÍS</span>
+        </button>
+        <button class="cq-dest-btn" onclick="selectDest(this,'Crucero')" data-dest="Crucero">
+          <span class="cq-dest-icon">🚢</span>
+          <span class="cq-dest-name">CRUCERO</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- PERSONAS Y MES -->
+    <div class="cq-row">
+      <div class="cq-group">
+        <label class="cq-label">¿Cuántas personas son?</label>
+        <select class="cq-select" id="cq-personas">
+          <option value="">Seleccioná</option>
+          <option>1 persona</option>
+          <option>2 personas</option>
+          <option>3 personas</option>
+          <option>4 personas</option>
+          <option>5 personas</option>
+          <option>6 o más</option>
+        </select>
+      </div>
+      <div class="cq-group">
+        <label class="cq-label">¿En qué mes pensás viajar?</label>
+        <select class="cq-select" id="cq-mes">
+          <option value="">Seleccioná</option>
+          <option>Enero</option><option>Febrero</option><option>Marzo</option>
+          <option>Abril</option><option>Mayo</option><option>Junio</option>
+          <option>Julio</option><option>Agosto</option><option>Septiembre</option>
+          <option>Octubre</option><option>Noviembre</option><option>Diciembre</option>
+          <option>Aún no sé</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- DÍAS Y CELULAR -->
+    <div class="cq-row">
+      <div class="cq-group">
+        <label class="cq-label">¿Cuántos días más o menos?</label>
+        <select class="cq-select" id="cq-dias">
+          <option value="">Seleccioná</option>
+          <option>3–4 días</option>
+          <option>5–7 días</option>
+          <option>8–10 días</option>
+          <option>11–14 días</option>
+          <option>Más de 14 días</option>
+          <option>No sé todavía</option>
+        </select>
+      </div>
+      <div class="cq-group">
+        <label class="cq-label">Tu celular (para contactarte)</label>
+        <input class="cq-input" id="cq-celular" type="tel" placeholder="Ej: 1150001234">
+      </div>
+    </div>
+
+    <!-- MENORES -->
+    <div class="cq-group">
+      <label class="cq-check-label">
+        <input type="checkbox" id="cq-hay-menores" onchange="toggleMenores(this)">
+        <span>Sí, hay chicos en el grupo</span>
+      </label>
+      <div id="cq-menores-extra" style="display:none;margin-top:0.8rem;">
+        <input class="cq-input" id="cq-edades" type="text" placeholder="Ej: 4 años, 8 años, 12 años">
+        <p style="font-size:0.7rem;color:var(--text-soft);margin-top:0.3rem;">Indicá la edad de cada menor</p>
+      </div>
+    </div>
+
+    <!-- COMENTARIO -->
+    <div class="cq-group">
+      <label class="cq-label">¿Algo más que quieras contarme? <span style="font-weight:300;">(opcional)</span></label>
+      <textarea class="cq-textarea" id="cq-nota" rows="3" placeholder="Ej: es el primer viaje de mis hijos, quiero sorprender a alguien, tengo alguna restricción alimentaria..."></textarea>
+    </div>
+
+    <!-- BOTÓN -->
+    <button class="cq-submit" onclick="enviarCotizacion()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.558 4.136 1.535 5.874L.057 23.882a.5.5 0 0 0 .61.61l6.008-1.478A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a10 10 0 0 1-5.13-1.406l-.367-.22-3.566.878.893-3.458-.24-.377A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      QUIERO QUE ME CONTACTEN
+    </button>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     PRICING SECTION
+═══════════════════════════════════ -->
+<section class="pricing-section" id="precios" style="padding-top:3rem;">
+  <div class="section-header">
+    <span class="section-tag">🏷️ Precios reales</span>
+    <h2 class="section-title">Presupuestos confirmados</h2>
+    <p class="section-body">
+      Estos son paquetes reales que armé para clientes. Te dan una idea concreta de lo que podés esperar — 
+      cada cotización es personalizada y sin cargo.
+    </p>
+  </div>
+
+    <!-- PRESUPUESTOS REALES -->
+  <div style="max-width:1100px;margin:0 auto 3.5rem;">
+    <p style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--sky-soft);margin-bottom:1.5rem;padding-left:0.2rem;">🏰 Walt Disney World & Universal · Orlando</p>
+    <div class="pricing-grid">
+
+      <div class="price-card">
+        <div class="pc-icon">👨‍👩‍👧‍👦</div>
+        <div class="pc-dest">Orlando · 7 noches · 2 adultos + 2 menores (2 y 4 años)</div>
+        <div class="pc-title">Disney Simple</div>
+        <div class="pc-hotel">📅 Septiembre 2026</div>
+        <div class="pc-hotel">🏨 Disney All Star Music Resort</div>
+        <div class="pc-hotel">🎟️ 4 días · Parques base (un parque por día)</div>
+        <div class="pc-price-row">
+          <span class="pc-price" style="font-size:1.8rem;">USD 3.979</span>
+          <span class="pc-per">sin plan de comidas</span>
+        </div>
+        <p class="pc-disclaimer">* Sin vuelos. Sujeto a disponibilidad.</p>
+        <button class="pc-toggle" onclick="toggleExtra(this)">Ver más <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="pc-extra">
+          <div class="pc-divider"></div>
+          <div class="pc-includes">
+            <div class="pc-item">📅 Check in: 12 de septiembre 2026</div>
+            <div class="pc-item">📅 Check out: 19 de septiembre 2026</div>
+            <div class="pc-item">🌿 Incluye 1 día de descanso</div>
+          </div>
+          <div class="pc-divider"></div>
+          <div style="font-size:0.72rem;color:var(--text-mid);margin-bottom:0.6rem;letter-spacing:0.05em;">🥗 Opcionales — plan de comidas</div>
+          <div class="pc-includes">
+            <div class="pc-item">Quick Service · total <strong>USD 4.825</strong></div>
+            <div class="pc-item">Dining Plan · total <strong>USD 5.359</strong></div>
+            <div class="pc-item">🎁 Plan de comidas gratis para menores de 3 a 9 años</div>
+          </div>
+        </div>
+        <a href="https://wa.me/5491132924274?text=Hola%20Sofi!%20Me%20interesa%20el%20paquete%20Disney%20Simple%20All%20Star%20Music%20septiembre%202026%20✨" class="pc-wa-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.558 4.136 1.535 5.874L.057 23.882a.5.5 0 0 0 .61.61l6.008-1.478A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a10 10 0 0 1-5.13-1.406l-.367-.22-3.566.878.893-3.458-.24-.377A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg> Quiero este paquete</a>
+      </div>
+
+      <div class="price-card">
+        <div class="pc-icon">🎬</div>
+        <div class="pc-dest">Orlando · 5 noches · 2 adultos + 2 menores</div>
+        <div class="pc-title">Universal Simple</div>
+        <div class="pc-hotel">📅 Septiembre 2026</div>
+        <div class="pc-hotel">🏨 Hotel Universal Terra Luna</div>
+        <div class="pc-hotel">🎟️ 3 días · Parques base (un parque por día)</div>
+        <div class="pc-price-row">
+          <span class="pc-price" style="font-size:1.8rem;">USD 2.850</span>
+          <span class="pc-per">hotel y tickets</span>
+        </div>
+        <p class="pc-disclaimer">* Sin vuelos. Sujeto a disponibilidad.</p>
+        <button class="pc-toggle" onclick="toggleExtra(this)">Ver más <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="pc-extra">
+          <div class="pc-divider"></div>
+          <div class="pc-includes">
+            <div class="pc-item">📅 Check in: 19 de septiembre 2026</div>
+            <div class="pc-item">📅 Check out: 24 de septiembre 2026</div>
+          </div>
+        </div>
+        <a href="https://wa.me/5491132924274?text=Hola%20Sofi!%20Me%20interesa%20el%20paquete%20Universal%20Terra%20Luna%20septiembre%202026%20✨" class="pc-wa-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.558 4.136 1.535 5.874L.057 23.882a.5.5 0 0 0 .61.61l6.008-1.478A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a10 10 0 0 1-5.13-1.406l-.367-.22-3.566.878.893-3.458-.24-.377A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg> Quiero este paquete</a>
+      </div>
+
+      <div class="price-card">
+        <div class="pc-icon">🧜‍♀️</div>
+        <div class="pc-dest">Orlando · 8 noches · 2 adultos</div>
+        <div class="pc-title">Disney Art of Animation</div>
+        <div class="pc-hotel">📅 Agosto 2026</div>
+        <div class="pc-hotel">🏨 Art of Animation · Habitación La Sirenita</div>
+        <div class="pc-hotel">🎟️ 4 días · Parques base (un parque por día)</div>
+        <div class="pc-price-row">
+          <span class="pc-price" style="font-size:1.8rem;">USD 2.466</span>
+          <span class="pc-per">sin plan de comidas</span>
+        </div>
+        <p class="pc-disclaimer">* Sin vuelos. Sujeto a disponibilidad.</p>
+        <button class="pc-toggle" onclick="toggleExtra(this)">Ver más <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="pc-extra">
+          <div class="pc-divider"></div>
+          <div class="pc-includes">
+            <div class="pc-item">📅 Check in: 20 de agosto 2026</div>
+            <div class="pc-item">📅 Check out: 28 de agosto 2026</div>
+            <div class="pc-item">🌿 Incluye 1 día de descanso</div>
+          </div>
+          <div class="pc-divider"></div>
+          <div style="font-size:0.72rem;color:var(--text-mid);margin-bottom:0.6rem;letter-spacing:0.05em;">🥗 Opcionales — plan de comidas</div>
+          <div class="pc-includes">
+            <div class="pc-item">Quick Service · total <strong>USD 3.433</strong></div>
+            <div class="pc-item">Dining Plan · total <strong>USD 4.043</strong></div>
+          </div>
+        </div>
+        <a href="https://wa.me/5491132924274?text=Hola%20Sofi!%20Me%20interesa%20el%20paquete%20Disney%20Art%20of%20Animation%20agosto%202026%20✨" class="pc-wa-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.558 4.136 1.535 5.874L.057 23.882a.5.5 0 0 0 .61.61l6.008-1.478A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a10 10 0 0 1-5.13-1.406l-.367-.22-3.566.878.893-3.458-.24-.377A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg> Quiero este paquete</a>
+      </div>
+
+      <div class="price-card">
+        <div class="pc-icon">🎡</div>
+        <div class="pc-dest">Orlando · 5 noches · 2 adultos + 1 menor (11 años)</div>
+        <div class="pc-title">Disney Pop Century</div>
+        <div class="pc-hotel">📅 Septiembre 2026</div>
+        <div class="pc-hotel">🏨 Pop Century Resort · Standard Room (remodelado, con Skyliner)</div>
+        <div class="pc-hotel">🎟️ 4 días · Parques Hopper (podés ir a más de un parque por día)</div>
+        <div style="background:var(--sky-pale);border:1px solid var(--sky-mid);border-radius:10px;padding:0.6rem 0.9rem;margin-bottom:0.9rem;font-size:0.75rem;color:var(--text-mid);">
+          🎁 Plan de comidas Quick Service <strong>incluido gratis</strong> + 💧 Parque de agua gratis el día de check in
+        </div>
+        <div class="pc-price-row">
+          <span class="pc-price" style="font-size:1.8rem;">USD 3.357</span>
+          <span class="pc-per">todo incluido</span>
+        </div>
+        <p class="pc-disclaimer">* Sin vuelos. Sujeto a disponibilidad.</p>
+        <button class="pc-toggle" onclick="toggleExtra(this)">Ver más <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="pc-extra">
+          <div class="pc-divider"></div>
+          <div class="pc-includes">
+            <div class="pc-item">📅 Check in: 17 de septiembre 2026</div>
+            <div class="pc-item">📅 Check out: 22 de septiembre 2026</div>
+            <div class="pc-item">🎟️ Tickets Hopper: podés cambiar de parque durante el día</div>
+            <div class="pc-item">💧 Acceso a parque de agua el día de check in</div>
+            <div class="pc-item">🥘 Plan Quick Service incluido en el precio</div>
+          </div>
+        </div>
+        <a href="https://wa.me/5491132924274?text=Hola%20Sofi!%20Me%20interesa%20el%20paquete%20Disney%20Pop%20Century%20septiembre%202026%20✨" class="pc-wa-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.558 4.136 1.535 5.874L.057 23.882a.5.5 0 0 0 .61.61l6.008-1.478A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a10 10 0 0 1-5.13-1.406l-.367-.22-3.566.878.893-3.458-.24-.377A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg> Quiero este paquete</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div style="max-width:1100px;margin:0 auto 3.5rem;">
+    <p style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--sky-soft);margin-bottom:1.5rem;padding-left:0.2rem;">🚢 Cruceros Disney</p>
+    <div class="pricing-grid">
+
+      <div class="price-card">
+        <div class="pc-icon">🎃</div>
+        <div class="pc-dest">Crucero · 3 noches · 2 adultos · Desde Fort Lauderdale</div>
+        <div class="pc-title">Disney Destiny · Halloween</div>
+        <div class="pc-hotel">📅 Septiembre 2026 · 11 al 14 de septiembre</div>
+        <div class="pc-hotel">🚢 Disney Destiny · Itinerario temático de Halloween</div>
+        <div class="pc-price-row" style="flex-wrap:wrap;gap:0.3rem 1rem;">
+          <div style="width:100%;display:flex;flex-direction:column;gap:0.3rem;margin-bottom:0.5rem;">
+            <div style="font-size:0.7rem;color:var(--text-soft);">🛏️ Inside (sin vista) · <span style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--text);">USD 2.338</span></div>
+            <div style="font-size:0.7rem;color:var(--text-soft);">🌊 Oceanview (ventana) · <span style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--text);">USD 2.428</span></div>
+            <div style="font-size:0.7rem;color:var(--text-soft);">🌅 Verandah (balcón) · <span style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--text);">USD 2.764</span></div>
+          </div>
+        </div>
+        <p class="pc-disclaimer">* Total por los dos. Sin vuelos. Sujeto a disponibilidad.</p>
+        <button class="pc-toggle" onclick="toggleExtra(this)">Ver más <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="pc-extra">
+          <div class="pc-divider"></div>
+          <div style="font-size:0.72rem;color:var(--text-mid);margin-bottom:0.6rem;letter-spacing:0.05em;">🗺️ Itinerario</div>
+          <div class="pc-includes">
+            <div class="pc-item">Día 1 · Embarque Fort Lauderdale</div>
+            <div class="pc-item">Día 2 · Disney Lookout Cay</div>
+            <div class="pc-item">Día 3 · Nassau, Bahamas</div>
+            <div class="pc-item">Día 4 · Desembarque Fort Lauderdale (8 am)</div>
+          </div>
+        </div>
+        <a href="https://wa.me/5491132924274?text=Hola%20Sofi!%20Me%20interesa%20el%20crucero%20Disney%20Destiny%20Halloween%20septiembre%202026%20✨" class="pc-wa-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.558 4.136 1.535 5.874L.057 23.882a.5.5 0 0 0 .61.61l6.008-1.478A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a10 10 0 0 1-5.13-1.406l-.367-.22-3.566.878.893-3.458-.24-.377A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg> Quiero este crucero</a>
+      </div>
+
+      <div class="price-card">
+        <div class="pc-icon">⭐</div>
+        <div class="pc-dest">Crucero · 3 noches · 2 adultos + 1 menor (15 años)</div>
+        <div class="pc-title">Disney Wish · ¡Promo especial!</div>
+        <div class="pc-hotel">📅 Junio 2026 · 26 al 29 de junio</div>
+        <div class="pc-hotel">🚢 Disney Wish · Desde Puerto Cañaveral, Orlando</div>
+        <div class="pc-hotel">🌅 Camarote Verandah con balcón · Disney elige el camarote</div>
+        <div style="background:var(--sky-pale);border:1px solid var(--sky-mid);border-radius:10px;padding:0.6rem 0.9rem;margin-bottom:0.9rem;font-size:0.75rem;color:var(--text-mid);">
+          🎁 Descuento en el itinerario + <strong>USD 250 de crédito a bordo</strong> para shops, etc.
+        </div>
+        <div class="pc-price-row">
+          <span class="pc-price" style="font-size:1.8rem;">USD 3.564</span>
+          <span class="pc-per">total por los tres</span>
+        </div>
+        <p class="pc-disclaimer">* Sin vuelos. Sujeto a disponibilidad.</p>
+        <button class="pc-toggle" onclick="toggleExtra(this)">Ver más <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="pc-extra">
+          <div class="pc-divider"></div>
+          <div style="font-size:0.72rem;color:var(--text-mid);margin-bottom:0.6rem;letter-spacing:0.05em;">🗺️ Itinerario</div>
+          <div class="pc-includes">
+            <div class="pc-item">Día 1 · Abordaje desde Orlando</div>
+            <div class="pc-item">Día 2 · Nassau, Bahamas</div>
+            <div class="pc-item">Día 3 · Disney Castaway Cay</div>
+            <div class="pc-item">Día 4 · Desembarque en Orlando</div>
+          </div>
+        </div>
+        <a href="https://wa.me/5491132924274?text=Hola%20Sofi!%20Me%20interesa%20la%20promo%20crucero%20Disney%20Wish%20junio%202026%20✨" class="pc-wa-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.558 4.136 1.535 5.874L.057 23.882a.5.5 0 0 0 .61.61l6.008-1.478A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a10 10 0 0 1-5.13-1.406l-.367-.22-3.566.878.893-3.458-.24-.377A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg> Quiero esta promo</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div style="max-width:1100px;margin:0 auto;">
+    <p style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--sky-soft);margin-bottom:1.5rem;padding-left:0.2rem;">🗼 Disneyland París</p>
+    <div class="pricing-grid">
+
+      <div class="price-card">
+        <div class="pc-icon">🗼</div>
+        <div class="pc-dest">París · 3 noches · 2 adultos + 1 menor (14) + 1 menor (3)</div>
+        <div class="pc-title">Disneyland París · Vacaciones de invierno</div>
+        <div class="pc-hotel">📅 Junio 2026</div>
+        <div class="pc-hotel">🏨 Hotel Cheyenne · Standard Room (temático Toy Story)</div>
+        <div class="pc-hotel">🎟️ Tickets con entrada ilimitada · Check in a check out</div>
+        <div class="pc-price-row">
+          <span class="pc-price" style="font-size:1.8rem;">USD 2.811</span>
+          <span class="pc-per">sin plan de comidas</span>
+        </div>
+        <p class="pc-disclaimer">* Sin vuelos. Sujeto a disponibilidad.</p>
+        <button class="pc-toggle" onclick="toggleExtra(this)">Ver más <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="pc-extra">
+          <div class="pc-divider"></div>
+          <div class="pc-includes">
+            <div class="pc-item">📅 Check in: 22 de junio 2026</div>
+            <div class="pc-item">📅 Check out: 25 de junio 2026</div>
+            <div class="pc-item">🎟️ Pueden entrar/salir del parque y cruzarse entre ellos</div>
+          </div>
+          <div class="pc-divider"></div>
+          <div style="font-size:0.72rem;color:var(--text-mid);margin-bottom:0.6rem;letter-spacing:0.05em;">🥐 Opcionales — plan de comidas</div>
+          <div class="pc-includes">
+            <div class="pc-item">🥐 Breakfast (desayuno buffet en el hotel) · total <strong>USD 3.132</strong></div>
+            <div class="pc-item">🥐🍳 Half Board (desayuno + 1 reserva en restaurante) · total <strong>USD 3.604</strong></div>
+            <div class="pc-item">🥐🍳🥘 Full Board Plus (desayuno + 1 quick service + 1 reserva) · total <strong>USD 4.178</strong></div>
+          </div>
+        </div>
+        <a href="https://wa.me/5491132924274?text=Hola%20Sofi!%20Me%20interesa%20el%20paquete%20Disneyland%20París%20junio%202026%20✨" class="pc-wa-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.558 4.136 1.535 5.874L.057 23.882a.5.5 0 0 0 .61.61l6.008-1.478A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a10 10 0 0 1-5.13-1.406l-.367-.22-3.566.878.893-3.458-.24-.377A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg> Quiero este paquete</a>
+      </div>
+
+      <div class="price-card">
+        <div class="pc-icon">🎄</div>
+        <div class="pc-dest">París · 2 noches · 2 adultos</div>
+        <div class="pc-title">Disneyland París · Época Navideña</div>
+        <div class="pc-hotel">📅 Noviembre 2026</div>
+        <div class="pc-hotel">🏨 Hotel Santa Fe · Standard Room (temático Cars)</div>
+        <div class="pc-hotel">🎟️ Tickets con entrada ilimitada · Check in a check out</div>
+        <div class="pc-price-row">
+          <span class="pc-price" style="font-size:1.8rem;">USD 1.056</span>
+          <span class="pc-per">sin plan de comidas</span>
+        </div>
+        <p class="pc-disclaimer">* Sin vuelos. Sujeto a disponibilidad.</p>
+        <button class="pc-toggle" onclick="toggleExtra(this)">Ver más <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="pc-extra">
+          <div class="pc-divider"></div>
+          <div class="pc-includes">
+            <div class="pc-item">📅 Check in: 10 de noviembre 2026</div>
+            <div class="pc-item">📅 Check out: 12 de noviembre 2026</div>
+            <div class="pc-item">🎟️ Pueden entrar/salir del parque y cruzarse entre ellos</div>
+          </div>
+          <div class="pc-divider"></div>
+          <div style="font-size:0.72rem;color:var(--text-mid);margin-bottom:0.6rem;letter-spacing:0.05em;">🥐 Opcionales — plan de comidas</div>
+          <div class="pc-includes">
+            <div class="pc-item">🥐 Breakfast (desayuno buffet en el hotel) · total <strong>USD 1.155</strong></div>
+            <div class="pc-item">🥐🍳 Half Board (desayuno + 1 reserva en restaurante) · total <strong>USD 1.303</strong></div>
+            <div class="pc-item">🥐🍳🥘 Full Board Plus (desayuno + 1 quick service + 1 reserva) · total <strong>USD 1.393</strong></div>
+          </div>
+        </div>
+        <a href="https://wa.me/5491132924274?text=Hola%20Sofi!%20Me%20interesa%20el%20paquete%20Disneyland%20París%20navide%C3%B1o%20noviembre%202026%20✨" class="pc-wa-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.558 4.136 1.535 5.874L.057 23.882a.5.5 0 0 0 .61.61l6.008-1.478A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a10 10 0 0 1-5.13-1.406l-.367-.22-3.566.878.893-3.458-.24-.377A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg> Quiero este paquete</a>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<script>
+function toggleExtra(btn) {
+  const extra = btn.nextElementSibling;
+  const isOpen = extra.classList.contains('open');
+  extra.classList.toggle('open');
+  btn.classList.toggle('open');
+  btn.childNodes[0].textContent = isOpen ? ' Ver más ' : ' Ver menos ';
+}
+
+let destSeleccionado = '';
+
+function selectDest(btn, dest) {
+  document.querySelectorAll('.cq-dest-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  destSeleccionado = dest;
+}
+
+function toggleMenores(checkbox) {
+  document.getElementById('cq-menores-extra').style.display = checkbox.checked ? 'block' : 'none';
+}
+
+function enviarCotizacion() {
+  const personas = document.getElementById('cq-personas').value;
+  const mes = document.getElementById('cq-mes').value;
+  const dias = document.getElementById('cq-dias').value;
+  const celular = document.getElementById('cq-celular').value.trim();
+  const hayMenores = document.getElementById('cq-hay-menores').checked;
+  const edades = document.getElementById('cq-edades').value.trim();
+  const nota = document.getElementById('cq-nota').value.trim();
+
+  if (!destSeleccionado) { alert('Por favor elegí un destino 🏰'); return; }
+  if (!personas) { alert('Por favor indicá cuántas personas son'); return; }
+  if (!celular) { alert('Por favor ingresá tu celular para poder contactarte'); return; }
+
+  let msg = `Hola Sofi! Quiero cotizar un viaje ✨\n\n`;
+  msg += `📍 Destino: ${destSeleccionado}\n`;
+  msg += `👥 Personas: ${personas}\n`;
+  if (mes) msg += `📅 Mes: ${mes}\n`;
+  if (dias) msg += `🗓️ Duración: ${dias}\n`;
+  if (hayMenores) msg += `👶 Hay menores${edades ? ': ' + edades : ''}\n`;
+  msg += `📱 Celular: ${celular}\n`;
+  if (nota) msg += `💬 Comentario: ${nota}\n`;
+
+  const url = `https://wa.me/5491132924274?text=${encodeURIComponent(msg)}`;
+  window.open(url, '_blank');
+}
+</script>
+
+<!-- FOOTER -->
+<footer class="footer-strip">
+  <div class="footer-logo">Disnerd</div>
+  <ul class="footer-links">
+    <li><a href="https://instagram.com/disnerd.sofi" target="_blank">@disnerd.sofi</a></li>
+    <li><a href="https://wa.me/5491132924274">WhatsApp</a></li>
+  </ul>
+  <span class="footer-copy">Sofi Valle Mayorga · Agente autorizada Disney &amp; Universal</span>
+</footer>
+
+</body>
+</html>
