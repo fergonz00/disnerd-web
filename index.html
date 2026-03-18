@@ -1217,13 +1217,13 @@ function enviarCotizacion() {
   if (!celular) { alert('Por favor ingresá tu celular para poder contactarte'); return; }
 
   let msg = `Hola Sofi! Quiero cotizar un viaje ✨\n\n`;
-  msg += `📍 Destino: ${destSeleccionado}\n`;
-  msg += `👥 Personas: ${personas}\n`;
-  if (mes) msg += `📅 Mes: ${mes}\n`;
-  if (dias) msg += `🗓️ Duración: ${dias}\n`;
-  if (hayMenores) msg += `👶 Hay menores${edades ? ': ' + edades : ''}\n`;
-  msg += `📱 Celular: ${celular}\n`;
-  if (nota) msg += `💬 Comentario: ${nota}\n`;
+  msg += `✅ Destino: ${destSeleccionado}\n`;
+  msg += `✅ Personas: ${personas}\n`;
+  if (mes) msg += `✅ Mes: ${mes}\n`;
+  if (dias) msg += `✅ Duración: ${dias}\n`;
+  if (hayMenores) msg += `✅ Hay menores${edades ? ': ' + edades : ''}\n`;
+  msg += `✅ Celular: ${celular}\n`;
+  if (nota) msg += `✅ Comentario: ${nota}\n`;
 
   const url = `https://wa.me/5491132924274?text=${encodeURIComponent(msg)}`;
   window.open(url, '_blank');
