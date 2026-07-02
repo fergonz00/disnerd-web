@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¿Qué personaje sos? · Disnerd</title>
+<meta name="description" content="Test de personalidad Disney: descubrí qué princesa, villano, clásico o personaje de Pixar sos. Sin preguntas obvias — la magia decide sola.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ivory:     #faf8f4;
+    --cream:     #f2ede4;
+    --warm:      #e8e0d2;
+    --sky-pale:  #eaf3f8;
+    --sky-mid:   #cce0ed;
+    --sky-soft:  #7ab5cc;
+    --text:      #2c2825;
+    --text-mid:  #6b6259;
+    --text-soft: #9e9189;
+    --gold:      #b8a082;
+    --sombra: rgba(60,50,40,0.08);
+    --sombra-hover: rgba(60,50,40,0.14);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  html { touch-action: manipulation; }
+  body { font-family: 'Raleway', sans-serif; font-weight: 300; background: var(--ivory); color: var(--text); min-height: 100vh; overflow-x: hidden; }
+
+  nav { display: flex; justify-content: space-between; align-items: center; padding: 1.1rem 1.4rem; max-width: 860px; margin: 0 auto; }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 600; color: var(--text); text-decoration: none; }
+  .nav-logo span { display: block; font-family: 'Raleway', sans-serif; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-soft); font-weight: 400; }
+  .nav-cta { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.05em; color: var(--ivory); background: var(--sky-soft); padding: 0.55rem 1.1rem; border-radius: 2rem; text-decoration: none; transition: background .2s; }
+  .nav-cta:hover { background: var(--sky-mid); color: var(--text); }
+
+  .wrap { max-width: 480px; margin: 0 auto; padding: 0.6rem 1.2rem 3.5rem; }
+
+  .fade-in { animation: fadeIn .35s ease both; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+  /* ── Menú ── */
+  .intro { text-align: center; padding-top: 1.6rem; }
+  .intro .castillo { font-size: 2.6rem; margin-bottom: .7rem; }
+  .intro h1 { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 500; line-height: 1.15; margin-bottom: .6rem; }
+  .intro h1 em { font-style: italic; color: var(--sky-soft); }
+  .intro p { color: var(--text-mid); font-size: .92rem; line-height: 1.6; margin-bottom: 1.5rem; }
+  .modo-card { display: flex; align-items: center; gap: .9rem; text-align: left; width: 100%; border: 1px solid var(--warm); background: #fff; border-radius: 1.1rem; padding: 1.05rem 1.1rem; margin-bottom: .8rem; cursor: pointer; box-shadow: 0 2px 12px var(--sombra); transition: transform .12s, box-shadow .2s; font-family: 'Raleway', sans-serif; color: var(--text); }
+  .modo-card:hover { box-shadow: 0 5px 18px var(--sombra-hover); }
+  .modo-card:active { transform: scale(.98); }
+  .modo-card .m-emoji { font-size: 1.9rem; }
+  .modo-card .m-tit { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 600; line-height: 1.15; }
+  .modo-card .m-sub { font-size: .76rem; color: var(--text-mid); margin-top: .2rem; line-height: 1.4; font-weight: 400; }
+  .intro .mini { font-size: .78rem; color: var(--text-soft); font-style: italic; font-family: 'Playfair Display', serif; margin-top: .5rem; }
+
+  /* ── Pregunta ── */
+  .q-top { display: flex; justify-content: space-between; align-items: center; margin: 1rem 0 .6rem; }
+  .q-progress-txt { font-size: .72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-soft); font-weight: 500; }
+  .q-bar { height: 4px; background: var(--cream); border-radius: 3px; overflow: hidden; margin-bottom: 1.5rem; }
+  .q-bar-fill { height: 100%; background: linear-gradient(90deg, var(--sky-mid), var(--sky-soft)); border-radius: 3px; width: 0; transition: width .35s ease; }
+  .q-text { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 500; line-height: 1.3; margin-bottom: 1.3rem; }
+  .opt { display: flex; align-items: center; gap: .7rem; width: 100%; text-align: left; background: #fff; border: 1px solid var(--warm); border-radius: 1rem; padding: .9rem 1rem; margin-bottom: .65rem; cursor: pointer; font-family: 'Raleway', sans-serif; font-size: .9rem; font-weight: 500; color: var(--text); box-shadow: 0 2px 10px var(--sombra); transition: transform .12s, border-color .12s, background .12s; line-height: 1.45; }
+  .opt .opt-emoji { font-size: 1.25rem; flex-shrink: 0; }
+  .opt:hover { border-color: var(--sky-mid); }
+  .opt:active { transform: scale(.98); }
+  .opt.sel { border-color: var(--sky-soft); background: var(--sky-pale); }
+  .q-quit { margin-top: 1rem; background: none; border: none; color: var(--text-soft); font-size: .78rem; cursor: pointer; text-decoration: underline; font-family: 'Raleway', sans-serif; }
+
+  /* ── Calculando ── */
+  .calc { text-align: center; padding-top: 5rem; }
+  .calc .spark { font-size: 3rem; animation: pulse 1s ease infinite alternate; }
+  @keyframes pulse { from { transform: scale(1); opacity: .7; } to { transform: scale(1.25); opacity: 1; } }
+  .calc p { font-family: 'Playfair Display', serif; font-style: italic; color: var(--text-mid); margin-top: 1rem; font-size: 1.1rem; }
+
+  /* ── Resultado ── */
+  .res { text-align: center; padding-top: 1.4rem; }
+  .res .sos { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.1rem; color: var(--text-mid); }
+  .res-card { border-radius: 1.3rem; padding: 1.8rem 1.4rem 1.5rem; margin: .9rem 0 1.1rem; box-shadow: 0 6px 24px var(--sombra-hover); }
+  .res-emoji { font-size: 4rem; line-height: 1; filter: drop-shadow(0 4px 8px rgba(0,0,0,.12)); }
+  .res-nombre { font-family: 'Playfair Display', serif; font-size: 2.3rem; font-weight: 600; margin: .4rem 0 .1rem; color: var(--text); }
+  .res-tag { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1rem; color: var(--text); opacity: .75; margin-bottom: .8rem; }
+  .res-afin { display: inline-block; background: rgba(255,255,255,.8); border-radius: 2rem; padding: .35rem 1rem; font-size: .8rem; font-weight: 700; color: var(--text); }
+  .res-desc { font-size: .92rem; line-height: 1.7; color: var(--text); text-align: left; background: #fff; border: 1px solid var(--warm); border-radius: 1.1rem; padding: 1.1rem 1.2rem; box-shadow: 0 2px 12px var(--sombra); font-weight: 400; }
+  .res-btns { display: flex; gap: .7rem; margin-top: 1.4rem; }
+  .res-btns button { flex: 1; padding: .85rem 0; border: none; border-radius: 2rem; cursor: pointer; font-family: 'Raleway', sans-serif; font-size: .88rem; font-weight: 600; box-shadow: 0 3px 12px var(--sombra); }
+  .btn-again { background: var(--sky-pale); color: var(--text); border: 1px solid var(--sky-mid) !important; }
+  .btn-share { background: var(--sky-soft); color: var(--ivory); }
+  .btn-menu { display: block; margin: 1rem auto 0; background: none; border: none; color: var(--text-soft); font-size: .8rem; cursor: pointer; text-decoration: underline; font-family: 'Raleway', sans-serif; }
+
+  /* ── CTA Sofi ── */
+  .cta-sofi { margin-top: 1.8rem; background: var(--sky-pale); border: 1px solid var(--sky-mid); border-radius: 1.2rem; padding: 1.3rem 1.2rem; text-align: center; }
+  .cta-sofi .cta-tit { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 600; line-height: 1.25; margin-bottom: .4rem; }
+  .cta-sofi .cta-tit em { font-style: italic; color: var(--sky-soft); }
+  .cta-sofi p { font-size: .85rem; color: var(--text-mid); line-height: 1.55; margin-bottom: .9rem; }
+  .cta-sofi a { display: inline-block; background: var(--sky-soft); color: var(--ivory); text-decoration: none; font-size: .85rem; font-weight: 600; padding: .7rem 1.5rem; border-radius: 2rem; transition: background .2s; }
+  .cta-sofi a:hover { background: var(--sky-mid); color: var(--text); }
+
+  footer { text-align: center; padding: 1.5rem 1rem 2.5rem; font-size: .72rem; color: var(--text-soft); }
+  footer a { color: var(--text-mid); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">Disnerd<span>Sofi Valle Mayorga</span></a>
+  <a href="https://wa.me/5491132924274?text=Hola%20Sofi!%20Vi%20tu%20página%20y%20quiero%20cotizar%20mi%20viaje%20a%20Disney" class="nav-cta">Cotizá tu viaje</a>
+</nav>
+
+<div class="wrap">
+
+  <!-- MENÚ -->
+  <div id="scr-intro" class="intro fade-in">
+    <div class="castillo">🏰✨</div>
+    <h1>¿Qué <em>personaje</em> sos?</h1>
+    <p>Contestá con el corazón (no con lo que te gustaría ser 😄). Sin preguntas obvias: la magia decide sola.</p>
+    <div id="menu-modos"></div>
+    <p class="mini">12 preguntas por test · cada partida es distinta</p>
+  </div>
+
+  <!-- PREGUNTAS -->
+  <div id="scr-q" style="display:none">
+    <div class="q-top">
+      <span class="q-progress-txt" id="q-num"></span>
+      <span class="q-progress-txt" id="q-modo-emoji"></span>
+    </div>
+    <div class="q-bar"><div class="q-bar-fill" id="q-bar"></div></div>
+    <div id="q-body"></div>
+    <button class="q-quit" onclick="resetQuiz()">← Volver al menú</button>
+  </div>
+
+  <!-- CALCULANDO -->
+  <div id="scr-calc" class="calc" style="display:none">
+    <div class="spark">🪄</div>
+    <p>La magia está decidiendo…</p>
+  </div>
+
+  <!-- RESULTADO -->
+  <div id="scr-res" class="res" style="display:none"></div>
+
+</div>
+
+<footer>
+  <a href="/">disnerd.com.ar</a> · Sofi Valle Mayorga · Agente autorizada Disney &amp; Universal
+</footer>
+
+<script>
+/* ¿Qué personaje sos? — test de personalidad Disnerd.
+   Motor de 8 ejes + calibración CAL por simulación.
+   ⚠️ La fuente de datos canónica es la app de Orlando (disnerd-orlando/index.html, QP_MODOS/QP_CAL) — si se actualiza allá, replicar acá. */
+
+const MODOS = {
+
+/* ════════════════ 👑 PRINCESAS ════════════════ */
+princesas: {
+  emoji:'👑', titulo:'¿Qué princesa de Disney sos?',
+  sub:'Coronas aparte: acá manda la personalidad',
+  grad:['#f0c8d0','#e8e5f5'], frase:'El reino habló… sos',
+  personajes: [
+    { id:'blancanieves', nombre:'Blancanieves', emoji:'🍎', grad:['#f5d0d6','#fae8eb'],
+      tag:'La dulzura que desarma',
+      perfil:{E:7,A:3,H:5,C:9,L:3,O:6,S:8,P:1},
+      desc:'Tenés el don de ver lo bueno en todos, incluso cuando no lo muestran. Tu calidez convierte cualquier lugar en un hogar y cualquier grupo en una familia. Como Blancanieves, tu dulzura no es debilidad: es la clase de fuerza que hace que hasta los gruñones terminen cuidándote.' },
+    { id:'cenicienta', nombre:'Cenicienta', emoji:'👠', grad:['#daeef7','#e8e5f5'],
+      tag:'La paciencia que llega a medianoche',
+      perfil:{E:4,A:4,H:4,C:8,L:3,O:8,S:8,P:2},
+      desc:'Trabajás, esperás y no te amargás: tu optimismo es a prueba de todo. Sabés que las rachas malas se atraviesan con la frente en alto y el corazón amable. Como Cenicienta, no necesitás que te salven: necesitás una sola oportunidad, y la aprovechás con zapatos de cristal o sin ellos.' },
+    { id:'aurora', nombre:'Aurora', emoji:'🌙', grad:['#e8e5f5','#f0c8d0'],
+      tag:'Soñar también es un talento',
+      perfil:{E:3,A:3,H:3,C:7,L:2,O:5,S:10,P:1},
+      desc:'Vivís con un pie en este mundo y otro en uno mejor que estás imaginando. Tu calma no es lentitud: es una elegancia natural que no se apura por nadie. Como Aurora, entendés que las mejores cosas de la vida —el amor, los sueños, la siesta— no se negocian.' },
+    { id:'ariel', nombre:'Ariel', emoji:'🧜‍♀️', grad:['#b8d8e8','#f0c8d0'],
+      tag:'Quiere estar donde está la gente',
+      perfil:{E:6,A:8,H:4,C:9,L:3,O:2,S:10,P:5},
+      desc:'Siempre hay un mundo más allá que te llama, y vos coleccionás sueños como tesoros. Curiosidad, intensidad y romanticismo: cuando algo te fascina, te fascina con toda el alma. Como Ariel, no naciste para quedarte en la orilla. Naciste para cruzar.' },
+    { id:'bella', nombre:'Bella', emoji:'📚', grad:['#e8d5b0','#f5d0d6'],
+      tag:'La que ve más allá',
+      perfil:{E:3,A:6,H:3,C:8,L:5,O:7,S:9,P:2},
+      desc:'Mientras todos miran la superficie, vos ves lo que hay adentro: de los libros, de los lugares y sobre todo de las personas. No te importa ser diferente; te importa ser vos. Como Bella, tu inteligencia y tu empatía rompen cualquier hechizo. Y tu biblioteca ideal no tiene techo.' },
+    { id:'jasmin', nombre:'Jasmín', emoji:'🐯', grad:['#b8d8e8','#c8e8d5'],
+      tag:'Nadie decide por ella',
+      perfil:{E:5,A:8,H:4,C:7,L:7,O:4,S:6,P:6},
+      desc:'La libertad no se negocia: odiás que decidan por vos y tenés un radar infalible para los chamuyos. Debajo de esa elegancia hay carácter puro y una lealtad feroz con los tuyos. Como Jasmín, no querés que te regalen el mundo: querés descubrirlo con tus propias reglas.' },
+    { id:'pocahontas', nombre:'Pocahontas', emoji:'🍃', grad:['#c8e8d5','#e8d5b0'],
+      tag:'Escucha con el corazón',
+      perfil:{E:4,A:8,H:2,C:8,L:7,O:5,S:8,P:2},
+      desc:'Sentís cosas que otros ni registran: el clima de una habitación, la belleza de un momento, el viento cambiando. Tu sabiduría es tranquila y profunda. Como Pocahontas, elegís tu propio camino aunque sea el más difícil, y ves colores donde otros ven solo paisaje.' },
+    { id:'mulan', nombre:'Mulán', emoji:'⚔️', grad:['#f0c8d0','#e8e5f5'],
+      tag:'La valentía no pide permiso',
+      perfil:{E:4,A:8,H:4,C:8,L:7,O:6,S:4,P:5},
+      desc:'No sos de hacer ruido, pero cuando hay que dar un paso al frente, lo das primero que nadie. Tu coraje nace del amor por los tuyos, y eso lo vuelve imparable. Como Mulán, no necesitás encajar en el molde: vos hacés tu propio molde. Y honrás a los tuyos siendo exactamente quien sos.' },
+    { id:'tiana', nombre:'Tiana', emoji:'🐸', grad:['#e8d5b0','#c8e8d5'],
+      tag:'Los sueños se laburan',
+      perfil:{E:5,A:5,H:3,C:7,L:7,O:10,S:6,P:2},
+      desc:'Mientras otros desean, vos hacés. Tenés metas claras, disciplina de acero y un orgullo sano por lo que construiste con tus propias manos. Como Tiana, sabés que la estrella se pide… pero el resto se trabaja. Eso sí: no te olvides de bailar de vez en cuando.' },
+    { id:'rapunzel', nombre:'Rapunzel', emoji:'🎨', grad:['#e8e5f5','#f0c8d0'],
+      tag:'Un mundo entero por estrenar',
+      perfil:{E:7,A:7,H:6,C:8,L:4,O:5,S:10,P:3},
+      desc:'Tenés una curiosidad infinita y mil talentos que ni sabés que tenés. Todo te interesa, todo lo querés probar, todo lo convertís en algo lindo. Como Rapunzel, cuando por fin salís de tu torre —esa rutina, ese miedo, ese "mejor no"— el mundo se llena de luces flotantes.' },
+    { id:'merida', nombre:'Mérida', emoji:'🏹', grad:['#f0c8d0','#e8d5b0'],
+      tag:'El destino se dispara con arco propio',
+      perfil:{E:5,A:10,H:6,C:5,L:6,O:2,S:4,P:6},
+      desc:'Indomable es poco: tenés una energía salvaje y una honestidad que a veces mete la pata, pero nunca miente. Los moldes te quedan chicos y las etiquetas te duran nada. Como Mérida, tu destino no está escrito: lo escribís vos, galopando y despeinándote.' },
+    { id:'moana', nombre:'Moana', emoji:'🌊', grad:['#b8d8e8','#c8e8d5'],
+      tag:'El mar la eligió (y vos también elegís)',
+      perfil:{E:6,A:9,H:4,C:7,L:9,O:6,S:7,P:3},
+      desc:'Hay una voz adentro tuyo que no se calla nunca, y vos aprendiste a escucharla. Determinación es tu segundo nombre: cuando decidís algo, no hay horizonte que te quede lejos. Como Moana, no esperás que te digan quién sos. Ya lo sabés.' },
+    { id:'raya', nombre:'Raya', emoji:'🗡️', grad:['#e8d5b0','#c9c3e8'],
+      tag:'La confianza se gana',
+      perfil:{E:4,A:8,H:4,C:5,L:7,O:7,S:3,P:5},
+      desc:'Te la jugás por los tuyos, pero tu confianza hay que ganársela paso a paso: te quemaste antes y aprendiste. Tenés disciplina, reflejos y un humor seco que aparece cuando bajás la guardia. Como Raya, tu gran lección es que volver a confiar no es ingenuidad: es el acto más valiente de todos.' },
+    { id:'elsa', nombre:'Elsa', emoji:'❄️', grad:['#daeef7','#e8e5f5'],
+      tag:'La reina que se soltó',
+      perfil:{E:2,A:4,H:2,C:7,L:8,O:9,S:6,P:1},
+      desc:'Preferís pocos vínculos pero profundos, y necesitás tus momentos de silencio para recargar. Sentís muchísimo, aunque no siempre lo muestres. Como Elsa, tu viaje es aprender que no hace falta la perfección ni contener todo: cuando te soltás, sos pura majestad. Libre y sin frío.' },
+    { id:'anna', nombre:'Anna', emoji:'🧣', grad:['#f0c8d0','#e8d5b0'],
+      tag:'Corazón primero, preguntas después',
+      perfil:{E:9,A:8,H:7,C:10,L:4,O:2,S:8,P:3},
+      desc:'Te tirás de cabeza a la vida: al amor, a la aventura, a ayudar, a todo. Alguna vez te golpeaste por confiar de más… y aun así elegís seguir confiando, porque esa es tu fuerza. Como Anna, tu amor no es ingenuo: es valiente. Y salva reinos enteros.' },
+  ],
+  preguntas: [
+    { q:'Te regalan un día entero libre, sin culpa. ¿Qué hacés?',
+      ops:[
+        { e:'🌲', t:'Me pierdo en la naturaleza, sin celular', d:{A:2,S:1,E:-1}, n:['pocahontas','merida'] },
+        { e:'📋', t:'Avanzo ese proyecto que amo (sí, eso es descanso para mí)', d:{O:2,L:1}, n:['tiana','elsa'] },
+        { e:'🥐', t:'Juntada larga con mi gente: cocinar, charlar, sobremesa', d:{E:2,C:2}, n:['blancanieves','anna'] },
+        { e:'🛋️', t:'Peli, libro, siesta: modo nube', d:{E:-2,S:2}, n:['aurora','bella'] },
+      ]},
+    { q:'¿Cómo te llevás con las reglas?',
+      ops:[
+        { e:'🔥', t:'Mal. Si no tienen sentido, las rompo', d:{A:2,P:1,L:1}, n:['merida','jasmin'] },
+        { e:'🧭', t:'Las sigo… hasta que chocan con lo que creo', d:{C:1,L:1,O:1}, n:['mulan','pocahontas'] },
+        { e:'🤝', t:'Las respeto aunque me cuesten; la paciencia gana', d:{O:2,C:1,A:-1}, n:['cenicienta','elsa'] },
+        { e:'🙃', t:'¿Reglas? Perdón, estaba pensando en otra cosa', d:{S:2,O:-2}, n:['aurora','ariel'] },
+      ]},
+    { q:'Aparece un animalito en tu ventana. Vos…',
+      ops:[
+        { e:'🗣️', t:'Le hablo, obvio. Y me entiende, obvio', d:{S:2,C:1}, n:['blancanieves','cenicienta'] },
+        { e:'🐾', t:'Lo sigo a ver a dónde me lleva', d:{A:2,S:1}, n:['pocahontas','merida'] },
+        { e:'🏠', t:'Ya tiene nombre y vive conmigo', d:{C:2,O:-1}, n:['rapunzel','anna'] },
+        { e:'📸', t:'Le saco una foto y sigo con lo mío', d:{O:1,E:-1,P:1}, n:['tiana','raya'] },
+      ]},
+    { q:'¿Qué no soportás?',
+      ops:[
+        { e:'⛓️', t:'Que decidan por mí', d:{L:1,A:1,P:1}, n:['jasmin','merida'] },
+        { e:'💔', t:'La injusticia: me hierve la sangre', d:{C:2,L:1}, n:['moana','mulan'] },
+        { e:'🌀', t:'El desorden y la improvisación', d:{O:2,H:-1}, n:['tiana','elsa'] },
+        { e:'🕰️', t:'Que me apuren: cada cosa a su tiempo', d:{A:-1,S:1,O:1}, n:['aurora','cenicienta'] },
+      ]},
+    { q:'Un desconocido te ofrece un trato demasiado bueno…',
+      ops:[
+        { e:'🤨', t:'Desconfío. La confianza se gana', d:{P:1,O:1,C:-1}, n:['raya','merida'] },
+        { e:'🤝', t:'Escucho: todos merecen una oportunidad', d:{C:2}, n:['blancanieves','anna'] },
+        { e:'🔍', t:'Pregunto TODO. Letra chica incluida', d:{O:2,L:1}, n:['tiana','bella'] },
+        { e:'✨', t:'Si mi instinto dice sí, voy', d:{S:1,A:2}, n:['ariel','rapunzel'] },
+      ]},
+    { q:'Tu forma de ayudar a alguien que está mal:',
+      ops:[
+        { e:'🫂', t:'Abrazo primero, palabras después', d:{C:2,E:1}, n:['anna','blancanieves'] },
+        { e:'🛠️', t:'Soluciones concretas: vamos por partes', d:{O:2,C:1,S:-1}, n:['tiana','mulan'] },
+        { e:'🌙', t:'Le doy espacio y me quedo cerca, en silencio', d:{E:-2,C:1}, n:['elsa','pocahontas'] },
+        { e:'🎭', t:'Lo hago reír aunque sea un ratito', d:{H:2,E:1}, n:['rapunzel','merida'] },
+      ]},
+    { q:'La frase que más te dijeron en la vida:',
+      ops:[
+        { e:'☁️', t:'"Bajá de las nubes"', d:{S:2,O:-1}, n:['aurora','ariel'] },
+        { e:'🌶️', t:'"Qué carácter tenés"', d:{A:1,P:1,L:1}, n:['merida','jasmin'] },
+        { e:'🔋', t:'"No parás nunca"', d:{O:1,L:1,E:1}, n:['tiana','moana'] },
+        { e:'🍬', t:'"Tenés un corazón enorme"', d:{C:2}, n:['blancanieves','cenicienta'] },
+      ]},
+    { q:'¿Cuál es tu "torre"? (eso que te tiene un poco en pausa)',
+      ops:[
+        { e:'😰', t:'El miedo a decepcionar a mi familia', d:{C:1,O:1}, n:['mulan','elsa'] },
+        { e:'🏠', t:'La rutina de siempre', d:{S:1,A:1}, n:['rapunzel','ariel'] },
+        { e:'👥', t:'Lo que los demás esperan de mí', d:{L:1,E:-1}, n:['jasmin','moana'] },
+        { e:'🎯', t:'Mi propia exigencia', d:{O:2,H:-1}, n:['tiana','raya'] },
+      ]},
+    { q:'Aprendés algo nuevo. ¿Cómo?',
+      ops:[
+        { e:'🏹', t:'Práctica y práctica hasta que sale perfecto', d:{O:1,A:1,L:1}, n:['merida','mulan'] },
+        { e:'🌊', t:'Me tiro sin leer las instrucciones', d:{A:2,O:-2}, n:['moana','anna'] },
+        { e:'📖', t:'Primero leo, miro y escucho todo', d:{E:-1,O:1,S:1}, n:['bella','raya'] },
+        { e:'👵', t:'Que me enseñe alguien sabio, con historias', d:{C:1,S:1}, n:['pocahontas','rapunzel'] },
+      ]},
+    { q:'Tu fin de semana perfecto:',
+      ops:[
+        { e:'🏇', t:'Aire libre, adrenalina, despeinarse', d:{A:2,E:1}, n:['merida','moana'] },
+        { e:'🍳', t:'Proyectos, casa linda, todo en su lugar', d:{O:2,E:-1}, n:['cenicienta','tiana'] },
+        { e:'🎨', t:'Arte: pintar, leer, música, crear', d:{S:2,E:-1}, n:['rapunzel','bella'] },
+        { e:'🎉', t:'Gente querida, baile y charla hasta cualquier hora', d:{E:2,H:1}, n:['anna','jasmin'] },
+      ]},
+    { q:'Estás a un paso de tu gran sueño y alguien querido te necesita:',
+      ops:[
+        { e:'🏃', t:'Voy con esa persona. El sueño espera', d:{C:2,L:-1}, n:['anna','cenicienta'] },
+        { e:'⚖️', t:'Busco la forma de hacer las dos cosas', d:{L:2,O:1}, n:['moana','tiana'] },
+        { e:'💬', t:'Depende: ¿me necesita o me quiere cerca por costumbre?', d:{P:1,O:1,C:-1}, n:['raya','jasmin'] },
+        { e:'🥲', t:'Voy… pero una parte mía queda en ese sueño', d:{S:2,C:1}, n:['ariel','rapunzel'] },
+      ]},
+    { q:'¿Qué te da paz?',
+      ops:[
+        { e:'🌊', t:'El agua: mar, río, lluvia', d:{S:1,A:1}, n:['moana','ariel'] },
+        { e:'🌸', t:'La naturaleza quieta: viento, árboles, pasto', d:{E:-1,S:1,C:1}, n:['pocahontas','aurora'] },
+        { e:'🧹', t:'Dejar todo limpio y acomodado', d:{O:2}, n:['cenicienta','tiana'] },
+        { e:'🕯️', t:'Un rato en soledad, sin ruido', d:{E:-2,O:1}, n:['elsa','bella'] },
+      ]},
+    { q:'En un conflicto familiar, vos sos quien…',
+      ops:[
+        { e:'🕊️', t:'Media y calma las aguas', d:{C:2,E:1}, n:['cenicienta','blancanieves'] },
+        { e:'🗣️', t:'Dice la verdad que nadie quiere decir', d:{L:2,P:1}, n:['merida','jasmin'] },
+        { e:'🤐', t:'Se guarda lo que siente para no herir', d:{E:-1,C:1,O:1}, n:['elsa','raya'] },
+        { e:'🛡️', t:'Defiende al que quedó solo', d:{C:2,A:1}, n:['anna','mulan'] },
+      ]},
+    { q:'Elegí un superpoder:',
+      ops:[
+        { e:'🐦', t:'Hablar con los animales', d:{C:1,S:1}, n:['blancanieves','pocahontas'] },
+        { e:'🗡️', t:'Fuerza, puntería y reflejos', d:{A:2,L:1}, n:['mulan','merida'] },
+        { e:'💫', t:'Sanar con las manos', d:{C:2,S:1}, n:['rapunzel','cenicienta'] },
+        { e:'🌪️', t:'Controlar los elementos', d:{L:2,O:1}, n:['elsa','moana'] },
+      ]},
+    { q:'Si tuvieras que definirte en tres palabras…',
+      ops:[
+        { e:'💨', t:'Libertad, coraje, viento en la cara', d:{A:2,L:1}, n:['merida','jasmin'] },
+        { e:'🌈', t:'Sueños, arte y un poquito de caos', d:{S:2,O:-1}, n:['rapunzel','ariel'] },
+        { e:'🎯', t:'Trabajo, metas y pies en la tierra', d:{O:2,L:1}, n:['tiana','raya'] },
+        { e:'💗', t:'Amor, familia y puertas abiertas', d:{C:2,E:1}, n:['anna','blancanieves'] },
+      ]},
+    { q:'Se viene una tormenta enorme (literal o de la vida). Vos…',
+      ops:[
+        { e:'⛵', t:'La remo de frente: se pasa atravesándola', d:{A:2,L:1}, n:['moana','merida'] },
+        { e:'🕯️', t:'Preparo todo para que los míos estén a salvo', d:{O:1,C:2}, n:['mulan','raya'] },
+        { e:'🌈', t:'Confío: después de la lluvia siempre llega algo bueno', d:{S:2,C:1}, n:['blancanieves','cenicienta'] },
+        { e:'🚪', t:'Me refugio y espero que pase; no todo se pelea', d:{E:-1,O:1,A:-1}, n:['elsa','aurora'] },
+      ]},
+  ],
+},
+
+/* ════════════════ 😈 VILLANOS ════════════════ */
+villanos: {
+  emoji:'😈', titulo:'¿Qué villano de Disney sos?',
+  sub:'Incluye Pixar. Contestá sin culpa: acá nadie juzga',
+  grad:['#c9c3e8','#b8d8e8'], frase:'El caldero habló… sos',
+  personajes: [
+    { id:'ursula', nombre:'Úrsula', emoji:'🐙', grad:['#c9c3e8','#f0c8d0'],
+      tag:'Pobres almas en desgracia, ella cobra en firmas',
+      perfil:{E:7,A:5,H:6,C:2,L:8,O:7,S:4,P:10},
+      desc:'Dramatismo, presencia y lectura fina de la gente: cuando entrás en escena, la escena es tuya. Sabés lo que querés y cómo conseguirlo, y tu confianza no pide disculpas. Como Úrsula, sos glamour y estrategia en partes iguales. Eso sí… leé siempre la letra chica de tus propios contratos.' },
+    { id:'scar', nombre:'Scar', emoji:'🦁', grad:['#e8d5b0','#c9c3e8'],
+      tag:'Rodeado de inútiles',
+      perfil:{E:4,A:4,H:6,C:1,L:8,O:7,S:3,P:9},
+      desc:'Inteligencia sobra, paciencia con la gente… no tanto. Tu sarcasmo es fino, tu ambición elegante, y tenés la certeza de que si el mundo fuera justo, el trono sería tuyo. Como Scar, tu lema es "preparate": todo lo tuyo está pensado tres jugadas antes.' },
+    { id:'hades', nombre:'Hades', emoji:'🔥', grad:['#c9c3e8','#b8d8e8'],
+      tag:'El jefe del inframundo (con humor)',
+      perfil:{E:6,A:5,H:8,C:2,L:7,O:6,S:2,P:9},
+      desc:'Ironía rápida, paciencia corta y cero tolerancia a la mediocridad: sí, te tocó el villano más carismático del Olimpo. Trabajás más que todos los dioses juntos y encima nadie te lo reconoce. Como Hades, tu sarcasmo es legendario… pero admitilo: en el fondo (bien en el fondo) tenés tu corazoncito. ¿Trato hecho?' },
+    { id:'malefica', nombre:'Maléfica', emoji:'🌩️', grad:['#c9c3e8','#b8d8e8'],
+      tag:'La elegancia del rencor',
+      perfil:{E:2,A:4,H:2,C:2,L:9,O:8,S:6,P:7},
+      desc:'No hacés escándalos: hacés declaraciones. Tu presencia impone, tu memoria es eterna (sobre todo para las invitaciones que no llegaron) y tu estilo es impecable hasta para maldecir. Como Maléfica, no te enojás: redecorás el destino de los demás. Con clase.' },
+    { id:'cruella', nombre:'Cruella de Vil', emoji:'🧥', grad:['#e8e5f5','#f0c8d0'],
+      tag:'Vive rápido, viste mejor',
+      perfil:{E:8,A:6,H:6,C:1,L:6,O:3,S:5,P:8},
+      desc:'Intensidad, glamour y cero término medio: las cosas te encantan o te resultan insoportables. Cuando algo se te mete en la cabeza, sos capaz de manejar toda la noche. Como Cruella, tu estilo es inconfundible y tu dramatismo, legendario. (Los cachorros, tranquilos: hoy el sintético es furor.)' },
+    { id:'garfio', nombre:'Capitán Garfio', emoji:'⚓', grad:['#b8d8e8','#c9c3e8'],
+      tag:'Un caballero con cuentas pendientes',
+      perfil:{E:6,A:7,H:4,C:3,L:6,O:7,S:4,P:6},
+      desc:'Tenés códigos, estilo y UNA obsesión que no podés soltar (todos tenemos un Peter Pan). Armás planes elaboradísimos que se caen por detalles ridículos, y aun así volvés a intentarlo con el bigote impecable. Como Garfio, perdés con elegancia… y con un cocodrilo de fondo.' },
+    { id:'jafar', nombre:'Jafar', emoji:'🐍', grad:['#c9c3e8','#e8d5b0'],
+      tag:'Segundo de nadie',
+      perfil:{E:4,A:5,H:3,C:1,L:9,O:8,S:5,P:9},
+      desc:'Ser la segunda persona más poderosa del reino no te alcanza: vos jugás al puesto número uno. Tenés labia, visión y una capacidad de persuasión que asusta un poquito (bastante). Como Jafar, tu único límite es el ego… y esa costumbre de pedir siempre un poquito más de poder.' },
+    { id:'gaston', nombre:'Gastón', emoji:'💪', grad:['#e8d5b0','#f0c8d0'],
+      tag:'Nadie como él (preguntale a él)',
+      perfil:{E:10,A:7,H:5,C:2,L:6,O:2,S:2,P:6},
+      desc:'Seguridad te sobra: entrás y el lugar se entera. Sos el centro de la fiesta, el récord del gimnasio y tu propio fan número uno. Como Gastón, tu espejo favorito es cualquiera. El secreto que nadie te dice: caés mejor cuando te reís de vos… usalo.' },
+    { id:'yzma', nombre:'Yzma', emoji:'🧪', grad:['#c9c3e8','#e8e5f5'],
+      tag:'¡Traigan la palanca!',
+      perfil:{E:7,A:4,H:9,C:3,L:6,O:4,S:7,P:9},
+      desc:'Genialidad, drama y planes de una complejidad totalmente innecesaria: ¿convertirlo en llama y tirarlo al río? Perfecto, procedamos. Como Yzma, tu laboratorio mental no descansa nunca y tu paciencia con la gente lenta es CERO. Eso sí: elegí mejor a tus Kronks.' },
+    { id:'gothel', nombre:'Madre Gothel', emoji:'🪞', grad:['#e8e5f5','#f0c8d0'],
+      tag:'Lo hace por tu bien (por el suyo)',
+      perfil:{E:6,A:2,H:4,C:3,L:5,O:6,S:3,P:10},
+      desc:'Encanto no te falta: sabés exactamente qué decir para conseguir lo que querés, envuelto para regalo. Cuidás tu imagen, tu energía y tu juventud como tesoros. Como Madre Gothel, tu superpoder es la persuasión con sonrisa… usalo para el bien, que lo tenés.' },
+    { id:'reinacorazones', nombre:'La Reina de Corazones', emoji:'♥️', grad:['#f0c8d0','#f5d0d6'],
+      tag:'¡Que le corten… el wifi!',
+      perfil:{E:8,A:5,H:3,C:1,L:9,O:4,S:2,P:4},
+      desc:'Cero filtro, cero paciencia y un volumen de voz que no conoce el modo silencio. Tus enojos son legendarios pero te duran poco: explotás y a otra cosa. Como la Reina de Corazones, tu reino funciona a tu manera… y en el fondo, tu corte te quiere así: a puro grito y todo.' },
+    { id:'facilier', nombre:'Dr. Facilier', emoji:'🎩', grad:['#c9c3e8','#b8d8e8'],
+      tag:'Tiene amigos en el otro lado',
+      perfil:{E:8,A:6,H:8,C:2,L:5,O:4,S:6,P:10},
+      desc:'Carisma para vender arena en la playa: tu labia es un espectáculo y tu presencia, puro magnetismo. Sabés leer a la gente en dos segundos, sueños incluidos. Como el Dr. Facilier, el show te sale solo… solo cuidado con las deudas que firmás para financiarlo.' },
+    { id:'lotso', nombre:'Lotso', emoji:'🍓', grad:['#f0c8d0','#e8d5b0'],
+      tag:'Huele a frutilla, no te confíes',
+      perfil:{E:8,A:3,H:4,C:1,L:9,O:7,S:2,P:8},
+      desc:'Por fuera, la persona más amable del lugar; por dentro, un radar político que siempre sabe quién manda. Te lastimaron una vez y desde entonces preferís controlar antes que volver a sufrir. Como Lotso, tu abrazo abre cualquier puerta… todavía estás a tiempo de usarlo de verdad.' },
+    { id:'syndrome', nombre:'Síndrome', emoji:'🦹', grad:['#e8d5b0','#daeef7'],
+      tag:'El fan que se cansó de aplaudir',
+      perfil:{E:5,A:8,H:5,C:2,L:4,O:7,S:9,P:7},
+      desc:'Tu villanía nació de un desaire: eras fan, te bajaron el pulgar, y lo convertiste en combustible. Talento e inventiva te sobran, y necesitás que el mundo LO VEA. Como Síndrome, tu monólogo es imbatible… pero no lo hagas tan largo, que ahí se te escapan los héroes.' },
+  ],
+  preguntas: [
+    { q:'Seamos sinceros: ¿qué te empujaría al lado oscuro?',
+      ops:[
+        { e:'🥇', t:'Que premien a otro por TU trabajo', d:{P:1,L:1,C:-1}, n:['scar','syndrome'] },
+        { e:'👑', t:'El poder. No hace falta más explicación', d:{L:2,O:1}, n:['jafar','malefica'] },
+        { e:'💅', t:'Un mundo con tan poco estilo merece un escarmiento', d:{E:1,P:1,H:1}, n:['cruella','yzma'] },
+        { e:'📉', t:'Que me falten el respeto delante de todos', d:{L:1,E:1,H:-1}, n:['reinacorazones','gaston'] },
+      ]},
+    { q:'Tu plan maestro arranca por…',
+      ops:[
+        { e:'🤝', t:'Contactos: un contrato por acá, un favor por allá', d:{P:2,E:1}, n:['ursula','facilier'] },
+        { e:'🧪', t:'Laboratorio secreto e inventos propios', d:{O:1,S:1,E:-1}, n:['yzma','syndrome'] },
+        { e:'🕰️', t:'Paciencia: años de espera y un golpe perfecto', d:{O:2,A:-1,P:1}, n:['scar','gothel'] },
+        { e:'💥', t:'¿Plan? Entro por la puerta grande y que tiemblen', d:{A:2,L:1,O:-1}, n:['reinacorazones','gaston'] },
+      ]},
+    { q:'Elegí tu guarida:',
+      ops:[
+        { e:'🌋', t:'Cueva con lava y calaveras decorativas', d:{L:1,H:1}, n:['hades','ursula'] },
+        { e:'🏰', t:'Castillo gótico con trono y vista a la tormenta', d:{L:2,E:-1,O:1}, n:['malefica','jafar'] },
+        { e:'🛥️', t:'Algo con clase: barco, mansión, penthouse', d:{E:1,O:1,P:1}, n:['garfio','cruella'] },
+        { e:'🎪', t:'Un lugar con show: luces, humo, música de entrada', d:{E:2,H:1,S:1}, n:['facilier','yzma'] },
+      ]},
+    { q:'Tu secuaz ideal:',
+      ops:[
+        { e:'🦜', t:'Un animalito parlante que me endulce el ego', d:{E:1,H:1}, n:['jafar','malefica'] },
+        { e:'🤪', t:'Dos inútiles adorables que me hagan quedar bien', d:{H:2,C:1}, n:['yzma','cruella'] },
+        { e:'🪖', t:'Un ejército disciplinado y obediente', d:{L:2,O:1,H:-1}, n:['reinacorazones','garfio'] },
+        { e:'🙅', t:'Nadie. Los secuaces siempre arruinan todo', d:{E:-2,O:1,P:1}, n:['gothel','scar'] },
+      ]},
+    { q:'El héroe te arruinó el plan. Primera reacción:',
+      ops:[
+        { e:'🌋', t:'Explosión térmica. Literal', d:{H:-1,E:1,C:-1}, n:['hades','reinacorazones'] },
+        { e:'😏', t:'Sonrisa. Obvio que tenía plan B', d:{P:2,O:1}, n:['scar','ursula'] },
+        { e:'🎯', t:'Obsesión total: ahora es PERSONAL', d:{A:1,O:1,E:-1}, n:['garfio','syndrome'] },
+        { e:'🍷', t:'Berrinche elegante y a culpar al secuaz', d:{H:2,P:1}, n:['yzma','cruella'] },
+      ]},
+    { q:'¿Qué vicio confesás sin culpa?',
+      ops:[
+        { e:'🪞', t:'La vanidad. Con esta cara, ¿quién no?', d:{E:1,P:1}, n:['gaston','gothel'] },
+        { e:'🎭', t:'El drama. Todo merece producción', d:{E:2,S:1,H:1}, n:['facilier','ursula'] },
+        { e:'🧠', t:'El control. Las cosas bien, o las hago yo', d:{O:2,L:1}, n:['malefica','jafar'] },
+        { e:'🍰', t:'Los caprichos: lo quiero y lo quiero YA', d:{A:1,E:1,O:-2}, n:['reinacorazones','cruella'] },
+      ]},
+    { q:'Tu risa malvada es…',
+      ops:[
+        { e:'🎤', t:'Carcajada teatral que se escucha a kilómetros', d:{E:2,H:1}, n:['ursula','hades'] },
+        { e:'🐍', t:'Una sonrisita al costado. El que entendió, entendió', d:{P:2,E:-1}, n:['scar','gothel'] },
+        { e:'😤', t:'No me río: los demás no dan tanta gracia', d:{H:-2,O:1}, n:['malefica','reinacorazones'] },
+        { e:'🤭', t:'Me río de mis propios chistes (soy mi mejor público)', d:{H:2,S:1}, n:['yzma','facilier'] },
+      ]},
+    { q:'Te conceden UN deseo, sin trampas. ¿Qué pedís?',
+      ops:[
+        { e:'🌍', t:'Que el mundo por fin reconozca mi genialidad', d:{E:1,S:1,L:1}, n:['syndrome','gaston'] },
+        { e:'♾️', t:'Juventud eterna, obvio', d:{P:1,O:1}, n:['gothel','yzma'] },
+        { e:'👑', t:'El trono que siempre debió ser mío', d:{L:2,C:-1}, n:['scar','jafar'] },
+        { e:'🎣', t:'Nada de magia: lo mío lo consigo yo, con mis métodos', d:{O:1,P:2}, n:['cruella','garfio'] },
+      ]},
+    { q:'Tu outfit de villano no negocia…',
+      ops:[
+        { e:'🖤', t:'Capa dramática que flamee al caminar', d:{E:1,S:1}, n:['malefica','jafar'] },
+        { e:'🧥', t:'Estampados y pieles (sintéticas, tranquilos)', d:{E:1,P:1,H:1}, n:['cruella','gothel'] },
+        { e:'💍', t:'Detalles de oro y un bastón con poderes', d:{L:1,O:1}, n:['jafar','facilier'] },
+        { e:'😌', t:'¿Outfit? Mi ego ya viste bien', d:{H:1,L:1,E:1}, n:['gaston','hades'] },
+      ]},
+    { q:'El talón de Aquiles que aceptás tener:',
+      ops:[
+        { e:'🗣️', t:'Explico el plan completo ANTES de terminarlo', d:{E:1,H:1,O:-1}, n:['syndrome','ursula'] },
+        { e:'🤏', t:'Subestimo a los héroes… son tan tiernos', d:{P:1,H:1}, n:['hades','scar'] },
+        { e:'💢', t:'Mi paciencia dura tres segundos', d:{C:-1,A:1,H:-1}, n:['reinacorazones','cruella'] },
+        { e:'🪞', t:'Mi ego me hace elegir mal', d:{L:1,E:1}, n:['gaston','jafar'] },
+      ]},
+    { q:'Un colega villano te traiciona:',
+      ops:[
+        { e:'👏', t:'Respeto. Yo hubiera hecho lo mismo', d:{P:2,C:-1}, n:['scar','facilier'] },
+        { e:'📢', t:'Lo destruyo PÚBLICAMENTE, con testigos', d:{E:2,L:1}, n:['reinacorazones','gaston'] },
+        { e:'🧾', t:'Ya lo sabía: tengo un contrato firmado para esto', d:{O:2,P:1}, n:['ursula','facilier'] },
+        { e:'❄️', t:'Nada. Silencio. Y una venganza a fuego lento', d:{O:1,E:-2}, n:['malefica','gothel'] },
+      ]},
+    { q:'¿Por qué caería tu imperio? (hipotéticamente)',
+      ops:[
+        { e:'💘', t:'Por amor. Puaj. Pero probablemente', d:{C:2,S:1}, n:['hades','gothel'] },
+        { e:'📋', t:'Por un tecnicismo ridículo del contrato', d:{O:1,H:1}, n:['facilier','ursula'] },
+        { e:'🧸', t:'Por confiar en el secuaz equivocado', d:{C:1,H:1}, n:['yzma','syndrome'] },
+        { e:'🚫', t:'Mi imperio NO cae. Siguiente pregunta', d:{L:2,E:1}, n:['malefica','gaston'] },
+      ]},
+    { q:'Música para tu entrada triunfal:',
+      ops:[
+        { e:'🎹', t:'Órgano gótico, obvio', d:{O:1,E:-1}, n:['malefica','garfio'] },
+        { e:'🥁', t:'Percusión militar que anuncie peligro', d:{L:1,A:1}, n:['scar','reinacorazones'] },
+        { e:'🎷', t:'Jazz oscuro con sombras bailando', d:{E:1,S:1,P:1}, n:['facilier','ursula'] },
+        { e:'🎤', t:'Mi propio tema. Cantado por mí. Sobre mí', d:{E:2,H:1}, n:['gaston','yzma'] },
+      ]},
+    { q:'¿Qué opinás de los héroes?',
+      ops:[
+        { e:'🥱', t:'Adorables. Tanta ingenuidad junta', d:{P:1,H:1}, n:['scar','gothel'] },
+        { e:'😤', t:'Insoportables. Siempre sonriendo. Bloqueados', d:{H:-1,C:-1,E:1}, n:['reinacorazones','garfio'] },
+        { e:'🧲', t:'Útiles… hasta que estorban', d:{P:2,O:1}, n:['jafar','facilier'] },
+        { e:'🤫', t:'Confesión: un poquito los envidio. UN POQUITO', d:{C:2,S:1}, n:['syndrome','lotso'] },
+      ]},
+    { q:'Tu método de convencimiento favorito:',
+      ops:[
+        { e:'✍️', t:'Un contrato con MUCHA letra chica', d:{P:2,O:1}, n:['ursula','facilier'] },
+        { e:'🎁', t:'Un regalito con sorpresa adentro', d:{P:1,C:-1,S:1}, n:['yzma','facilier'] },
+        { e:'💪', t:'Presencia. Entro y los demás entienden solos', d:{L:2,E:1}, n:['gaston','malefica'] },
+        { e:'🍭', t:'Dulzura por fuera, negocio por dentro', d:{P:2,C:-1,H:1}, n:['lotso','gothel'] },
+      ]},
+    { q:'El lunes a la mañana, tu villano interior dice:',
+      ops:[
+        { e:'☕', t:'"Ni me mires antes del café"', d:{H:1,E:-1,C:-1}, n:['hades','scar'] },
+        { e:'📅', t:'"Hoy cae alguien. Lo tengo agendado"', d:{O:2,P:1}, n:['malefica','jafar'] },
+        { e:'🛌', t:'"¿Lunes? Los horarios son para los mortales"', d:{O:-2,H:1,S:1}, n:['facilier','ursula'] },
+        { e:'💪', t:'"El mundo no se conquista solo. VAMOS"', d:{L:1,E:2,A:1}, n:['gaston','syndrome'] },
+      ]},
+  ],
+},
+
+/* ════════════════ 🏰 CLÁSICOS ════════════════ */
+clasicos: {
+  emoji:'🏰', titulo:'¿Qué personaje de Disney sos?',
+  sub:'Ni princesas ni villanos: los de siempre',
+  grad:['#daeef7','#c8e8d5'], frase:'La magia habló… sos',
+  personajes: [
+    { id:'mickey', nombre:'Mickey Mouse', emoji:'🐭', grad:['#f5d0d6','#f0c8d0'],
+      tag:'El corazón de la magia',
+      perfil:{E:8,A:6,H:6,C:7,L:8,O:6,S:6,P:4},
+      desc:'Sos de esas personas que hacen que todo grupo funcione: puro optimismo, corazón generoso y siempre a favor del plan. No necesitás ser el más ruidoso para ser el que todos buscan cuando algo importa. Como Mickey, tenés ese don de hacer sentir bienvenido a cualquiera… y una sonrisa que arregla casi todo.' },
+    { id:'goofy', nombre:'Goofy', emoji:'🐶', grad:['#daeef7','#c8e8d5'],
+      tag:'El alma de la fiesta (sin querer)',
+      perfil:{E:7,A:5,H:10,C:8,L:2,O:1,S:6,P:3},
+      desc:'Hacés reír hasta cuando no lo intentás, y esa es tu superpotencia. Podés tropezarte con tus propios pies, pero nadie tiene un corazón más noble que el tuyo. Como Goofy, demostrás que tomarse la vida con humor no es ser distraído: es ser sabio. ¡Ah-hyuck!' },
+    { id:'donald', nombre:'Pato Donald', emoji:'🦆', grad:['#daeef7','#b8d8e8'],
+      tag:'Gruñón por fuera, ternura por dentro',
+      perfil:{E:5,A:5,H:3,C:7,L:5,O:6,S:3,P:6},
+      desc:'Sí, a veces te sale el mal humor… pero los que te conocen saben que abajo de esas plumas hay lealtad pura. Te frustrás porque te importa, y peleás por los tuyos como nadie. Como Donald, tu amistad es imperfecta y perfecta a la vez: de las que siempre, siempre están.' },
+    { id:'stitch', nombre:'Stitch', emoji:'👽', grad:['#c9c3e8','#b8d8e8'],
+      tag:'Caos adorable, experimento 626',
+      perfil:{E:6,A:9,H:9,C:7,L:3,O:0,S:5,P:9},
+      desc:'Un poquito de caos, un montón de ternura. Tu energía no entra en ningún molde y por eso mismo sos inolvidable. Como Stitch, aprendiste que familia significa que nadie se queda atrás… aunque en el camino rompas una que otra cosa. Ohana.' },
+    { id:'olaf', nombre:'Olaf', emoji:'☃️', grad:['#daeef7','#e8e5f5'],
+      tag:'Puro sol (aunque sea de nieve)',
+      perfil:{E:9,A:6,H:9,C:10,L:1,O:2,S:9,P:1},
+      desc:'Ves el lado bueno de absolutamente todo, y eso no es ingenuidad: es un talento rarísimo. Sos el abrazo cálido del grupo, quien dice la frase justa sin darse cuenta. Como Olaf, a algunas personas vale la pena derretirse por ellas… y vos lo sabés mejor que nadie.' },
+    { id:'genio', nombre:'El Genio', emoji:'🧞', grad:['#b8d8e8','#c9c3e8'],
+      tag:'Diez mil años de carisma',
+      perfil:{E:10,A:7,H:10,C:8,L:4,O:2,S:8,P:6},
+      desc:'Cuando entrás a un lugar, se nota. Tenés mil ideas por minuto, humor para regalar y un corazón gigante escondido atrás del show. Como el Genio, tu mayor deseo no es brillar: es ver felices a los que querés. Y de paso… brillás igual.' },
+    { id:'maui', nombre:'Maui', emoji:'🪝', grad:['#e8d5b0','#c8e8d5'],
+      tag:'Semidiós del viento y el mar (de nada)',
+      perfil:{E:9,A:8,H:7,C:4,L:7,O:3,S:4,P:8},
+      desc:'Confianza no te falta, y la verdad… con razón. Capacidad y carisma te sobran, y sabés venderte. Pero como Maui, tu mejor versión aparece cuando usás todo ese talento para el equipo. Ahí sí que sos leyenda de verdad. ¡Chu-hu!' },
+    { id:'flynn', nombre:'Flynn Rider', emoji:'😏', grad:['#e8d5b0','#daeef7'],
+      tag:'El canchero con corazón',
+      perfil:{E:7,A:7,H:8,C:5,L:4,O:3,S:4,P:9},
+      desc:'Tenés respuesta para todo y esa sonrisita que te salva de cualquier lío. Pero el secreto es que abajo del personaje hay alguien mucho más profundo de lo que mostrás. Como Flynn, el día que bajás la guardia, cambiás tu propio cuento. Y ese es tu mejor capítulo.' },
+    { id:'peter', nombre:'Peter Pan', emoji:'🧚‍♂️', grad:['#c8e8d5','#daeef7'],
+      tag:'Rumbo a la segunda estrella',
+      perfil:{E:8,A:9,H:8,C:5,L:7,O:1,S:9,P:8},
+      desc:'Crecer está sobrevalorado y vos lo tenés clarísimo. Jugás, imaginás y arrastrás a todos a la aventura, porque para vos la vida es eso: no perder nunca el asombro. Como Peter Pan, tu juventud no está en la edad… está en cómo mirás el mundo.' },
+    { id:'campanita', nombre:'Campanita', emoji:'🧚', grad:['#c8e8d5','#e8d5b0'],
+      tag:'Chiquita, brillante y con carácter',
+      perfil:{E:4,A:7,H:2,C:7,L:4,O:5,S:5,P:8},
+      desc:'Que el tamaño no te confunda: adentro tuyo hay fuego. Sentís todo intensamente —la alegría, el enojo, los celos, el amor— y no sabés fingir. Como Campanita, sos pura chispa: los que te quieren saben que tu brillo no se negocia.' },
+    { id:'simba', nombre:'Simba', emoji:'🦁', grad:['#e8d5b0','#f0c8d0'],
+      tag:'El rey que aprendió a serlo',
+      perfil:{E:6,A:7,H:5,C:7,L:8,O:4,S:5,P:4},
+      desc:'Tu historia no fue una línea recta: tuviste que caerte, dudar y volver para entender quién sos. Hoy llevás tus cicatrices como corona. Como Simba, tu fuerza no es no tener miedo… es recordar de dónde venís y hacerte cargo. Ese es tu lugar en el ciclo.' },
+    { id:'timonpumba', nombre:'Timón y Pumba', emoji:'🐗', grad:['#c8e8d5','#e8d5b0'],
+      tag:'Cero preocupaciones, vive y deja vivir',
+      perfil:{E:8,A:4,H:9,C:7,L:3,O:1,S:4,P:7},
+      desc:'¿Preocuparse? ¿Para qué? Vos tenés la filosofía resuelta: buena compañía, buena comida y cero drama. Pero ojo: como Timón y Pumba, cuando un amigo te necesita de verdad, dejás la siesta y vas a la batalla sin dudarlo. Esa mezcla es oro puro.' },
+    { id:'aladdin', nombre:'Aladdín', emoji:'🕌', grad:['#c9c3e8','#e8d5b0'],
+      tag:'Un diamante en bruto',
+      perfil:{E:6,A:8,H:6,C:7,L:5,O:2,S:7,P:9},
+      desc:'Naciste con calle, ingenio y velocidad mental: siempre encontrás la vuelta. Pero tu verdadero brillo no está en la viveza, está en el corazón que tenés cuando nadie mira. Como Aladdín, no necesitás lámpara ni disfraz de príncipe: ya sos el diamante. Solo falta que te lo creas.' },
+    { id:'judy', nombre:'Judy Hopps', emoji:'🐰', grad:['#c8e8d5','#c9c3e8'],
+      tag:'Intentar todo es su especialidad',
+      perfil:{E:7,A:8,H:4,C:7,L:7,O:8,S:7,P:3},
+      desc:'Te dijeron mil veces "eso no es para vos" y lo usaste de combustible. Sos pura determinación con método: soñás en grande pero laburás el doble. Como Judy, sabés que el mundo no cambia solo… cambia cuando alguien como vos decide arrancar. Zootopia necesita más gente así.' },
+    { id:'baymax', nombre:'Baymax', emoji:'🤖', grad:['#daeef7','#f5d0d6'],
+      tag:'Tu asistente personal de cuidados',
+      perfil:{E:4,A:2,H:5,C:10,L:2,O:8,S:4,P:0},
+      desc:'Sos la persona que pregunta "¿estás bien?" y de verdad quiere saber la respuesta. Transmitís calma, atención y confianza: tu forma de querer es cuidar. Como Baymax, no necesitás grandes discursos; tu sola presencia ya abraza. En tu escala del 1 al 10, hacés que todos estén mejor.' },
+    { id:'mushu', nombre:'Mushu', emoji:'🐉', grad:['#f0c8d0','#e8d5b0'],
+      tag:'Guardián de honor (autopercibido)',
+      perfil:{E:8,A:6,H:9,C:6,L:3,O:2,S:5,P:8},
+      desc:'Chiquito el cuerpo, gigante la personalidad: hablás rápido, opinás de todo y defendés a los tuyos con una intensidad desproporcionada a tu tamaño. Como Mushu, a veces la embarrás intentando ayudar… pero cuando importa, sos el dragón (no lagartija: DRAGÓN) que cualquiera querría en su equipo.' },
+    { id:'lilo', nombre:'Lilo', emoji:'🌺', grad:['#b8d8e8','#f0c8d0'],
+      tag:'Rara y perfecta así',
+      perfil:{E:4,A:7,H:6,C:9,L:3,O:3,S:9,P:6},
+      desc:'Ves el mundo distinto y no pedís disculpas por eso: tus gustos son tuyos, tus rituales son tuyos y tu corazón es enorme. Como Lilo, entendés lo que muchos adultos olvidaron: que a los diferentes no se los arregla, se los abraza. Ohana, siempre.' },
+    { id:'nick', nombre:'Nick Wilde', emoji:'🦊', grad:['#e8d5b0','#c8e8d5'],
+      tag:'Astuto, pero de los buenos',
+      perfil:{E:5,A:3,H:8,C:4,L:4,O:6,S:2,P:9},
+      desc:'Tenés una respuesta ingeniosa para todo y un escudo de ironía que pocos atraviesan. El cinismo es tu armadura: te la pusiste hace tiempo y casi te la creés. Como Nick, cuando alguien logra que bajes la guardia, aparece tu mejor versión — y sorprende hasta a vos.' },
+  ],
+  preguntas: [
+    { q:'Es tu primer día en Magic Kingdom. ¿Qué hacés apenas cruzás la entrada?',
+      ops:[
+        { e:'🏃', t:'Corro directo a la montaña rusa más fuerte', d:{A:2,E:1,O:-1}, n:['stitch','peter'] },
+        { e:'📋', t:'Sigo el plan que armé hace semanas, hora por hora', d:{O:2,L:1,A:-1}, n:['judy','donald'] },
+        { e:'📸', t:'Me quedo un rato mirando el castillo, casi lloro', d:{S:2,C:2,E:-1}, n:['lilo','olaf'] },
+        { e:'🍿', t:'Primero un snack rico y después vemos, sin apuro', d:{H:1,O:-2,C:1}, n:['timonpumba','goofy'] },
+      ]},
+    { q:'En tu grupo de amigos, vos sos…',
+      ops:[
+        { e:'👑', t:'El que organiza y decide cuando nadie se decide', d:{L:2,O:1,E:1}, n:['mickey','judy'] },
+        { e:'🤡', t:'El que hace reír a todos, siempre', d:{H:2,E:2,O:-1}, n:['genio','goofy'] },
+        { e:'🫂', t:'El que escucha y contiene a los demás', d:{C:2,E:-1,L:-1}, n:['baymax','olaf'] },
+        { e:'🎲', t:'Factor sorpresa: nunca saben con qué voy a salir', d:{P:2,A:1,O:-2}, n:['stitch','mushu'] },
+      ]},
+    { q:'Aparece un problema grande e inesperado. ¿Tu primera reacción?',
+      ops:[
+        { e:'⚡', t:'Actúo ya, después pienso', d:{A:2,C:1,O:-2}, n:['stitch','campanita'] },
+        { e:'🧠', t:'Freno, analizo y armo un plan', d:{O:2,L:1,H:-1}, n:['judy','baymax'] },
+        { e:'😅', t:'Un chiste primero, que baje la tensión', d:{H:2,P:1,C:-1}, n:['flynn','nick'] },
+        { e:'💪', t:'Junto al equipo: de acá salimos todos juntos', d:{L:2,C:2}, n:['mickey','simba'] },
+      ]},
+    { q:'Elegí tu lugar favorito en el mundo:',
+      ops:[
+        { e:'🌊', t:'El mar, siempre el mar', d:{S:1,A:1,C:1}, n:['lilo','maui'] },
+        { e:'📚', t:'Un rincón tranquilo, lejos del ruido', d:{E:-2,S:2,O:1}, n:['baymax','campanita'] },
+        { e:'🎉', t:'Donde esté la gente y la música', d:{E:2,H:1}, n:['genio','olaf'] },
+        { e:'⛰️', t:'Un lugar nuevo donde nunca fui', d:{A:2,S:1,E:-1}, n:['peter','aladdin'] },
+      ]},
+    { q:'¿Qué superpoder elegís?',
+      ops:[
+        { e:'🧊', t:'Controlar los elementos: hielo, fuego, agua', d:{L:1,O:1,E:-1}, n:['maui','stitch'] },
+        { e:'🪽', t:'Volar y no aterrizar nunca', d:{A:2,S:2,O:-1}, n:['peter','campanita'] },
+        { e:'💬', t:'Saber siempre lo que sienten los demás', d:{C:2,E:1}, n:['baymax','olaf'] },
+        { e:'🎭', t:'Convertirme en lo que quiera, cuando quiera', d:{P:2,H:1}, n:['genio','mushu'] },
+      ]},
+    { q:'Fila de 90 minutos para una atracción. ¿Vos?',
+      ops:[
+        { e:'🗣️', t:'Termino charlando con la familia de adelante', d:{E:2,C:1}, n:['olaf','goofy'] },
+        { e:'🤳', t:'Me entretengo solo: juegos, música, mis cosas', d:{E:-2,O:1}, n:['nick','lilo'] },
+        { e:'🕵️', t:'Busco la vuelta: Single Rider, otra fila, algo', d:{P:2,A:1,O:1}, n:['aladdin','flynn'] },
+        { e:'😤', t:'Me la banco, pero por dentro estoy que exploto', d:{C:1,H:-1,P:1}, n:['donald','campanita'] },
+      ]},
+    { q:'¿Cuál de estas frases te representa más?',
+      ops:[
+        { e:'🌅', t:'"El pasado, pisado: a vivir liviano"', d:{H:2,O:-2,E:1}, n:['timonpumba'] },
+        { e:'🧭', t:'"Si hay un camino, lo encuentro. Si no hay, lo hago"', d:{L:2,A:1,O:1}, n:['judy','simba'] },
+        { e:'💫', t:'"Todos los sueños se cumplen si tenés el coraje de perseguirlos"', d:{S:2,C:1}, n:['mickey','lilo'] },
+        { e:'😎', t:'"Tranquilos, tengo todo bajo control" (no tengo nada bajo control)', d:{P:2,H:2,O:-1}, n:['flynn','maui'] },
+      ]},
+    { q:'Tu rol en un viaje en grupo:',
+      ops:[
+        { e:'🗺️', t:'Armo el itinerario, las reservas, todo', d:{O:2,L:2}, n:['judy','baymax'] },
+        { e:'🚗', t:'Propongo la locura que nadie se animaba a decir', d:{A:2,P:1,E:1}, n:['stitch','peter'] },
+        { e:'🎵', t:'Pongo la música y el buen humor', d:{H:2,E:2,O:-1}, n:['genio','timonpumba'] },
+        { e:'🧳', t:'Me sumo feliz a lo que decidan, yo disfruto igual', d:{C:1,L:-2,H:1}, n:['goofy','olaf'] },
+      ]},
+    { q:'Si fueras un animal, serías…',
+      ops:[
+        { e:'🦁', t:'Un león: fuerza y familia', d:{L:2,C:1,A:1}, n:['simba'] },
+        { e:'🐰', t:'Un conejo: rápido, listo e incansable', d:{O:1,A:1,E:1}, n:['judy'] },
+        { e:'🦜', t:'Un loro: charleta y colorido', d:{E:2,H:2}, n:['genio','mushu'] },
+        { e:'🐺', t:'Un lobo solitario: mejor de a poco y con pocos', d:{E:-2,L:1,S:1}, n:['nick','campanita'] },
+      ]},
+    { q:'Algo salió MAL mal. ¿Cómo lo manejás?',
+      ops:[
+        { e:'🔥', t:'Explosión primero, solución después', d:{C:1,P:1,O:-1,H:-1}, n:['donald','campanita'] },
+        { e:'🧘', t:'Respiro hondo y me lo guardo (quizás demasiado)', d:{E:-1,O:1,C:1}, n:['nick','simba'] },
+        { e:'😂', t:'Me río, ¿qué le vas a hacer?', d:{H:2,O:-1}, n:['timonpumba','goofy'] },
+        { e:'🛠️', t:'A resolver: paso uno, paso dos, paso tres', d:{O:2,L:1,S:-1}, n:['judy','mickey'] },
+      ]},
+    { q:'¿Qué te da más miedo?',
+      ops:[
+        { e:'⏳', t:'La rutina: que todos los días sean iguales', d:{A:2,S:1}, n:['aladdin','stitch'] },
+        { e:'💔', t:'Que le pase algo a la gente que quiero', d:{C:2,L:1}, n:['lilo','baymax'] },
+        { e:'🎈', t:'Crecer y perder la chispa', d:{H:1,S:2,O:-1}, n:['peter','campanita'] },
+        { e:'🪞', t:'Defraudarme a mí mismo', d:{L:1,O:1,E:-1}, n:['simba','judy'] },
+      ]},
+    { q:'De postre en el parque, elegís…',
+      ops:[
+        { e:'🍦', t:'El clásico de siempre: no falla nunca', d:{C:1,O:1}, n:['mickey','olaf'] },
+        { e:'🌈', t:'Lo más raro y nuevo del menú, obvio', d:{A:2,P:1}, n:['stitch','lilo'] },
+        { e:'🍰', t:'El más lindo para la foto', d:{S:1,E:1}, n:['campanita','genio'] },
+        { e:'🍩', t:'¿Elegir? Pido dos y listo', d:{H:1,O:-1,C:1}, n:['timonpumba','goofy'] },
+      ]},
+    { q:'Tu mayor virtud (con la mano en el corazón):',
+      ops:[
+        { e:'❤️', t:'Mi corazón: quiero mucho y se nota', d:{C:2,E:1}, n:['olaf','lilo'] },
+        { e:'🧠', t:'Mi cabeza: pienso rápido y bien', d:{O:1,P:1,E:-1}, n:['nick','aladdin'] },
+        { e:'🔋', t:'Mi energía: no me apaga nadie', d:{E:2,A:1}, n:['genio','judy'] },
+        { e:'🪨', t:'Mi palabra: si dije que estoy, estoy', d:{L:1,C:1,O:1}, n:['baymax','simba'] },
+      ]},
+    { q:'Y tu pequeño defecto (dale, uno tenés):',
+      ops:[
+        { e:'🙃', t:'Cabezadura: cuando se me mete algo, no hay vuelta', d:{L:1,A:1,C:-1}, n:['donald','lilo'] },
+        { e:'🫠', t:'Me distraigo con facilidad… ¿de qué hablábamos?', d:{S:1,O:-2,H:1}, n:['goofy','olaf'] },
+        { e:'😈', t:'Manipulo un poquito… digamos que sé "persuadir"', d:{P:2,C:-2}, n:['nick','flynn'] },
+        { e:'🌪️', t:'Ansiedad total: lo quiero todo YA', d:{A:1,E:1,O:-1}, n:['campanita','mushu'] },
+      ]},
+    { q:'Un domingo de lluvia perfecto:',
+      ops:[
+        { e:'🎬', t:'Maratón de pelis abajo de una manta', d:{E:-1,C:1,S:1}, n:['lilo','nick'] },
+        { e:'🏠', t:'Juntada en casa: juegos, comida, gente querida', d:{E:2,C:1,H:1}, n:['mickey','timonpumba'] },
+        { e:'💃', t:'¿Lluvia? Salgo igual, no me para nada', d:{A:2,P:1}, n:['stitch','peter'] },
+        { e:'✍️', t:'Proyectos propios: crear, ordenar, avanzar', d:{O:2,S:1,E:-1}, n:['judy','baymax'] },
+      ]},
+    { q:'Te ganás un deseo mágico. ¿Qué pedís?',
+      ops:[
+        { e:'🌍', t:'Conocer todos los mundos que existen', d:{A:2,S:2}, n:['aladdin','peter'] },
+        { e:'👨‍👩‍👧‍👦', t:'Que a mi gente no le falte nunca nada', d:{C:2,L:1}, n:['simba','lilo'] },
+        { e:'♾️', t:'Deseos infinitos (leí la letra chica)', d:{P:2,H:1}, n:['flynn','nick'] },
+        { e:'🕰️', t:'Que este momento feliz dure para siempre', d:{S:2,C:1,A:-1}, n:['peter','olaf'] },
+      ]},
+    { q:'¿Cómo tomás las decisiones importantes?',
+      ops:[
+        { e:'💓', t:'Con el corazón: si lo siento, voy', d:{C:2,O:-1}, n:['olaf','lilo'] },
+        { e:'📊', t:'Pros, contras, y si hace falta, planilla', d:{O:2,C:-1,E:-1}, n:['judy','baymax'] },
+        { e:'🙋', t:'Pregunto a mi gente de confianza y decido', d:{C:1,L:1,E:1}, n:['mickey','simba'] },
+        { e:'🎰', t:'Instinto puro: casi siempre le pego', d:{P:1,A:2,O:-1}, n:['aladdin','maui'] },
+      ]},
+    { q:'Se termina el día en el parque. Fuegos artificiales sobre el castillo. Vos…',
+      ops:[
+        { e:'😭', t:'Lloro. No me juzguen', d:{C:2,S:2}, n:['olaf','lilo'] },
+        { e:'🤗', t:'Abrazo a los que están conmigo: esto es todo', d:{C:2,E:1}, n:['mickey','goofy'] },
+        { e:'🤩', t:'Ya estoy planeando cómo volver mañana', d:{A:1,O:1,L:1}, n:['judy','peter'] },
+        { e:'😌', t:'Silencio total: lo quiero guardar en la memoria', d:{E:-2,S:2}, n:['baymax','nick'] },
+      ]},
+  ],
+},
+
+/* ════════════════ 🎈 PIXAR ════════════════ */
+pixar: {
+  emoji:'🎈', titulo:'¿Qué personaje de Pixar sos?',
+  sub:'De Toy Story a Intensa-Mente',
+  grad:['#e8d5b0','#f0c8d0'], frase:'La lamparita habló… sos',
+  personajes: [
+    { id:'woody', nombre:'Woody', emoji:'🤠', grad:['#e8d5b0','#f0c8d0'],
+      tag:'El sheriff del grupo',
+      perfil:{E:7,A:5,H:5,C:8,L:9,O:7,S:4,P:4},
+      desc:'Sos la persona que sostiene al grupo: lealtad hasta el final y un sentido del deber que a veces te pesa. Te cuesta soltar el control (y admitir celos), pero nadie pelea por los suyos como vos. Como Woody, tu lugar no es un estante: es al lado de tu gente.' },
+    { id:'buzz', nombre:'Buzz Lightyear', emoji:'🚀', grad:['#b8d8e8','#daeef7'],
+      tag:'Al infinito, con procedimiento',
+      perfil:{E:6,A:8,H:3,C:6,L:7,O:8,S:6,P:2},
+      desc:'Tomás todo con un compromiso admirable: si hay una misión, se cumple; si hay un manual, se respeta. Tu seriedad hace reír justamente porque es genuina. Como Buzz, tu viaje es descubrir que no hace falta ser héroe espacial para ser importante: alcanza con estar para tu equipo.' },
+    { id:'jessie', nombre:'Jessie', emoji:'🐴', grad:['#f0c8d0','#e8d5b0'],
+      tag:'Energía en estado puro',
+      perfil:{E:9,A:8,H:7,C:8,L:4,O:3,S:6,P:5},
+      desc:'Entusiasmo total: cuando algo te gusta, se entera el barrio entero. Debajo de toda esa energía hay un corazón que teme quedar en el olvido — por eso querés fuerte y abrazás más fuerte. Como Jessie, tu alegría es contagiosa y tu lealtad, del tamaño de una estampida.' },
+    { id:'mike', nombre:'Mike Wazowski', emoji:'👁️', grad:['#c8e8d5','#daeef7'],
+      tag:'El plan, el show y el susto',
+      perfil:{E:8,A:5,H:9,C:5,L:5,O:6,S:5,P:7},
+      desc:'Ambición, disciplina y un humor que no se apaga nunca: vos no llegaste por talento natural, llegaste por INSISTENTE, y eso vale doble. Como Mike Wazowski, podés no ser lo que esperaban… y aun así robarte la escena. Que te pongan en la tapa, dale.' },
+    { id:'sulley', nombre:'Sulley', emoji:'🐻', grad:['#b8d8e8','#c8e8d5'],
+      tag:'El grandote que da menos miedo del mundo',
+      perfil:{E:6,A:5,H:5,C:9,L:6,O:5,S:4,P:3},
+      desc:'Imponés al entrar y desarmás al hablar: sos fuerza con corazón de peluche. No buscás brillar; buscás que los tuyos estén bien, y eso te hace enorme de verdad. Como Sulley, tu poder no está en el rugido: está en cómo cuidás a los que querés.' },
+    { id:'dory', nombre:'Dory', emoji:'🐠', grad:['#daeef7','#c9c3e8'],
+      tag:'¿De qué estábamos hablando?',
+      perfil:{E:9,A:7,H:8,C:9,L:2,O:0,S:8,P:3},
+      desc:'Tu memoria es un desastre encantador, pero tu optimismo es infalible: donde todos ven un problemón, vos ya estás nadando hacia la solución. Como Dory, tu filosofía es simple y sabia: seguir adelante, siempre, con una sonrisa. Y funciona.' },
+    { id:'remy', nombre:'Remy', emoji:'🐀', grad:['#f0c8d0','#e8e5f5'],
+      tag:'Cualquiera puede cocinar (vos mejor)',
+      perfil:{E:4,A:7,H:4,C:6,L:5,O:7,S:9,P:6},
+      desc:'Tenés un estándar altísimo y un talento que no entra en el molde donde naciste. Los detalles que otros ignoran, vos los saboreás. Como Remy, tu lucha es que te juzguen por tu obra y no por tu origen — y tu obra, seamos honestos, habla sola.' },
+    { id:'mcqueen', nombre:'Rayo McQueen', emoji:'🏎️', grad:['#f0c8d0','#e8d5b0'],
+      tag:'Ka-chow (pero maduró)',
+      perfil:{E:8,A:7,H:5,C:4,L:6,O:4,S:4,P:6},
+      desc:'Velocidad, ambición y un ego que — admitilo — supo ser un problema. Pero aprendiste la lección más difícil: que llegar primero vale menos que saber con quién festejarlo. Como Rayo McQueen, tu mejor vuelta no fue la más rápida: fue la que frenaste por un amigo.' },
+    { id:'mate', nombre:'Mate', emoji:'🚜', grad:['#c8e8d5','#e8d5b0'],
+      tag:'El mejor amigo del mundo mundial',
+      perfil:{E:8,A:5,H:9,C:8,L:2,O:1,S:5,P:5},
+      desc:'Sin filtro, sin maldad y sin un gramo de vergüenza: sos autenticidad pura. Te reís fuerte, querés fuerte y ni te enterás de que sos el alma del grupo. Como Mate, no necesitás brillar: los que brillan te necesitan a vos para no marearse.' },
+    { id:'walle', nombre:'Wall-E', emoji:'🤖', grad:['#daeef7','#e8d5b0'],
+      tag:'El romántico silencioso',
+      perfil:{E:2,A:5,H:4,C:10,L:2,O:7,S:10,P:2},
+      desc:'Hablás poco y sentís muchísimo: coleccionás momentos, cuidás detalles y tenés una capacidad de asombro intacta. Como Wall-E, demostrás que no hace falta discurso para tener el corazón más grande de la sala. A veces, alcanza con tomar la mano correcta.' },
+    { id:'miguel', nombre:'Miguel', emoji:'🎸', grad:['#e8d5b0','#f0c8d0'],
+      tag:'Nada va a frenar esa música',
+      perfil:{E:6,A:8,H:5,C:8,L:4,O:3,S:10,P:6},
+      desc:'Tenés un sueño tan claro que brilla, y una familia que es tu mundo — aunque a veces esas dos cosas tiren para lados distintos. Como Miguel, tu camino es demostrar que se puede todo: perseguir tu pasión Y volver a casa a contarla. Y sí: el escenario te espera.' },
+    { id:'alegria', nombre:'Alegría', emoji:'⭐', grad:['#e8d5b0','#daeef7'],
+      tag:'El motor del buen ánimo',
+      perfil:{E:10,A:6,H:8,C:8,L:8,O:6,S:8,P:3},
+      desc:'Tu misión personal es que todos estén bien, y le ponés una energía admirable (a veces agotadora, seamos sinceros). Como Alegría, tu gran aprendizaje es que no hay que estar bien TODO el tiempo: los días grises también construyen recuerdos importantes. Pero qué lindo brillás.' },
+    { id:'tristeza', nombre:'Tristeza', emoji:'💧', grad:['#daeef7','#c9c3e8'],
+      tag:'La subestimada más importante',
+      perfil:{E:1,A:2,H:3,C:9,L:1,O:5,S:6,P:1},
+      desc:'Sentís profundo y entendés profundo: por eso la gente te busca cuando está mal de verdad. No sos pesimismo — sos empatía sin anestesia. Como Tristeza, tu superpoder está escondido a simple vista: nadie abraza, escucha ni acompaña como vos.' },
+    { id:'carl', nombre:'Carl', emoji:'🎈', grad:['#daeef7','#f0c8d0'],
+      tag:'Gruñón con casa voladora',
+      perfil:{E:2,A:4,H:3,C:7,L:5,O:8,S:6,P:3},
+      desc:'Refunfuñás por deporte, pero es puro caparazón: adentro hay una lealtad de por vida y un romanticismo que no se anima a decirse. Como Carl, tu aventura no terminó — a veces solo hace falta un Russell que insista en golpearte la puerta. Cruz sobre el corazón.' },
+    { id:'russell', nombre:'Russell', emoji:'🎖️', grad:['#c8e8d5','#e8d5b0'],
+      tag:'Explorador con TODAS las medallas',
+      perfil:{E:8,A:7,H:7,C:9,L:2,O:4,S:7,P:2},
+      desc:'Entusiasmo sin techo y cero maldad: preguntás todo, te sumás a todo y no conocés el "no se puede". Como Russell, tu constancia gana por cansancio y tu compañía convierte cualquier trámite en aventura. La medalla que mejor te queda: la de no rendirte nunca.' },
+    { id:'edna', nombre:'Edna Mode', emoji:'👓', grad:['#e8e5f5','#daeef7'],
+      tag:'Genialidad sin capa',
+      perfil:{E:6,A:4,H:7,C:3,L:8,O:9,S:5,P:7},
+      desc:'Talento descomunal, opiniones más descomunales todavía y una confianza que no pide permiso. No seguís tendencias: las inventás y después las jubilás vos. Como Edna Mode, tu estándar es altísimo porque tu talento lo banca. Eso sí — sin capa, siempre sin capa.' },
+  ],
+  preguntas: [
+    { q:'¿Qué guardás de recuerdo?',
+      ops:[
+        { e:'📦', t:'TODO: entradas, fotos, boletos, piedritas', d:{C:1,S:1,O:1}, n:['walle','carl'] },
+        { e:'🧠', t:'Nada material: los momentos van conmigo (si me acuerdo)', d:{O:-1,H:1,C:1}, n:['dory','mate'] },
+        { e:'🏆', t:'Mis logros, a la vista de todos', d:{L:1,E:1}, n:['mcqueen','mike'] },
+        { e:'🎁', t:'Lo que me regaló la gente que quiero', d:{C:2,E:-1}, n:['jessie','miguel'] },
+      ]},
+    { q:'En un equipo, tu rol real es…',
+      ops:[
+        { e:'🤠', t:'Mantener al grupo unido, aunque me desgaste', d:{L:2,C:1}, n:['woody','alegria'] },
+        { e:'📏', t:'El del procedimiento: hay UNA forma correcta', d:{O:2,H:-1}, n:['buzz','edna'] },
+        { e:'🎉', t:'Poner energía cuando el resto afloja', d:{E:2,H:1}, n:['jessie','russell'] },
+        { e:'🧯', t:'Calmar a todos cuando se prende fuego', d:{C:2,E:-1}, n:['sulley','tristeza'] },
+      ]},
+    { q:'Tu energía un lunes 8 AM:',
+      ops:[
+        { e:'🌞', t:'¡Buen día! ¿Ya podemos arrancar? ¿YA?', d:{E:2,A:1}, n:['russell','alegria'] },
+        { e:'☕', t:'Cero palabras hasta el segundo café', d:{E:-2,H:-1}, n:['carl','tristeza'] },
+        { e:'📋', t:'Lista hecha anoche, arranco puntual', d:{O:2}, n:['buzz','edna'] },
+        { e:'🐌', t:'¿Ya es lunes? ¿En serio? ¿Seguro?', d:{O:-1,H:1}, n:['mate','dory'] },
+      ]},
+    { q:'Algo que amás y no todos entienden:',
+      ops:[
+        { e:'🍷', t:'El buen comer: nivel crítico gastronómico', d:{S:1,O:1}, n:['remy'] },
+        { e:'🎶', t:'Música vieja: vinilos, boleros, clásicos', d:{S:2,C:1}, n:['miguel','carl'] },
+        { e:'🐛', t:'Bichos, plantas, documentales de naturaleza', d:{A:1,S:1}, n:['russell','walle'] },
+        { e:'📐', t:'El diseño: una costura mal hecha me arruina el día', d:{O:2,E:1}, n:['edna'] },
+      ]},
+    { q:'Tu peor miedo (el de verdad):',
+      ops:[
+        { e:'🗑️', t:'Que me reemplacen o me olviden', d:{C:2,E:-1}, n:['woody','jessie'] },
+        { e:'🌫️', t:'No estar a la altura cuando importa', d:{O:1,L:1,C:1}, n:['mike','buzz'] },
+        { e:'🏝️', t:'Quedarme sin mi gente', d:{C:2}, n:['dory','carl'] },
+        { e:'⏳', t:'Que la vida pase y mi sueño no', d:{S:2,A:1}, n:['miguel','remy'] },
+      ]},
+    { q:'¿Cómo reaccionás ante un cambio grande que no elegiste?',
+      ops:[
+        { e:'🧳', t:'Protesto, me atrinchero… y voy igual, refunfuñando', d:{O:1,C:1,H:-1}, n:['carl','woody'] },
+        { e:'🚀', t:'¡Nueva misión! ¿Cuándo salimos?', d:{A:2,E:1}, n:['russell','buzz'] },
+        { e:'🤷', t:'Fluyo: algo bueno va a salir, siempre sale', d:{H:1,O:-1,C:1}, n:['dory','mate'] },
+        { e:'📝', t:'Lo proceso con un plan de 14 pasos', d:{O:2,S:-1}, n:['alegria','edna'] },
+      ]},
+    { q:'Tu manera de demostrar cariño:',
+      ops:[
+        { e:'🍝', t:'Cocinando, invitando, dando cosas ricas', d:{C:1,E:1}, n:['remy'] },
+        { e:'🛡️', t:'Estando ahí SIEMPRE, pase lo que pase', d:{C:2,L:1}, n:['woody','sulley'] },
+        { e:'🤣', t:'Cargadas y chistes internos', d:{H:2,P:1}, n:['mike','mate'] },
+        { e:'✉️', t:'Detalles silenciosos que nadie más nota', d:{C:1,E:-2,S:1}, n:['walle','tristeza'] },
+      ]},
+    { q:'¿Qué te saca una lágrima (aunque lo niegues)?',
+      ops:[
+        { e:'🎬', t:'El final de una película (de todas)', d:{C:2,S:1}, n:['tristeza','walle'] },
+        { e:'👵', t:'Los recuerdos de la gente que ya no está', d:{C:1,S:2,E:-1}, n:['carl','miguel'] },
+        { e:'🏅', t:'Ver a alguien lograr su sueño', d:{C:2,E:1}, n:['alegria','russell'] },
+        { e:'🧅', t:'¿Lágrimas? Es la cebolla. Siempre es la cebolla', d:{H:2,C:-1}, n:['mike','buzz'] },
+      ]},
+    { q:'Tu relación con los manuales de instrucciones:',
+      ops:[
+        { e:'📖', t:'Los leo COMPLETOS. Están para algo', d:{O:2,A:-1}, n:['buzz','edna'] },
+        { e:'🔥', t:'¿Manual? Se aprende rompiendo', d:{A:2,O:-2}, n:['mcqueen','jessie'] },
+        { e:'🙈', t:'Los pierdo antes de abrirlos', d:{O:-2,H:1}, n:['dory','mate'] },
+        { e:'🛠️', t:'Los leo… y después lo hago mejor, a mi manera', d:{P:1,S:1,O:1}, n:['remy','mike'] },
+      ]},
+    { q:'En una competencia, vos…',
+      ops:[
+        { e:'🥇', t:'Juego para ganar. Siempre. Es un problema', d:{L:1,A:1,C:-1}, n:['mcqueen','mike'] },
+        { e:'🤝', t:'Prefiero que ganemos todos (aunque sea imposible)', d:{C:2,L:-1}, n:['sulley','dory'] },
+        { e:'😤', t:'Me hago el que no me importa. Me importa MUCHÍSIMO', d:{P:1,H:1,C:1}, n:['woody'] },
+        { e:'🧺', t:'Yo vengo por el picnic de después', d:{H:1,E:1,O:-1}, n:['mate','russell'] },
+      ]},
+    { q:'Un amigo está triste. Tu movida:',
+      ops:[
+        { e:'🪑', t:'Me siento al lado y escucho. Sin apurar', d:{C:2,E:-1}, n:['tristeza','sulley'] },
+        { e:'🎪', t:'Plan anti-tristeza: salida, comida, show', d:{E:2,H:1}, n:['alegria','mike'] },
+        { e:'🔧', t:'Le arreglo el problema de raíz', d:{O:2,C:1,H:-1}, n:['edna','buzz'] },
+        { e:'🍦', t:'Helado, manta y "contame todo"', d:{C:2,H:1}, n:['dory','jessie'] },
+      ]},
+    { q:'¿Qué te hace sentir en tu salsa?',
+      ops:[
+        { e:'🏎️', t:'La velocidad, el vértigo', d:{A:2,E:1}, n:['mcqueen','jessie'] },
+        { e:'🎭', t:'Un público. Cualquier público', d:{E:2,H:1}, n:['mike','miguel'] },
+        { e:'🌌', t:'Mirar el cielo y pensar en TODO', d:{S:2,E:-2}, n:['walle','russell'] },
+        { e:'✅', t:'Terminar la lista de pendientes. Placer absoluto', d:{O:2}, n:['edna','alegria'] },
+      ]},
+    { q:'Elegí una frase de cabecera:',
+      ops:[
+        { e:'🌊', t:'"Todo problema se achica si seguís avanzando"', d:{H:1,C:1,O:-1}, n:['dory','mate'] },
+        { e:'💭', t:'"Si lo podés soñar, lo podés lograr"', d:{S:2}, n:['remy','miguel'] },
+        { e:'🤝', t:'"El trabajo en equipo empieza por confiar"', d:{C:1,L:1}, n:['woody','buzz'] },
+        { e:'💎', t:'"La perfección no se negocia"', d:{O:2,H:-1}, n:['edna','mike'] },
+      ]},
+    { q:'Tu casa ideal tiene sí o sí…',
+      ops:[
+        { e:'🎈', t:'Una vista increíble (o directamente, que vuele)', d:{S:2,A:1}, n:['carl','russell'] },
+        { e:'🎸', t:'Un rincón para tu hobby con TODAS tus cosas', d:{S:1,O:1}, n:['miguel','remy'] },
+        { e:'🛋️', t:'Espacio para recibir a todo el mundo', d:{E:2,C:1}, n:['sulley','mate'] },
+        { e:'🗄️', t:'Orden absoluto: cada cosa en su lugar, etiquetada', d:{O:2,E:-1}, n:['edna','walle'] },
+      ]},
+    { q:'¿Cómo tomás los elogios?',
+      ops:[
+        { e:'😎', t:'Los esperaba. Igual, gracias', d:{L:1,E:1,P:1}, n:['mcqueen','edna'] },
+        { e:'🙈', t:'Me incomodan, cambio de tema', d:{E:-2,C:1}, n:['tristeza','carl'] },
+        { e:'🤩', t:'¡Los amo! ¿Podés repetirlo más fuerte?', d:{E:2,H:1}, n:['mike','jessie'] },
+        { e:'💭', t:'Los guardo y los releo en los días malos', d:{C:1,S:1,E:-1}, n:['walle','miguel'] },
+      ]},
+    { q:'El final perfecto para tu día:',
+      ops:[
+        { e:'🌇', t:'Sobremesa larga con los tuyos', d:{C:2,E:1}, n:['miguel','sulley'] },
+        { e:'📺', t:'Serie + snack + nadie que me hable', d:{E:-2,H:1}, n:['carl','tristeza'] },
+        { e:'🕺', t:'Que la noche recién empiece', d:{E:2,A:1}, n:['jessie','mike'] },
+        { e:'📔', t:'Anotar lo bueno de hoy (aunque sea una sola cosa)', d:{S:1,C:1,O:1}, n:['alegria','walle'] },
+      ]},
+  ],
+},
+
+};
+
+/* CAL: offsets de calibración por modo, calculados por simulación
+   para que todos los personajes tengan chances parejas de salir. */
+const CAL = {"princesas":{"blancanieves":2.9,"cenicienta":1.2,"aurora":8.4,"ariel":-1.8,"bella":2.9,"jasmin":-4,"pocahontas":4.6,"mulan":-1.3,"tiana":-3.7,"rapunzel":1.3,"merida":-0.4,"moana":-3.7,"raya":-2.9,"elsa":-1.4,"anna":-2.2},"villanos":{"ursula":-2.1,"scar":-1.7,"hades":4,"malefica":-5.1,"cruella":0.1,"garfio":3.3,"jafar":-3.5,"gaston":-0.1,"yzma":-8.1,"gothel":4.8,"reinacorazones":1,"facilier":-5.3,"lotso":10.5,"syndrome":2.2},"clasicos":{"mickey":-6.9,"goofy":4.4,"donald":4.7,"stitch":0.2,"olaf":5.6,"genio":-3.9,"maui":5.5,"flynn":2.2,"peter":-4.9,"campanita":0.1,"simba":-2.5,"timonpumba":4.7,"aladdin":-3.1,"judy":-10,"baymax":5.3,"mushu":7,"lilo":-8.1,"nick":-0.3},"pixar":{"woody":3.1,"buzz":0.8,"jessie":-1.9,"mike":-2.8,"sulley":3,"dory":0.2,"remy":-1.4,"mcqueen":6,"mate":-1.7,"walle":-4.8,"miguel":-3.7,"alegria":1.5,"tristeza":3.1,"carl":-5.3,"russell":4,"edna":-0.3}};
+
+/* ══════════════ LÓGICA ══════════════ */
+const EJES = ['E','A','H','C','L','O','S','P'];
+const PREGUNTAS_POR_PARTIDA = 12;
+let estado = null;
+
+function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function show(id){ ['scr-intro','scr-q','scr-calc','scr-res'].forEach(s=>document.getElementById(s).style.display = s===id?'block':'none'); }
+
+function renderMenu(){
+  document.getElementById('menu-modos').innerHTML = Object.entries(MODOS).map(([k,m])=>
+    `<button class="modo-card" onclick="startQuiz('${k}')">
+      <span class="m-emoji">${m.emoji}</span>
+      <span><span class="m-tit">${m.titulo}</span><br><span class="m-sub">${m.sub}</span></span>
+    </button>`).join('');
+}
+
+function startQuiz(modoKey){
+  const m = MODOS[modoKey];
+  const pool = shuffle([...m.preguntas]).slice(0, PREGUNTAS_POR_PARTIDA);
+  estado = { modo: modoKey, qs: pool, i: 0, ejes:{E:5,A:5,H:5,C:5,L:5,O:5,S:5,P:5}, nudges:{} };
+  document.getElementById('q-modo-emoji').textContent = m.emoji;
+  show('scr-q');
+  renderQ();
+  window.scrollTo(0,0);
+}
+
+function resetQuiz(){ estado=null; show('scr-intro'); window.scrollTo(0,0); }
+
+function renderQ(){
+  const s = estado, q = s.qs[s.i];
+  document.getElementById('q-num').textContent = `Pregunta ${s.i+1} de ${s.qs.length}`;
+  document.getElementById('q-bar').style.width = `${(s.i/s.qs.length)*100}%`;
+  const ops = shuffle(q.ops.map((o,idx)=>({o,idx})));
+  document.getElementById('q-body').innerHTML =
+    `<div class="q-text fade-in">${q.q}</div>` +
+    ops.map(({o,idx})=>`<button class="opt fade-in" onclick="pick(${idx},this)"><span class="opt-emoji">${o.e}</span><span>${o.t}</span></button>`).join('');
+}
+
+function pick(idx, el){
+  el.classList.add('sel');
+  document.querySelectorAll('.opt').forEach(b=>b.onclick=null);
+  const s = estado, o = s.qs[s.i].ops[idx];
+  for(const k in o.d) s.ejes[k] = Math.max(0, Math.min(10, s.ejes[k] + o.d[k]));
+  (o.n||[]).forEach(id=> s.nudges[id] = (s.nudges[id]||0) + 1);
+  setTimeout(()=>{
+    s.i++;
+    if(s.i < s.qs.length){ renderQ(); }
+    else {
+      show('scr-calc');
+      setTimeout(renderResultado, 1600);
+    }
+  }, 320);
+}
+
+function calcular(){
+  const s = estado, m = MODOS[s.modo], cal = CAL[s.modo]||{};
+  const MAX_DIST = Math.sqrt(EJES.length * 100);
+  const res = m.personajes.map(p=>{
+    let sum = 0;
+    EJES.forEach(k=>{ const d = s.ejes[k] - p.perfil[k]; sum += d*d; });
+    const base = (1 - Math.sqrt(sum)/MAX_DIST) * 100;
+    const bonus = Math.min(12, (s.nudges[p.id]||0) * 3);
+    return { p, score: base + bonus + (cal[p.id]||0) };
+  }).sort((a,b)=>b.score-a.score);
+  const top = res[0].score, floor = res[res.length-1].score;
+  res.forEach(r=>{
+    const rel = (r.score - floor) / Math.max(1,(top - floor));
+    r.pct = Math.round(58 + rel * (85 + Math.min(14, Math.round(top-60)) - 58));
+    r.pct = Math.max(35, Math.min(99, r.pct));
+  });
+  return res;
+}
+
+function renderResultado(){
+  const res = calcular();
+  const m = MODOS[estado.modo];
+  const g = res[0];
+  const cont = document.getElementById('scr-res');
+  cont.innerHTML = `
+    <div class="fade-in">
+      <div class="sos">${m.frase}…</div>
+      <div class="res-card" style="background:linear-gradient(135deg,${g.p.grad[0]},${g.p.grad[1]})">
+        <div class="res-emoji">${g.p.emoji}</div>
+        <div class="res-nombre">${g.p.nombre}</div>
+        <div class="res-tag">${g.p.tag}</div>
+        <div class="res-afin">✨ ${g.pct}% de afinidad</div>
+      </div>
+      <div class="res-desc">${g.p.desc}</div>
+      <div class="res-btns">
+        <button class="btn-again" onclick="startQuiz('${estado.modo}')">Jugar de nuevo 🔄</button>
+        <button class="btn-share" onclick="compartir()">Compartir ✨</button>
+      </div>
+      <button class="btn-menu" onclick="resetQuiz()">← Elegir otro test</button>
+      <div class="cta-sofi">
+        <div class="cta-tit">¿Y si lo vivís <em>en Disney</em>?</div>
+        <p>Soy Sofi, agente de viajes especializada en Disney y Universal. Contame tu viaje soñado y te lo cotizo gratis.</p>
+        <a href="https://wa.me/5491132924274?text=${encodeURIComponent(`Hola Sofi! Hice el test de tu página (me salió ${g.p.nombre} ${g.p.emoji}) y quiero cotizar mi viaje a Disney`)}" target="_blank">Cotizá tu viaje gratis 💬</a>
+      </div>
+    </div>`;
+  cont.dataset.ganador = JSON.stringify({nombre:g.p.nombre, pct:g.pct, emoji:g.p.emoji, titulo:m.titulo});
+  show('scr-res');
+  window.scrollTo(0,0);
+}
+
+function compartir(){
+  const g = JSON.parse(document.getElementById('scr-res').dataset.ganador);
+  const texto = `${g.emoji} Hice el test "${g.titulo}" de Disnerd y me salió ${g.nombre} (${g.pct}% de afinidad) ✨ Descubrí el tuyo 👉 disnerd.com.ar/personaje`;
+  if(navigator.share){ navigator.share({ text: texto }).catch(()=>{}); }
+  else { navigator.clipboard.writeText(texto).then(()=>alert('¡Resultado copiado! Pegalo donde quieras 💬')); }
+}
+
+renderMenu();
+</script>
+</body>
+</html>
