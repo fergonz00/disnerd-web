@@ -998,7 +998,6 @@ function renderResultado(){
         <div class="res-emoji">${g.p.emoji}</div>
         <div class="res-nombre">${g.p.nombre}</div>
         <div class="res-tag">${g.p.tag}</div>
-        <div class="res-afin">✨ ${g.pct}% de afinidad</div>
       </div>
       <div class="res-desc">${g.p.desc}</div>
       <div class="res-btns">
@@ -1019,7 +1018,7 @@ function renderResultado(){
 
 function compartir(){
   const g = JSON.parse(document.getElementById('scr-res').dataset.ganador);
-  const texto = `${g.emoji} Hice el test "${g.titulo}" de Disnerd y me salió ${g.nombre} (${g.pct}% de afinidad) ✨ Descubrí el tuyo 👉 disnerd.com.ar/personaje`;
+  const texto = `${g.emoji} Hice el test "${g.titulo}" de Disnerd y me salió ${g.nombre} ✨ Descubrí el tuyo 👉 disnerd.com.ar/personaje`;
   if(navigator.share){ navigator.share({ text: texto }).catch(()=>{}); }
   else { navigator.clipboard.writeText(texto).then(()=>alert('¡Resultado copiado! Pegalo donde quieras 💬')); }
 }
