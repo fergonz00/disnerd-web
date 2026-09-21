@@ -694,6 +694,39 @@
       .feat-cta { width: 100%; }
     }
 
+    .feat-head {
+      text-align: center; font-family: 'Playfair Display', serif; font-size: 1.6rem;
+      color: #8f1d2c; margin-bottom: 1.4rem;
+    }
+    .feat-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
+    .feat-disney {
+      background: linear-gradient(135deg, #16325c 0%, #24508f 60%, #5a3f8f 130%);
+      box-shadow: 0 18px 50px rgba(22,50,92,0.28);
+      display: flex; flex-direction: column; gap: 0;
+    }
+    .feat-disney .feat-box { margin-bottom: 1rem; }
+    .feat-disney .feat-badge { align-self: flex-start; }
+    .feat-disney::after { content: "✦ ✧ ✦ ✧ ✦ ✧ ✦"; }
+    .feat-title-sm { font-size: 1.8rem; }
+    .feat-promo {
+      background: rgba(217,181,106,0.18); border: 1px dashed #d9b56a; color: #f1d38f;
+      border-radius: 12px; padding: 0.6rem 0.9rem; font-size: 0.8rem; margin-bottom: 1rem;
+    }
+    .feat-bigprice { display: flex; flex-direction: column; margin-bottom: 1rem; }
+    .feat-bigprice span { font-family: 'Playfair Display', serif; font-size: 2.6rem; color: #fff; line-height: 1.1; }
+    .feat-bigprice small { font-size: 0.75rem; opacity: 0.85; }
+    .feat-cabins-2 { grid-template-columns: 1fr 1fr; }
+    .feat-disney .feat-cta { margin-top: auto; align-self: flex-start; }
+    .feat-disney .feat-day { font-size: 0.84rem; }
+    @media (max-width: 900px) { .feat-duo { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) {
+      .feat-head { font-size: 1.3rem; }
+      .feat-title-sm { font-size: 1.5rem; }
+      .feat-bigprice span { font-size: 2.2rem; }
+      .feat-cabins-2 { grid-template-columns: 1fr; }
+      .feat-disney .feat-cta { align-self: stretch; }
+    }
+
     /* Desplegable */
     .pc-extra {
       display: none;
@@ -797,7 +830,7 @@
     <div class="blob-left"></div>
     <div class="deco-line"></div>
     <p class="eyebrow">Agente Disney · Universal · Cruceros</p>
-    <a href="#crucero-navidad" class="feat-link">🎄 Nuevo · Crucero Disney de Navidad →</a>
+    <a href="#destacados" class="feat-link">⭐ Nuevos presupuestos · Crucero Navidad + Disney 2027 →</a>
     <h1 class="hero-title">
       ¿Soñás con Disney?<br/>
       <em>Yo te lo armo,</em><br/>
@@ -1005,8 +1038,10 @@
     </p>
   </div>
 
-  <!-- DESTACADO: CRUCERO NAVIDAD -->
-  <div class="feat-wrap" id="crucero-navidad">
+  <!-- DESTACADOS: PRESUPUESTOS NUEVOS -->
+  <div class="feat-wrap" id="destacados">
+    <p class="feat-head">⭐ Nuevos presupuestos · ¡Recién actualizados!</p>
+    <div id="crucero-navidad" style="scroll-margin-top:90px;">
     <div class="feat-card">
       <span class="feat-badge">🎄 Nuevo · Presupuesto actualizado</span>
       <h3 class="feat-title">Crucero Disney<br/><em>temático de Navidad</em></h3>
@@ -1037,77 +1072,53 @@
       </div>
       <a href="https://wa.me/5491132924274?text=Hola%20Sofi!%20Me%20interesa%20el%20crucero%20Disney%20de%20Navidad%20del%2020%20al%2024%20de%20noviembre" class="feat-cta"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.558 4.136 1.535 5.874L.057 23.882a.5.5 0 0 0 .61.61l6.008-1.478A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a10 10 0 0 1-5.13-1.406l-.367-.22-3.566.878.893-3.458-.24-.377A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg> Quiero este crucero</a>
     </div>
+    </div>
+    <div class="feat-duo">
+      <div class="feat-card feat-disney">
+        <span class="feat-badge">🎥 Nuevo · Paquete Disney</span>
+        <h3 class="feat-title feat-title-sm">Disney · Enero 2027<br/><em>All Star Movies</em></h3>
+        <div class="feat-meta"><span>📅 10 al 16 de enero 2027</span><span>🌙 6 noches · 2 adultos</span></div>
+        <div class="feat-box">
+          <h4>✨ Qué incluye</h4>
+          <div class="feat-day">🏨 Hotel Disney All Star Movies (el + económico y súper temático)</div><div class="feat-day">🎟️ 4 días de parques Disney base (un parque por día)</div><div class="feat-day">🛍️ Un día de descanso / shopping en el medio</div>
+        </div>
+        <div class="feat-promo">🏷️ Con promo de descuento aplicada · ¡se puede agotar!</div>
+        <div class="feat-bigprice"><span>USD 2.675</span><small>total por los dos · sin plan de comidas</small></div>
+        <div class="feat-box">
+          <h4>🥗 Opcional · plan de comidas (total del paquete)</h4>
+          <div class="feat-cabins feat-cabins-2">
+            <div class="feat-cabin"><div><div class="fc-name">Quick Service</div></div><div class="fc-price">USD 3.428</div></div>
+            <div class="feat-cabin"><div><div class="fc-name">Dining Plan</div></div><div class="fc-price">USD 3.873</div></div>
+          </div>
+        </div>
+        <a href="https://wa.me/5491132924274?text=Hola%20Sofi!%20Me%20interesa%20el%20paquete%20Disney%20All%20Star%20Movies%20enero%202027" class="feat-cta"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.558 4.136 1.535 5.874L.057 23.882a.5.5 0 0 0 .61.61l6.008-1.478A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a10 10 0 0 1-5.13-1.406l-.367-.22-3.566.878.893-3.458-.24-.377A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg> Quiero este paquete</a>
+      </div>
+      <div class="feat-card feat-disney">
+        <span class="feat-badge">👑 Nuevo · Paquete Disney</span>
+        <h3 class="feat-title feat-title-sm">Disney · Abril 2027<br/><em>¡Pasadita rápida!</em></h3>
+        <div class="feat-meta"><span>📅 25 al 30 de abril 2027</span><span>🌙 5 noches · 2 adultos</span></div>
+        <div class="feat-box">
+          <h4>✨ Qué incluye</h4>
+          <div class="feat-day">🏨 Disney All Star Movies o Music 🎥 🎶 · Preferred Room (los + económicos, súper temáticos)</div><div class="feat-day">🎟️ 2 días de parques Disney base (un parque por día)</div>
+        </div>
+        <div class="feat-promo">🏷️ Con promo de descuento aplicada · ¡se puede agotar!</div>
+        <div class="feat-bigprice"><span>USD 1.839</span><small>total por los dos · sin plan de comidas</small></div>
+        <div class="feat-box">
+          <h4>🥗 Opcional · plan de comidas (total del paquete)</h4>
+          <div class="feat-cabins feat-cabins-2">
+            <div class="feat-cabin"><div><div class="fc-name">Quick Service</div></div><div class="fc-price">USD 2.466</div></div>
+            <div class="feat-cabin"><div><div class="fc-name">Dining Plan</div></div><div class="fc-price">USD 2.837</div></div>
+          </div>
+        </div>
+        <a href="https://wa.me/5491132924274?text=Hola%20Sofi!%20Me%20interesa%20el%20paquete%20Disney%20pasadita%20r%C3%A1pida%20All%20Star%20abril%202027" class="feat-cta"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.558 4.136 1.535 5.874L.057 23.882a.5.5 0 0 0 .61.61l6.008-1.478A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a10 10 0 0 1-5.13-1.406l-.367-.22-3.566.878.893-3.458-.24-.377A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg> Quiero este paquete</a>
+      </div>
+    </div>
   </div>
 
     <!-- PRESUPUESTOS REALES -->
   <div style="max-width:1100px;margin:0 auto 3.5rem;">
     <p style="font-size:1rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--sky-soft);margin-bottom:1.5rem;padding-left:0.2rem;font-weight:500;">🏰 Walt Disney World & Universal · Orlando</p>
     <div class="pricing-grid">
-
-      <div class="price-card">
-        <div class="pc-icon">🎥</div>
-        <div class="pc-dest"><strong>6 noches · 2 adultos</strong></div>
-        <div class="pc-title">Disney All Star Movies</div>
-        <div class="pc-hotel">📅 Enero 2027 · 10 al 16 de enero</div>
-        <div class="pc-hotel">🏨 Disney All Star Movies (el + económico y súper temático)</div>
-        <div class="pc-hotel">🎟️ 4 días · Parques Disney base (un parque por día)</div>
-        <div style="background:var(--sky-pale);border:1px solid var(--sky-mid);border-radius:10px;padding:0.6rem 0.9rem;margin-bottom:0.9rem;font-size:0.75rem;color:var(--text-mid);">
-          🏷️ Con <strong>promo de descuento aplicada</strong> (se puede agotar)
-        </div>
-        <div class="pc-price-row">
-          <span class="pc-price" style="font-size:1.8rem;">USD 2.675</span>
-          <span class="pc-per">sin plan de comidas</span>
-        </div>
-        <p class="pc-disclaimer">* Sin vuelos. Sujeto a disponibilidad.</p>
-        <button class="pc-toggle" onclick="toggleExtra(this)">Ver más <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
-        <div class="pc-extra">
-          <div class="pc-divider"></div>
-          <div class="pc-includes">
-            <div class="pc-item">📅 Check in: 10 de enero 2027</div>
-            <div class="pc-item">📅 Check out: 16 de enero 2027</div>
-            <div class="pc-item">🛍️ Incluye 1 día de descanso / shopping en el medio</div>
-          </div>
-          <div class="pc-divider"></div>
-          <div style="font-size:0.72rem;color:var(--text-mid);margin-bottom:0.6rem;letter-spacing:0.05em;">🥗 Opcionales — plan de comidas</div>
-          <div class="pc-includes">
-            <div class="pc-item">Quick Service · total <strong>USD 3.428</strong></div>
-            <div class="pc-item">Dining Plan · total <strong>USD 3.873</strong></div>
-          </div>
-        </div>
-        <a href="https://wa.me/5491132924274?text=Hola%20Sofi!%20Me%20interesa%20el%20paquete%20Disney%20All%20Star%20Movies%20enero%202027" class="pc-wa-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.558 4.136 1.535 5.874L.057 23.882a.5.5 0 0 0 .61.61l6.008-1.478A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a10 10 0 0 1-5.13-1.406l-.367-.22-3.566.878.893-3.458-.24-.377A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg> Quiero este paquete</a>
-      </div>
-
-      <div class="price-card">
-        <div class="pc-icon">👑</div>
-        <div class="pc-dest"><strong>5 noches · 2 adultos</strong></div>
-        <div class="pc-title">Disney · ¡Pasadita rápida!</div>
-        <div class="pc-hotel">📅 Abril 2027 · 25 al 30 de abril</div>
-        <div class="pc-hotel">🏨 Disney All Star Movies o Music 🎥 🎶 · Preferred Room (los + económicos, súper temáticos)</div>
-        <div class="pc-hotel">🎟️ 2 días · Parques Disney base (un parque por día)</div>
-        <div style="background:var(--sky-pale);border:1px solid var(--sky-mid);border-radius:10px;padding:0.6rem 0.9rem;margin-bottom:0.9rem;font-size:0.75rem;color:var(--text-mid);">
-          🏷️ Con <strong>promo de descuento aplicada</strong> (se puede agotar)
-        </div>
-        <div class="pc-price-row">
-          <span class="pc-price" style="font-size:1.8rem;">USD 1.839</span>
-          <span class="pc-per">sin plan de comidas</span>
-        </div>
-        <p class="pc-disclaimer">* Sin vuelos. Sujeto a disponibilidad.</p>
-        <button class="pc-toggle" onclick="toggleExtra(this)">Ver más <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
-        <div class="pc-extra">
-          <div class="pc-divider"></div>
-          <div class="pc-includes">
-            <div class="pc-item">📅 Check in: 25 de abril 2027</div>
-            <div class="pc-item">📅 Check out: 30 de abril 2027</div>
-          </div>
-          <div class="pc-divider"></div>
-          <div style="font-size:0.72rem;color:var(--text-mid);margin-bottom:0.6rem;letter-spacing:0.05em;">🥗 Opcionales — plan de comidas</div>
-          <div class="pc-includes">
-            <div class="pc-item">Quick Service · total <strong>USD 2.466</strong></div>
-            <div class="pc-item">Dining Plan · total <strong>USD 2.837</strong></div>
-          </div>
-        </div>
-        <a href="https://wa.me/5491132924274?text=Hola%20Sofi!%20Me%20interesa%20el%20paquete%20Disney%20pasadita%20r%C3%A1pida%20All%20Star%20abril%202027" class="pc-wa-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.558 4.136 1.535 5.874L.057 23.882a.5.5 0 0 0 .61.61l6.008-1.478A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a10 10 0 0 1-5.13-1.406l-.367-.22-3.566.878.893-3.458-.24-.377A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg> Quiero este paquete</a>
-      </div>
 
       <div class="price-card">
         <div class="pc-icon">👨‍👩‍👧‍👦</div>
