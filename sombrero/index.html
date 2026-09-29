@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Sombrero Seleccionador · ¿De qué casa de Hogwarts sos? · Disnerd</title>
+<meta name="description" content="Ponete el Sombrero Seleccionador y descubrí si sos de Gryffindor, Ravenclaw, Hufflepuff o Slytherin. 20 preguntas de un banco de 54, cada partida distinta. Gratis y sin registro.">
+<link rel="canonical" href="https://disnerd.com.ar/sombrero/">
+<meta name="robots" content="index, follow">
+
+<meta property="og:title" content="El Sombrero Seleccionador · ¿De qué casa de Hogwarts sos?">
+<meta property="og:description" content="Ponete el Sombrero Seleccionador y descubrí si sos de Gryffindor, Ravenclaw, Hufflepuff o Slytherin. 20 preguntas de un banco de 54, cada partida distinta. Gratis y sin registro.">
+<meta property="og:url" content="https://disnerd.com.ar/sombrero/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Disnerd">
+<meta name="twitter:card" content="summary">
+
+<!-- Google tag (gtag.js) - Google Ads + GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18025415639"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18025415639');
+  gtag('config', 'G-FP7MM2R3B7');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/juegos.css">
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">Disnerd<span>Sofi Valle Mayorga</span></a>
+  <a href="https://wa.me/5491132924274?text=Hola%20Sofi!%20Vi%20tu%20p%C3%A1gina%20y%20quiero%20cotizar%20mi%20viaje%20a%20Disney" class="nav-cta">Cotizá tu viaje</a>
+</nav>
+
+<div class="wrap">
+
+  <!-- INTRO -->
+  <div id="sh-intro" class="intro fade-in">
+    <div class="sh-hat">🎩</div>
+    <h1>El <em>Sombrero</em> Seleccionador</h1>
+    <p>Ponételo, cerrá los ojos y contestá con total sinceridad: el Sombrero ve lo que hay en tu cabeza… y en tu corazón. No hay respuestas buenas ni malas, y ninguna casa es mejor que otra 🦁🦅🦡🐍</p>
+    <button class="modo-card" id="sh-empezar" style="justify-content:center">
+      <span class="m-emoji">🎩</span>
+      <span><span class="m-tit">Ponerme el Sombrero</span><br><span class="m-sub">20 preguntas · cada partida es distinta</span></span>
+    </button>
+    <p class="mini">Si el Sombrero duda entre dos casas, te deja elegir — como hizo con Harry</p>
+
+    <div class="otros-tests">
+      <p class="mini">Probá también:</p>
+      <a class="otro-test" href="/personaje/princesas/">👑 ¿Qué princesa de Disney sos?</a>
+      <a class="otro-test" href="/personaje/villanos/">😈 ¿Qué villano de Disney sos?</a>
+      <a class="otro-test" href="/personaje/clasicos/">🏰 ¿Qué personaje de Disney sos?</a>
+      <a class="otro-test" href="/personaje/pixar/">🎈 ¿Qué personaje de Pixar sos?</a>
+    </div>
+
+    <p class="sh-aviso">Test de fans, hecho por y para fans. Sin relación con Warner Bros. ni con Wizarding World. Harry Potter y los nombres de las casas de Hogwarts son marcas de sus respectivos titulares.</p>
+  </div>
+
+  <!-- PREGUNTAS -->
+  <div id="sh-q" style="display:none">
+    <div class="q-top">
+      <span class="q-progress-txt" id="sh-num"></span>
+      <span class="q-progress-txt">🎩</span>
+    </div>
+    <div class="q-bar"><div class="q-bar-fill" id="sh-bar"></div></div>
+    <div id="sh-body"></div>
+    <button class="q-quit" onclick="shVolverIntro()">← Sacarme el Sombrero</button>
+  </div>
+
+  <!-- EL SOMBRERO PIENSA -->
+  <div id="sh-calc" class="calc" style="display:none">
+    <div class="sh-hat">🎩</div>
+    <div id="sh-calc-txt"></div>
+  </div>
+
+  <!-- DUDA (empate) -->
+  <div id="sh-duda" style="display:none"></div>
+
+  <!-- RESULTADO -->
+  <div id="sh-res" class="res" style="display:none"></div>
+
+</div>
+
+<footer>
+  <a href="/">disnerd.com.ar</a> · Sofi Valle Mayorga · Agente autorizada Disney &amp; Universal
+</footer>
+
+<script src="sombrero.js"></script>
+<script src="/juegos-medicion.js"></script>
+<script>
+  document.getElementById('sh-empezar').addEventListener('click', shStart);
+</script>
+</body>
+</html>

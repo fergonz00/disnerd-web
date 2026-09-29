@@ -5,15 +5,15 @@ document.addEventListener('click', function(e){
   const a = el.closest('a');
   if (!a || (a.getAttribute('href') || '').indexOf('wa.me') === -1) return;
 
-  const enResultado = !!a.closest('#scr-res');
-  let personaje = '(generico)';
-  if (enResultado) {
-    try { personaje = JSON.parse(document.getElementById('scr-res').dataset.ganador).nombre; } catch (err) {}
+  const caja = a.closest('#scr-res') || a.closest('#sh-res');
+  let item = '(generico)';
+  if (caja) {
+    try { item = JSON.parse(caja.dataset.ganador).nombre; } catch (err) {}
   }
   if (typeof gtag === 'function') {
     gtag('event', 'click_whatsapp', {
-      ubicacion: enResultado ? 'quiz_resultado' : 'nav',
-      item: personaje
+      ubicacion: caja ? 'quiz_resultado' : 'nav',
+      item: item
     });
   }
 }, true);
