@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <!-- Google tag (gtag.js) -->
+  <!-- Google tag (gtag.js) — Google Ads + GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18025415639"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'AW-18025415639');
+
+    /* GA4: pegar acá el ID de medición (G-XXXXXXXXXX) de la propiedad disnerd.com.ar.
+       Mientras diga PENDIENTE no se carga nada y los eventos siguen yendo solo a Google Ads. */
+    window.GA4_ID = 'G-PENDIENTE';
+    if (window.GA4_ID !== 'G-PENDIENTE') gtag('config', window.GA4_ID);
   </script>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -1322,6 +1327,16 @@ function enviarCotizacion() {
   msg += `• Celular: ${celular}\n`;
   if (nota) msg += `• Comentario: ${nota}\n`;
 
+  if (typeof gtag === 'function') {
+    gtag('event', 'enviar_cotizacion', {
+      destino: destSeleccionado,
+      personas: personas,
+      mes: mes || '(sin definir)',
+      dias: dias || '(sin definir)',
+      menores: hayMenores ? 'si' : 'no'
+    });
+  }
+
   const url = `https://wa.me/5491132924274?text=${encodeURIComponent(msg)}`;
   window.open(url, '_blank');
 }
@@ -1336,6 +1351,59 @@ function enviarCotizacion() {
   </ul>
   <span class="footer-copy">Sofi Valle Mayorga · Agente autorizada Disney &amp; Universal</span>
 </footer>
+
+<!-- MEDICIÓN: qué toca la gente antes de escribir por WhatsApp -->
+<script>
+(function(){
+  function ev(nombre, params){
+    if (typeof gtag === 'function') gtag('event', nombre, params || {});
+  }
+
+  function texto(el){
+    if (!el) return '(sin titulo)';
+    var t = (el.textContent || '').replace(/\s+/g, ' ').trim();
+    if (!t) return '(sin titulo)';
+    return t.length > 90 ? t.slice(0, 90) : t;
+  }
+
+  /* De qué parte de la página salió el clic, y a qué presupuesto corresponde */
+  function contexto(el){
+    var card = el.closest('.price-card');
+    if (card) return { ubicacion: 'tarjeta', item: texto(card.querySelector('.pc-title')) };
+    var feat = el.closest('.feat-card');
+    if (feat) return { ubicacion: 'destacado', item: texto(feat.querySelector('.feat-title')) };
+    if (el.closest('nav'))     return { ubicacion: 'nav',    item: '(generico)' };
+    if (el.closest('footer'))  return { ubicacion: 'footer', item: '(generico)' };
+    if (el.closest('.hero'))   return { ubicacion: 'hero',   item: '(generico)' };
+    if (el.closest('#cotiza')) return { ubicacion: 'formulario', item: '(generico)' };
+    if (el.closest('#juego'))  return { ubicacion: 'juego',  item: '(generico)' };
+    return { ubicacion: 'otro', item: '(generico)' };
+  }
+
+  /* Captura: corre antes que los onclick inline, así lee el estado previo del "Ver más" */
+  document.addEventListener('click', function(e){
+    var el = e.target;
+    if (!el || !el.closest) return;
+    var a = el.closest('a, button');
+    if (!a) return;
+
+    var href = a.getAttribute('href') || '';
+    var ctx = contexto(a);
+
+    if (href.indexOf('wa.me') !== -1) {
+      ev('click_whatsapp', ctx);
+    } else if (href.indexOf('instagram.com') !== -1) {
+      ev('click_instagram', { ubicacion: ctx.ubicacion });
+    } else if (href.indexOf('/personaje') !== -1) {
+      ev('click_test', { ubicacion: ctx.ubicacion });
+    } else if (a.classList.contains('pc-toggle')) {
+      var extra = a.nextElementSibling;
+      var vaAAbrir = !(extra && extra.classList.contains('open'));
+      if (vaAAbrir) ev('ver_mas', { item: ctx.item });
+    }
+  }, true);
+})();
+</script>
 
 </body>
 </html>

@@ -4,6 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>¿Qué personaje sos? · Disnerd</title>
+
+<!-- Google tag (gtag.js) — Google Ads + GA4 (mismo setup que la home) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18025415639"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18025415639');
+
+  /* GA4: pegar el mismo ID de medición que en la home (index.html de la raíz). */
+  window.GA4_ID = 'G-PENDIENTE';
+  if (window.GA4_ID !== 'G-PENDIENTE') gtag('config', window.GA4_ID);
+</script>
 <meta name="description" content="Test de personalidad Disney: descubrí qué princesa, villano, clásico o personaje de Pixar sos. Sin preguntas obvias — la magia decide sola.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -931,6 +944,7 @@ function renderMenu(){
 
 function startQuiz(modoKey){
   const m = MODOS[modoKey];
+  if (typeof gtag === 'function') gtag('event', 'quiz_inicio', { modo: m.titulo });
   const pool = shuffle([...m.preguntas]).slice(0, PREGUNTAS_POR_PARTIDA);
   estado = { modo: modoKey, qs: pool, i: 0, ejes:{E:5,A:5,H:5,C:5,L:5,O:5,S:5,P:5}, nudges:{} };
   document.getElementById('q-modo-emoji').textContent = m.emoji;
@@ -990,6 +1004,7 @@ function renderResultado(){
   const res = calcular();
   const m = MODOS[estado.modo];
   const g = res[0];
+  if (typeof gtag === 'function') gtag('event', 'quiz_fin', { modo: m.titulo, personaje: g.p.nombre });
   const cont = document.getElementById('scr-res');
   cont.innerHTML = `
     <div class="fade-in">
@@ -1018,12 +1033,33 @@ function renderResultado(){
 
 function compartir(){
   const g = JSON.parse(document.getElementById('scr-res').dataset.ganador);
+  if (typeof gtag === 'function') gtag('event', 'quiz_compartir', { personaje: g.nombre });
   const texto = `${g.emoji} Hice el test "${g.titulo}" de Disnerd y me salió ${g.nombre} ✨ Descubrí el tuyo 👉 disnerd.com.ar/personaje`;
   if(navigator.share){ navigator.share({ text: texto }).catch(()=>{}); }
   else { navigator.clipboard.writeText(texto).then(()=>alert('¡Resultado copiado! Pegalo donde quieras 💬')); }
 }
 
 renderMenu();
+
+/* MEDICIÓN: clics a WhatsApp desde el test */
+document.addEventListener('click', function(e){
+  const el = e.target;
+  if (!el || !el.closest) return;
+  const a = el.closest('a');
+  if (!a || (a.getAttribute('href') || '').indexOf('wa.me') === -1) return;
+
+  const enResultado = !!a.closest('#scr-res');
+  let personaje = '(generico)';
+  if (enResultado) {
+    try { personaje = JSON.parse(document.getElementById('scr-res').dataset.ganador).nombre; } catch (err) {}
+  }
+  if (typeof gtag === 'function') {
+    gtag('event', 'click_whatsapp', {
+      ubicacion: enResultado ? 'quiz_resultado' : 'nav',
+      item: personaje
+    });
+  }
+}, true);
 </script>
 </body>
 </html>
