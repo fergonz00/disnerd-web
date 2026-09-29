@@ -115,6 +115,64 @@
     }
     .nav-cta:hover { background: var(--sky-mid); }
 
+    /* Acceso a los juegos: solo en celular, donde el menú de arriba no se ve */
+    .nav-acciones { display: flex; align-items: center; gap: 0.5rem; }
+    .nav-juego {
+      display: none;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sky-soft);
+      background: transparent;
+      border: 1px solid var(--sky-mid);
+      text-decoration: none;
+      padding: 0.55rem 0.9rem;
+      border-radius: 100px;
+      white-space: nowrap;
+      transition: background 0.3s, color 0.3s;
+    }
+    .nav-juego:active { background: var(--sky-pale); }
+
+    /* Elegir juego */
+    .juegos-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.1rem;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .juego-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.55rem;
+      background: var(--ivory);
+      border: 1px solid var(--warm);
+      border-radius: 1.2rem;
+      padding: 2rem 1.5rem 1.6rem;
+      text-decoration: none;
+      color: var(--text);
+      box-shadow: 0 2px 14px rgba(60,50,40,0.06);
+      transition: transform 0.15s, box-shadow 0.25s;
+    }
+    .juego-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(60,50,40,0.12); }
+    .juego-card:active { transform: scale(0.99); }
+    .jc-emoji { font-size: 2.4rem; line-height: 1; }
+    .jc-tit { font-family: 'Playfair Display', serif; font-size: 1.22rem; font-weight: 400; line-height: 1.2; }
+    .jc-sub { font-size: 0.82rem; line-height: 1.55; color: var(--text-mid); }
+    .jc-cta {
+      margin-top: 0.5rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ivory);
+      background: var(--sky-soft);
+      padding: 0.6rem 1.3rem;
+      border-radius: 100px;
+    }
+    .juego-card-hp .jc-cta { background: linear-gradient(135deg, #4a3f6b, #2e2a45); }
+
     /* ── HERO ── */
     .hero {
       display: grid;
@@ -826,8 +884,15 @@
       .hero { grid-template-columns: 1fr; }
       .hero-right { height: 50vh; order: -1; padding: 8px; padding-top: 8px; }
       .hero-left  { padding: 3rem 1.5rem 4rem; }
-      nav { padding: 1.1rem 1.5rem; }
+      nav { padding: 1.1rem 1.1rem; }
       .nav-links { display: none; }
+      .nav-juego { display: inline-flex; }
+      .nav-logo { font-size: 1.15rem; }
+      /* con los dos botones no entra "Sofi Valle Mayorga" sin partirse en varias
+         líneas y agrandar la barra; el nombre igual aparece en el hero y en el pie */
+      .nav-logo span { display: none; }
+      .nav-cta { padding: 0.55rem 1rem; }
+      .juegos-grid { grid-template-columns: 1fr; }
       .stats { gap: 1.5rem; }
       .scroll-hint { display: none; }
       .pricing-section { padding: 5rem 1.5rem; }
@@ -848,7 +913,10 @@
     <li><a href="/personaje/">¿Qué personaje sos?</a></li>
     <li><a href="https://instagram.com/disnerd.sofi" target="_blank">Instagram</a></li>
   </ul>
-  <a href="https://wa.me/5491132924274?text=Hola%20Sofi!%20Vi%20tu%20página%20y%20quiero%20cotizar%20mi%20viaje%20a%20Disney" class="nav-cta">Escribime</a>
+  <div class="nav-acciones">
+    <a href="#juego" class="nav-juego">🎮&nbsp; Juguemos</a>
+    <a href="https://wa.me/5491132924274?text=Hola%20Sofi!%20Vi%20tu%20página%20y%20quiero%20cotizar%20mi%20viaje%20a%20Disney" class="nav-cta">Escribime</a>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -1272,17 +1340,29 @@
 
 </section>
 
-<!-- JUEGO: ¿QUÉ PERSONAJE SOS? -->
-<section class="pricing-section" id="juego" style="background:var(--sky-pale);padding-top:4rem;padding-bottom:4.5rem;text-align:center;">
-  <div class="section-header" style="margin-bottom:1.8rem;">
+<!-- JUEGOS -->
+<section class="pricing-section" id="juego" style="background:var(--sky-pale);padding-top:4rem;padding-bottom:4.5rem;text-align:center;scroll-margin-top:72px;">
+  <div class="section-header" style="margin-bottom:2rem;">
     <span class="section-tag">🎮 Para fans</span>
-    <h2 class="section-title">¿Qué <em style="font-family:'Playfair Display',serif;font-style:italic;color:var(--sky-soft);">personaje</em> sos?</h2>
-    <p class="section-body">Un test de personalidad para Disnerds: descubrí qué princesa, villano, clásico o personaje de Pixar llevás adentro. 12 preguntas, sin respuestas obvias — la magia decide sola.</p>
+    <h2 class="section-title">¿<em style="font-family:'Playfair Display',serif;font-style:italic;color:var(--sky-soft);">Jugamos</em> un rato?</h2>
+    <p class="section-body">Dos tests de personalidad para fans. Elegí con cuál arrancás — los dos son gratis, sin registro, y cada partida sale distinta.</p>
   </div>
-  <a href="/personaje/" class="btn-wa" style="display:inline-flex;justify-content:center;">✨&nbsp; Hacer el test</a>
 
-  <p class="section-body" style="margin-top:2.6rem;">¿Y si el viaje es a Universal? Ponete el <strong>Sombrero Seleccionador</strong> y descubrí de qué casa de Hogwarts sos.</p>
-  <a href="/sombrero/" class="btn-wa" style="display:inline-flex;justify-content:center;margin-top:0.9rem;background:linear-gradient(135deg,#4a3f6b,#2e2a45);">🎩&nbsp; Ponerme el Sombrero</a>
+  <div class="juegos-grid">
+    <a href="/personaje/" class="juego-card">
+      <span class="jc-emoji">🏰</span>
+      <span class="jc-tit">¿Qué personaje de Disney sos?</span>
+      <span class="jc-sub">Princesas, villanos, clásicos o Pixar. Cuatro tests, 12 preguntas cada uno y ninguna respuesta obvia.</span>
+      <span class="jc-cta">Elegir mi test&nbsp; →</span>
+    </a>
+
+    <a href="/sombrero/" class="juego-card juego-card-hp">
+      <span class="jc-emoji">🎩</span>
+      <span class="jc-tit">El Sombrero Seleccionador</span>
+      <span class="jc-sub">¿De qué casa de Hogwarts sos? 20 preguntas, y si el Sombrero duda entre dos casas te deja elegir.</span>
+      <span class="jc-cta">Ponerme el Sombrero&nbsp; →</span>
+    </a>
+  </div>
 </section>
 
 <script>
@@ -1396,7 +1476,11 @@ function enviarCotizacion() {
     } else if (href.indexOf('instagram.com') !== -1) {
       ev('click_instagram', { ubicacion: ctx.ubicacion });
     } else if (href.indexOf('/personaje') !== -1) {
-      ev('click_test', { ubicacion: ctx.ubicacion });
+      ev('click_test', { ubicacion: ctx.ubicacion, item: 'personaje' });
+    } else if (href.indexOf('/sombrero') !== -1) {
+      ev('click_test', { ubicacion: ctx.ubicacion, item: 'sombrero' });
+    } else if (href === '#juego') {
+      ev('click_juguemos', { ubicacion: ctx.ubicacion });
     } else if (a.classList.contains('pc-toggle')) {
       var extra = a.nextElementSibling;
       var vaAAbrir = !(extra && extra.classList.contains('open'));
