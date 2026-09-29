@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¿Qué personaje de Pixar sos? · Test · Disnerd</title>
+<meta name="description" content="Test de personalidad Pixar: descubrí qué personaje sos. De Toy Story a Intensa-Mente, 16 posibles y preguntas que no se ven venir. Gratis.">
+<link rel="canonical" href="https://disnerd.com.ar/personaje/pixar/">
+<meta name="robots" content="index, follow">
+
+<meta property="og:title" content="¿Qué personaje de Pixar sos? · Test · Disnerd">
+<meta property="og:description" content="Test de personalidad Pixar: descubrí qué personaje sos. De Toy Story a Intensa-Mente, 16 posibles y preguntas que no se ven venir. Gratis.">
+<meta property="og:url" content="https://disnerd.com.ar/personaje/pixar/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Disnerd">
+<meta name="twitter:card" content="summary">
+
+<!-- Google tag (gtag.js) - Google Ads + GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18025415639"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18025415639');
+  gtag('config', 'G-FP7MM2R3B7');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../quiz.css">
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">Disnerd<span>Sofi Valle Mayorga</span></a>
+  <a href="https://wa.me/5491132924274?text=Hola%20Sofi!%20Vi%20tu%20p%C3%A1gina%20y%20quiero%20cotizar%20mi%20viaje%20a%20Disney" class="nav-cta">Cotizá tu viaje</a>
+</nav>
+
+<div class="wrap">
+
+  <!-- INTRO -->
+  <div id="scr-intro" class="intro fade-in">
+    <div class="castillo">🎈✨</div>
+    <h1>¿Qué personaje de <em>Pixar</em> sos?</h1>
+    <p>De Toy Story a Intensa-Mente, pasando por Ratatouille y Up. Dieciséis personajes y doce preguntas que no se ven venir 🎈</p>
+    <button class="modo-card" id="btn-empezar">
+      <span class="m-emoji">🎈</span>
+      <span><span class="m-tit">Empezar el test</span><br><span class="m-sub">12 preguntas · 16 personajes posibles</span></span>
+    </button>
+    <p class="mini">Cada partida es distinta · sin registro y gratis</p>
+
+    <div class="otros-tests">
+      <p class="mini">Probá también:</p>
+      <a class="otro-test" href="../princesas/">👑 ¿Qué princesa de Disney sos?</a>
+      <a class="otro-test" href="../villanos/">😈 ¿Qué villano de Disney sos?</a>
+      <a class="otro-test" href="../clasicos/">🏰 ¿Qué personaje de Disney sos?</a>
+    </div>
+  </div>
+
+  <!-- PREGUNTAS -->
+  <div id="scr-q" style="display:none">
+    <div class="q-top">
+      <span class="q-progress-txt" id="q-num"></span>
+      <span class="q-progress-txt" id="q-modo-emoji"></span>
+    </div>
+    <div class="q-bar"><div class="q-bar-fill" id="q-bar"></div></div>
+    <div id="q-body"></div>
+    <button class="q-quit" onclick="resetQuiz()">← Volver</button>
+  </div>
+
+  <!-- CALCULANDO -->
+  <div id="scr-calc" class="calc" style="display:none">
+    <div class="spark">🪄</div>
+    <p>La magia está decidiendo…</p>
+  </div>
+
+  <!-- RESULTADO -->
+  <div id="scr-res" class="res" style="display:none"></div>
+
+</div>
+
+<footer>
+  <a href="/">disnerd.com.ar</a> · Sofi Valle Mayorga · Agente autorizada Disney &amp; Universal
+</footer>
+
+<script>window.MODO_FIJO = 'pixar';</script>
+<script src="../quiz.js"></script>
+<script src="../medicion.js"></script>
+</body>
+</html>
