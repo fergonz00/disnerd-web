@@ -11,12 +11,14 @@
    destino: disney | universal | crucero | paris
    quienes: solo | pareja | familia | grupo
    desde:   el numero mas bajo, para ordenar y mostrar "desde USD ..."
+   tema:    el color. Lo define el DESTINO (disney | universal | oceano | paris),
+            salvo los de temporada que lo pisan: navidad | anonuevo.
 */
 
 const PRESUPUESTOS = [
 
   {
-    id: 'crucero-navidad', destino: 'crucero', quienes: 'pareja', anio: 2026,
+    id: 'crucero-navidad', tema: 'navidad', destino: 'crucero', quienes: 'pareja', anio: 2026,
     emoji: '🎄', badge: 'Presupuesto actualizado',
     titulo: 'Crucero Disney temático de Navidad',
     cuando: 'Nov 2026', personas: '2 adultos', noches: '3 noches', desde: 1636,
@@ -34,7 +36,7 @@ const PRESUPUESTOS = [
   },
 
   {
-    id: 'crucero-destiny', destino: 'crucero', quienes: 'familia', anio: 2027,
+    id: 'crucero-destiny', tema: 'oceano', destino: 'crucero', quienes: 'familia', anio: 2027,
     emoji: '🚢', badge: '¡El barco nuevo!',
     titulo: 'Crucero Disney Destiny',
     cuando: 'Jul 2027', personas: '2 adultos + 2 menores', noches: '4 noches', desde: 5200,
@@ -53,7 +55,7 @@ const PRESUPUESTOS = [
   },
 
   {
-    id: 'paris-ano-nuevo', destino: 'paris', quienes: 'grupo', anio: 2026,
+    id: 'paris-ano-nuevo', tema: 'anonuevo', destino: 'paris', quienes: 'grupo', anio: 2026,
     emoji: '🎆', badge: 'Año Nuevo',
     titulo: 'Año Nuevo en Disneyland París',
     cuando: 'Dic 2026 · Ene 2027', personas: 'de 2 a 4 adultos', noches: '2 noches', desde: 1657,
@@ -69,7 +71,7 @@ const PRESUPUESTOS = [
   },
 
   {
-    id: 'disney-enero-familia', destino: 'disney', quienes: 'familia', anio: 2027,
+    id: 'disney-enero-familia', tema: 'disney', destino: 'disney', quienes: 'familia', anio: 2027,
     emoji: '👨‍👩‍👦', badge: 'Nuevo',
     titulo: 'Disney en familia · All Star Movies',
     cuando: 'Ene 2027', personas: '2 adultos + 1 menor', noches: '6 noches', desde: 2646,
@@ -85,7 +87,7 @@ const PRESUPUESTOS = [
   },
 
   {
-    id: 'disney-enero-movies', destino: 'disney', quienes: 'pareja', anio: 2027,
+    id: 'disney-enero-movies', tema: 'disney', destino: 'disney', quienes: 'pareja', anio: 2027,
     emoji: '🎥', badge: 'Con promo',
     titulo: 'Disney · All Star Movies',
     cuando: 'Ene 2027', personas: '2 adultos', noches: '6 noches', desde: 2675,
@@ -102,7 +104,7 @@ const PRESUPUESTOS = [
   },
 
   {
-    id: 'disney-febrero-pop', destino: 'disney', quienes: 'pareja', anio: 2027,
+    id: 'disney-febrero-pop', tema: 'disney', destino: 'disney', quienes: 'pareja', anio: 2027,
     emoji: '💜', badge: 'Nuevo',
     titulo: 'Disney · Pop Century',
     cuando: 'Feb 2027', personas: '2 adultos', noches: '6 noches', desde: 4620,
@@ -117,7 +119,7 @@ const PRESUPUESTOS = [
   },
 
   {
-    id: 'universal-febrero', destino: 'universal', quienes: 'pareja', anio: 2027,
+    id: 'universal-febrero', tema: 'universal', destino: 'universal', quienes: 'pareja', anio: 2027,
     emoji: '🩵', badge: 'Nuevo',
     titulo: 'Universal · Endless Summer Dockside Inn',
     cuando: 'Feb 2027', personas: '2 adultos', noches: '4 noches', desde: 1706,
@@ -133,7 +135,7 @@ const PRESUPUESTOS = [
   },
 
   {
-    id: 'disney-abril-grupo', destino: 'disney', quienes: 'grupo', anio: 2027,
+    id: 'disney-abril-grupo', tema: 'disney', destino: 'disney', quienes: 'grupo', anio: 2027,
     emoji: '👑', badge: 'Con promo',
     titulo: 'Disney en grupo · All Star',
     cuando: 'Abr 2027', personas: '3 adultos', noches: '3 noches', desde: 1715,
@@ -150,7 +152,7 @@ const PRESUPUESTOS = [
   },
 
   {
-    id: 'universal-abril-grupo', destino: 'universal', quienes: 'grupo', anio: 2027,
+    id: 'universal-abril-grupo', tema: 'universal', destino: 'universal', quienes: 'grupo', anio: 2027,
     emoji: '👑', badge: 'Nuevo',
     titulo: 'Universal en grupo · Terra Luna',
     cuando: 'Abr · May 2027', personas: '3 adultos', noches: '3 noches', desde: 2047,
@@ -165,7 +167,7 @@ const PRESUPUESTOS = [
   },
 
   {
-    id: 'disney-abril-pasadita', destino: 'disney', quienes: 'pareja', anio: 2027,
+    id: 'disney-abril-pasadita', tema: 'disney', destino: 'disney', quienes: 'pareja', anio: 2027,
     emoji: '⚡', badge: 'Con promo',
     titulo: 'Disney · ¡Pasadita rápida!',
     cuando: 'Abr 2027', personas: '2 adultos', noches: '5 noches', desde: 2203,
@@ -180,7 +182,7 @@ const PRESUPUESTOS = [
   },
 
   {
-    id: 'disney-mayo-familia', destino: 'disney', quienes: 'familia', anio: 2027,
+    id: 'disney-mayo-familia', tema: 'disney', destino: 'disney', quienes: 'familia', anio: 2027,
     emoji: '👨‍👩‍👧‍👦', badge: 'Nuevo',
     titulo: 'Una semana de Disney en familia',
     cuando: 'May 2027', personas: '2 adultos + 3 menores', noches: '7 noches', desde: 5830,
@@ -195,7 +197,7 @@ const PRESUPUESTOS = [
   },
 
   {
-    id: 'paris-junio', destino: 'paris', quienes: 'pareja', anio: 2027,
+    id: 'paris-junio', tema: 'paris', destino: 'paris', quienes: 'pareja', anio: 2027,
     emoji: '🥐', badge: 'Nuevo',
     titulo: 'Disneyland París · Junio 2027',
     cuando: 'Jun 2027', personas: '2 adultos', noches: '2 noches', desde: 1307,
@@ -209,7 +211,7 @@ const PRESUPUESTOS = [
   },
 
   {
-    id: 'disney-agosto-sola', destino: 'disney', quienes: 'solo', anio: 2027,
+    id: 'disney-agosto-sola', tema: 'disney', destino: 'disney', quienes: 'solo', anio: 2027,
     emoji: '🧜‍♀️', badge: 'Nuevo',
     titulo: 'Disney sola · Art of Animation',
     cuando: 'Ago 2027', personas: '1 adulto', noches: '7 noches', desde: 2644,
@@ -224,7 +226,7 @@ const PRESUPUESTOS = [
   },
 
   {
-    id: 'universal-agosto-sola', destino: 'universal', quienes: 'solo', anio: 2027,
+    id: 'universal-agosto-sola', tema: 'universal', destino: 'universal', quienes: 'solo', anio: 2027,
     emoji: '🎢', badge: 'En promo',
     titulo: 'Universal sola · Stella Nova',
     cuando: 'Ago · Sep 2027', personas: '1 adulto', noches: '7 noches', desde: 1473,
@@ -239,7 +241,7 @@ const PRESUPUESTOS = [
   },
 
   {
-    id: 'paris-noviembre', destino: 'paris', quienes: 'pareja', anio: 2026,
+    id: 'paris-noviembre', tema: 'navidad', destino: 'paris', quienes: 'pareja', anio: 2026,
     emoji: '🎄', badge: 'Época navideña',
     titulo: 'Disneyland París · Época Navideña',
     cuando: 'Nov 2026', personas: '2 adultos', noches: '2 noches', desde: 1056,
@@ -339,7 +341,7 @@ function pRender() {
     : 'Mostrando ' + lista.length + ' de ' + PRESUPUESTOS.length;
 
   cont.innerHTML = lista.map(function (p) {
-    return '<article class="pr" id="p-' + p.id + '">' +
+    return '<article class="pr" data-tema="' + (p.tema || 'disney') + '" id="p-' + p.id + '">' +
       '<button class="pr-cab" aria-expanded="false" data-id="' + p.id + '">' +
         '<span class="pr-emoji">' + p.emoji + '</span>' +
         '<span class="pr-cab-txt">' +
