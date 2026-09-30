@@ -1,0 +1,11 @@
+# Atajos para los enlaces que Sofi pone en Instagram.
+# Se ven cortos y limpios, pero llegan marcados, asi que en Analytics
+# quedan como "vino de Instagram" sin depender de que el navegador
+# conserve el dato de origen (el navegador interno de IG suele borrarlo).
+#
+# Para sumar uno nuevo: copiar una linea y cambiar el atajo y la campana.
+
+/ig          /?utm_source=instagram&utm_medium=bio                          302
+/historia    /?utm_source=instagram&utm_medium=historia                     302
+/juegos      /personaje/?utm_source=instagram&utm_medium=bio                302
+/sombrero-ig /sombrero/?utm_source=instagram&utm_medium=historia            302
