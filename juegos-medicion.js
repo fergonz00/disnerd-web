@@ -5,6 +5,12 @@ document.addEventListener('click', function(e){
   const a = el.closest('a');
   if (!a || (a.getAttribute('href') || '').indexOf('wa.me') === -1) return;
 
+  if (a.id === 'wa-flotante') {
+    if (typeof gtag === 'function') {
+      gtag('event', 'click_whatsapp', { ubicacion: 'flotante', item: '(generico)' });
+    }
+    return;
+  }
   const caja = a.closest('#scr-res') || a.closest('#sh-res');
   let item = '(generico)';
   if (caja) {

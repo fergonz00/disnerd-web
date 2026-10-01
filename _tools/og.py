@@ -50,6 +50,22 @@ TARJETAS = [
          titulo="El <em>Sombrero</em><br>Seleccionador",
          bajada="¿De qué casa de Hogwarts sos? Y si el Sombrero duda entre dos, te deja elegir.",
          pie="Test de fans · disnerd.com.ar"),
+    dict(archivo="og-disney-orlando.jpg", foto=B + "/foto-11.webp", tam=52,
+         titulo="Viajes a <em>Disney</em><br>Orlando",
+         bajada="Presupuestos reales con precios en dólares: hotel, entradas y plan de comidas.",
+         pie="Precios reales · disnerd.com.ar"),
+    dict(archivo="og-universal-orlando.jpg", foto=B + "/foto-08.webp", tam=52,
+         titulo="Viajes a <em>Universal</em><br>Orlando",
+         bajada="Presupuestos reales, con los hoteles nuevos cerca de Epic Universe.",
+         pie="Precios reales · disnerd.com.ar"),
+    dict(archivo="og-cruceros-disney.jpg", foto=B + "/foto-05.webp", tam=54,
+         titulo="<em>Cruceros</em><br>Disney",
+         bajada="Casi todo incluido. Presupuestos reales con el precio de cada camarote.",
+         pie="Precios reales · disnerd.com.ar"),
+    dict(archivo="og-disneyland-paris.jpg", foto=B + "/foto-06.webp", tam=52,
+         titulo="Viajes a <em>Disneyland</em><br>París",
+         bajada="La opción más corta y económica para conocer un parque Disney.",
+         pie="Precios reales · disnerd.com.ar"),
 ]
 
 PLANTILLA = """<!DOCTYPE html><html><head><meta charset="utf-8">

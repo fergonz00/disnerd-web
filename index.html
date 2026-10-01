@@ -42,6 +42,9 @@
   <meta name="twitter:description" content="Agente oficial top seller en Disney, Universal y Cruceros. Orlando, California, París y cruceros."/>
   <meta name="twitter:image" content="https://disnerd.com.ar/og/og-home.jpg"/>
 
+  <link rel="stylesheet" href="/wa-flotante.css"/>
+  <link rel="stylesheet" href="/presupuestos.css"/>
+  <link rel="stylesheet" href="/formulario.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet"/>
 
   <!-- Datos estructurados: le explican a Google qué es esta página -->
@@ -178,173 +181,6 @@
     }
     .nav-juego:active { background: var(--sky-pale); }
 
-    /* Botón de WhatsApp siempre a mano. Aparece recién al bajar, para no
-       competir con el botón del hero, que ya está a la vista. */
-    .wa-flotante {
-      position: fixed;
-      right: 1.2rem;
-      bottom: 1.2rem;
-      z-index: 200;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55rem;
-      background: #25D366;
-      color: #fff;
-      text-decoration: none;
-      padding: 0.85rem 1.25rem;
-      border-radius: 100px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      box-shadow: 0 6px 22px rgba(37, 211, 102, 0.38);
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(14px);
-      transition: opacity .25s, transform .25s, visibility .25s;
-    }
-    .wa-flotante.visible { opacity: 1; visibility: visible; transform: translateY(0); }
-    .wa-flotante:hover { background: #1fb855; }
-    .wa-flotante:active { transform: scale(0.97); }
-    .wa-flotante svg { flex-shrink: 0; }
-    @media (max-width: 768px) {
-      .wa-flotante { right: 0.9rem; bottom: 0.9rem; padding: 0.8rem 1.1rem; font-size: 0.78rem; }
-    }
-
-
-    /* ── Presupuestos: filtros + lista que se abre ── */
-    .pr-filtros { max-width: 780px; margin: 0 auto 2rem; }
-    .pr-f-linea { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.7rem; flex-wrap: wrap; }
-    .pr-f-tit { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
-                color: var(--text-soft); min-width: 104px; text-align: right; }
-    .pr-f-chips { display: flex; gap: 0.4rem; flex-wrap: wrap; flex: 1; }
-    .pr-chip { font-family: 'Raleway', sans-serif; font-size: 0.78rem; font-weight: 500;
-               color: var(--text-mid); background: #fff; border: 1px solid var(--warm);
-               padding: 0.42rem 0.85rem; border-radius: 100px; cursor: pointer;
-               transition: background .15s, border-color .15s, color .15s; }
-    .pr-chip:hover { border-color: var(--sky-mid); }
-    .pr-chip.on { background: var(--sky-soft); border-color: var(--sky-soft); color: var(--ivory); }
-    .pr-cuenta { text-align: center; font-size: 0.78rem; color: var(--text-soft);
-                 font-style: italic; font-family: 'Playfair Display', serif; margin-top: 1rem; }
-
-    .pr-lista { max-width: 780px; margin: 0 auto; }
-    .pr { border: 1px solid var(--warm); border-radius: 1.1rem; background: #fff;
-          margin-bottom: 0.75rem; overflow: hidden; transition: box-shadow .2s, border-color .2s; }
-    .pr.abierto { border-color: var(--sky-mid); box-shadow: 0 6px 22px var(--sombra); }
-    .pr-cab { display: flex; align-items: center; gap: 0.85rem; width: 100%; text-align: left;
-              background: none; border: none; padding: 1.05rem 1.15rem; cursor: pointer;
-              font-family: 'Raleway', sans-serif; color: var(--text); }
-    .pr-emoji { font-size: 1.55rem; flex-shrink: 0; }
-    .pr-cab-txt { flex: 1; min-width: 0; }
-    .pr-titulo { display: block; font-family: 'Playfair Display', serif; font-size: 1.05rem;
-                 line-height: 1.2; }
-    .pr-sub { display: block; font-size: 0.75rem; color: var(--text-mid); margin-top: 0.18rem; }
-    .pr-desde { flex-shrink: 0; text-align: right; font-family: 'Playfair Display', serif;
-                font-size: 1.05rem; color: var(--text); line-height: 1.1; }
-    .pr-desde small { display: block; font-family: 'Raleway', sans-serif; font-size: 0.58rem;
-                      letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-soft); }
-    .pr-flecha { flex-shrink: 0; color: var(--text-soft); font-size: 1.1rem; line-height: 1;
-                 transition: transform .2s; }
-    .pr.abierto .pr-flecha { transform: rotate(180deg); }
-
-    .pr-det { padding: 0 1.15rem 1.3rem; border-top: 1px solid var(--cream); }
-    .pr-fechas { font-size: 0.86rem; color: var(--text); margin: 1rem 0 0.4rem; font-weight: 500; }
-    .pr-meta { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; font-size: 0.8rem;
-               color: var(--text-mid); margin-bottom: 1rem; }
-    .pr-caja { background: var(--ivory); border-radius: 0.9rem; padding: 0.9rem 1rem; margin-bottom: 0.8rem; }
-    .pr-caja h4 { font-family: 'Raleway', sans-serif; font-size: 0.7rem; font-weight: 600;
-                  letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-soft);
-                  margin-bottom: 0.6rem; }
-    .pr-dia, .pr-item { font-size: 0.84rem; line-height: 1.55; color: var(--text); margin-bottom: 0.3rem; }
-    .pr-dia b { color: var(--sky-soft); margin-right: 0.35rem; }
-    .pr-fila { display: flex; justify-content: space-between; align-items: center; gap: 0.8rem;
-               padding: 0.5rem 0; border-bottom: 1px solid var(--warm); }
-    .pr-fila:last-child { border-bottom: none; }
-    .pr-f-nom { font-size: 0.86rem; font-weight: 500; }
-    .pr-f-sub { font-size: 0.72rem; color: var(--text-soft); font-weight: 400; }
-    .pr-f-precio { font-family: 'Playfair Display', serif; font-size: 1rem; white-space: nowrap; }
-    .pr-promo { font-size: 0.78rem; color: var(--gold); margin-bottom: 0.8rem; }
-    .pr-precio-row { display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; margin: 0.4rem 0 0.9rem; }
-    .pr-precio { font-family: 'Playfair Display', serif; font-size: 1.75rem; }
-    .pr-precio-nota { font-size: 0.76rem; color: var(--text-mid); }
-    .pr-nota { font-size: 0.8rem; color: var(--text-mid); line-height: 1.5; margin-bottom: 0.9rem; }
-    .pr-wa { display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
-             background: #25D366; color: #fff; text-decoration: none; font-size: 0.82rem;
-             font-weight: 600; padding: 0.75rem 1.4rem; border-radius: 100px; }
-    .pr-wa:hover { background: #1fb855; }
-    .pr-legal { font-size: 0.68rem; color: var(--text-soft); margin-top: 0.7rem; }
-    .pr-vacio { text-align: center; color: var(--text-mid); font-size: 0.9rem; padding: 2rem 1rem; }
-    .pr-pie { text-align: center; font-size: 0.85rem; color: var(--text-mid); margin-top: 2rem; }
-
-    @media (max-width: 560px) {
-      .pr-f-tit { min-width: 0; text-align: left; width: 100%; margin-bottom: 0.1rem; }
-      .pr-cab { padding: 0.9rem; gap: 0.6rem; }
-      .pr-emoji { font-size: 1.3rem; }
-      .pr-titulo { font-size: 0.95rem; }
-      .pr-desde { font-size: 0.95rem; }
-      .pr-wa { width: 100%; }
-    }
-
-
-    /* ── Temas de color. El destino define el color; Navidad y Año Nuevo lo pisan.
-         t1..t3 = el degradé del fondo cuando se abre · acc = el color que resalta
-         tint = el fondo suave del emoji cuando está cerrado ── */
-    .pr[data-tema="navidad"]  { --t1:#123d2e; --t2:#1c5a42; --t3:#8f1d2c;
-                                --acc:#d9b56a; --acc2:#f1d38f; --tint:#e8f0ea; --deco:"✦ ❄ ✦ ❄ ✦"; }
-    .pr[data-tema="oceano"]   { --t1:#0b3a4f; --t2:#0f6a80; --t3:#1b8a9a;
-                                --acc:#7fd4d4; --acc2:#b6ecea; --tint:#e4f2f4; --deco:"〰 ⚓ 〰 ⚓ 〰"; }
-    .pr[data-tema="disney"]   { --t1:#16325c; --t2:#24508f; --t3:#5a3f8f;
-                                --acc:#e8c46a; --acc2:#f6dfa4; --tint:#e8edf6; --deco:"✦ ✧ ✦ ✧ ✦"; }
-    .pr[data-tema="universal"]{ --t1:#123f3a; --t2:#1d6b5c; --t3:#3f8f57;
-                                --acc:#f0a84e; --acc2:#f8cb92; --tint:#e6f1ee; --deco:"◆ ◈ ◆ ◈ ◆"; }
-    .pr[data-tema="paris"]    { --t1:#4a2040; --t2:#7a3560; --t3:#b06a86;
-                                --acc:#f0b7c8; --acc2:#f8d9e2; --tint:#f7ebf0; --deco:"✦ ⚜ ✦ ⚜ ✦"; }
-    .pr[data-tema="anonuevo"] { --t1:#2b1b4a; --t2:#4a3a8f; --t3:#8f6ac0;
-                                --acc:#f2d98b; --acc2:#fbeec1; --tint:#eeeaf7; --deco:"✦ 🎆 ✦ 🎆 ✦"; }
-
-    /* cerrado: una barra de color a la izquierda y el emoji sobre su tono */
-    .pr { border-left: 4px solid var(--acc); }
-    .pr-emoji { background: var(--tint); border-radius: 50%; width: 2.5rem; height: 2.5rem;
-                display: inline-flex; align-items: center; justify-content: center;
-                font-size: 1.25rem; transition: background .2s; }
-    .pr-desde { color: var(--t2); }
-    .pr:hover { border-color: var(--acc); }
-
-    /* abierto: la tarjeta entera se pone de gala, como las de antes */
-    .pr.abierto { position: relative; overflow: hidden; color: #fff; border-color: var(--acc);
-                  background: linear-gradient(135deg, var(--t1) 0%, var(--t2) 58%, var(--t3) 135%);
-                  box-shadow: 0 18px 44px rgba(18,40,60,0.3); }
-    .pr.abierto::after { content: var(--deco); position: absolute; top: .7rem; right: -1rem;
-                         font-size: 1.15rem; letter-spacing: .55rem; color: rgba(255,255,255,.13);
-                         transform: rotate(8deg); pointer-events: none; }
-    .pr.abierto .pr-cab { color: #fff; position: relative; z-index: 1; }
-    .pr.abierto .pr-emoji { background: rgba(255,255,255,.16); }
-    .pr.abierto .pr-titulo { color: #fff; }
-    .pr.abierto .pr-sub { color: rgba(255,255,255,.72); }
-    .pr.abierto .pr-desde { color: var(--acc2); }
-    .pr.abierto .pr-desde small { color: rgba(255,255,255,.6); }
-    .pr.abierto .pr-flecha { color: var(--acc); }
-
-    .pr.abierto .pr-det { border-top-color: rgba(255,255,255,.18); position: relative; z-index: 1; }
-    .pr.abierto .pr-fechas { color: #fff; }
-    .pr.abierto .pr-meta { color: rgba(255,255,255,.85); }
-    .pr.abierto .pr-caja { background: rgba(255,255,255,.09); border: 1px solid rgba(255,255,255,.18); }
-    .pr.abierto .pr-caja h4 { color: var(--acc2); }
-    .pr.abierto .pr-dia, .pr.abierto .pr-item { color: rgba(255,255,255,.94); }
-    .pr.abierto .pr-dia b { color: var(--acc2); }
-    .pr.abierto .pr-fila { border-bottom-color: rgba(255,255,255,.16); }
-    .pr.abierto .pr-f-sub { color: rgba(255,255,255,.62); }
-    .pr.abierto .pr-f-precio { color: var(--acc2); }
-    .pr.abierto .pr-promo { color: var(--acc2); background: rgba(255,255,255,.1);
-                            border: 1px dashed var(--acc); border-radius: 12px;
-                            padding: .55rem .85rem; }
-    .pr.abierto .pr-precio { color: #fff; }
-    .pr.abierto .pr-precio-nota { color: rgba(255,255,255,.8); }
-    .pr.abierto .pr-nota { color: rgba(255,255,255,.88); }
-    .pr.abierto .pr-nota strong { color: var(--acc2); }
-    .pr.abierto .pr-legal { color: rgba(255,255,255,.55); }
-    .pr.abierto .pr-wa { background: var(--acc); color: var(--t1); font-weight: 700;
-                         letter-spacing: .04em; }
-    .pr.abierto .pr-wa:hover { background: var(--acc2); }
 
     /* Elegir juego */
     .juegos-grid {
@@ -613,88 +449,6 @@
       from { opacity:0; transform:translateY(14px); }
       to   { opacity:1; transform:translateY(0); }
     }
-
-    /* ══════════════════════════════════
-       FORMULARIO COTIZACIÓN
-    ══════════════════════════════════ */
-    .cq-group { margin-bottom: 1.4rem; }
-    .cq-label {
-      display: block;
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-mid);
-      margin-bottom: 0.6rem;
-    }
-    .cq-dest-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.7rem;
-    }
-    .cq-dest-btn {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 1rem 0.5rem;
-      border: 1.5px solid var(--warm);
-      border-radius: 14px;
-      background: white;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .cq-dest-btn:hover { border-color: var(--sky-soft); }
-    .cq-dest-btn.selected { border-color: var(--sky-soft); background: var(--sky-pale); }
-    .cq-dest-icon { font-size: 1.8rem; }
-    .cq-dest-name { font-size: 0.6rem; letter-spacing: 0.15em; font-weight: 600; color: var(--text-mid); }
-    .cq-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .cq-select, .cq-input, .cq-textarea {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      border: 1.5px solid var(--warm);
-      border-radius: 10px;
-      background: white;
-      font-family: 'Raleway', sans-serif;
-      font-size: 0.85rem;
-      color: var(--text);
-      appearance: none;
-      -webkit-appearance: none;
-      box-sizing: border-box;
-      transition: border-color 0.2s;
-    }
-    .cq-select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239e9189' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.9rem center; padding-right: 2.2rem; }
-    .cq-select:focus, .cq-input:focus, .cq-textarea:focus { outline: none; border-color: var(--sky-soft); }
-    .cq-textarea { resize: vertical; min-height: 80px; }
-    .cq-check-label {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-size: 0.65rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-mid);
-      cursor: pointer;
-    }
-    .cq-check-label input { width: 16px; height: 16px; accent-color: var(--sky-soft); cursor: pointer; }
-    .cq-submit {
-      width: 100%;
-      padding: 1rem;
-      background: var(--sky-soft);
-      color: white;
-      border: none;
-      border-radius: 50px;
-      font-family: 'Raleway', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.6rem;
-      transition: background 0.2s;
-    }
-    .cq-submit:hover { background: var(--sky-mid); filter: brightness(0.92); }
 
     /* ══════════════════════════════════
        PRICING SECTION
@@ -1240,99 +994,7 @@
     <p class="section-body">Completá el formulario y te escribo por WhatsApp con todos los detalles.</p>
   </div>
 
-  <div style="max-width:560px;margin:0 auto;padding:0 1.5rem 4rem;">
-
-    <!-- DESTINO -->
-    <div class="cq-group">
-      <label class="cq-label">¿A dónde querés ir?</label>
-      <div class="cq-dest-grid">
-        <button class="cq-dest-btn" onclick="selectDest(this,'Orlando')" data-dest="Orlando">
-          <span class="cq-dest-icon">🏰</span>
-          <span class="cq-dest-name">ORLANDO</span>
-        </button>
-        <button class="cq-dest-btn" onclick="selectDest(this,'París')" data-dest="París">
-          <span class="cq-dest-icon">🥐</span>
-          <span class="cq-dest-name">PARÍS</span>
-        </button>
-        <button class="cq-dest-btn" onclick="selectDest(this,'Crucero')" data-dest="Crucero">
-          <span class="cq-dest-icon">🚢</span>
-          <span class="cq-dest-name">CRUCERO</span>
-        </button>
-      </div>
-    </div>
-
-    <!-- PERSONAS Y MES -->
-    <div class="cq-row">
-      <div class="cq-group">
-        <label class="cq-label">¿Cuántas personas son?</label>
-        <select class="cq-select" id="cq-personas">
-          <option value="">Seleccioná</option>
-          <option>1 persona</option>
-          <option>2 personas</option>
-          <option>3 personas</option>
-          <option>4 personas</option>
-          <option>5 personas</option>
-          <option>6 o más</option>
-        </select>
-      </div>
-      <div class="cq-group">
-        <label class="cq-label">¿En qué mes pensás viajar?</label>
-        <select class="cq-select" id="cq-mes">
-          <option value="">Seleccioná</option>
-          <option>Enero</option><option>Febrero</option><option>Marzo</option>
-          <option>Abril</option><option>Mayo</option><option>Junio</option>
-          <option>Julio</option><option>Agosto</option><option>Septiembre</option>
-          <option>Octubre</option><option>Noviembre</option><option>Diciembre</option>
-          <option>Aún no sé</option>
-        </select>
-      </div>
-    </div>
-
-    <!-- DÍAS Y CELULAR -->
-    <div class="cq-row">
-      <div class="cq-group">
-        <label class="cq-label">¿Cuántos días más o menos?</label>
-        <select class="cq-select" id="cq-dias">
-          <option value="">Seleccioná</option>
-          <option>3–4 días</option>
-          <option>5–7 días</option>
-          <option>8–10 días</option>
-          <option>11–14 días</option>
-          <option>Más de 14 días</option>
-          <option>No sé todavía</option>
-        </select>
-      </div>
-      <div class="cq-group">
-        <label class="cq-label">Tu celular (para contactarte)</label>
-        <input class="cq-input" id="cq-celular" type="tel" placeholder="Ej: 1150001234">
-      </div>
-    </div>
-
-    <!-- MENORES -->
-    <div class="cq-group">
-      <label class="cq-check-label">
-        <input type="checkbox" id="cq-hay-menores" onchange="toggleMenores(this)">
-        <span>Sí, hay chicos en el grupo</span>
-      </label>
-      <div id="cq-menores-extra" style="display:none;margin-top:0.8rem;">
-        <input class="cq-input" id="cq-edades" type="text" placeholder="Ej: 4 años, 8 años, 12 años">
-        <p style="font-size:0.7rem;color:var(--text-soft);margin-top:0.3rem;">Indicá la edad de cada menor</p>
-      </div>
-    </div>
-
-    <!-- COMENTARIO -->
-    <div class="cq-group">
-      <label class="cq-label">¿Algo más que quieras contarme? <span style="font-weight:300;">(opcional)</span></label>
-      <textarea class="cq-textarea" id="cq-nota" rows="3" placeholder="Ej: es el primer viaje de mis hijos, quiero sorprender a alguien, tengo alguna restricción alimentaria..."></textarea>
-    </div>
-
-    <!-- BOTÓN -->
-    <button class="cq-submit" onclick="enviarCotizacion()">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.558 4.136 1.535 5.874L.057 23.882a.5.5 0 0 0 .61.61l6.008-1.478A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a10 10 0 0 1-5.13-1.406l-.367-.22-3.566.878.893-3.458-.24-.377A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-      QUIERO QUE ME CONTACTEN
-    </button>
-
-  </div>
+  <div style="max-width:560px;margin:0 auto;padding:0 1.5rem 4rem;" id="form-cotiza"></div>
 </section>
 
 <!-- ══════════════════════════════════
@@ -1367,6 +1029,14 @@
 
   <!-- LISTA: cada uno se abre al tocarlo -->
   <div class="pr-lista" id="pr-lista"></div>
+
+  <div class="pr-destinos">
+    <p>Ver todos los de un destino</p>
+    <a href="/disney-orlando/">🏰 Disney Orlando</a>
+    <a href="/universal-orlando/">🎢 Universal Orlando</a>
+    <a href="/cruceros-disney/">🚢 Cruceros Disney</a>
+    <a href="/disneyland-paris/">🥐 Disneyland París</a>
+  </div>
 
   <p class="pr-pie">¿Ninguno te cierra? <a href="#cotiza">Contame tu viaje</a> y te armo uno a tu medida, sin cargo.</p>
 
@@ -1406,62 +1076,7 @@ function toggleExtra(btn) {
   btn.childNodes[0].textContent = isOpen ? ' Ver más ' : ' Ver menos ';
 }
 
-let destSeleccionado = '';
 
-var cotizacionEmpezada = false;
-
-function selectDest(btn, dest) {
-  document.querySelectorAll('.cq-dest-btn').forEach(b => b.classList.remove('selected'));
-  btn.classList.add('selected');
-  destSeleccionado = dest;
-
-  /* Primer toque del formulario. Comparado contra enviar_cotizacion dice
-     cuánta gente lo empieza y lo abandona a mitad de camino. */
-  if (!cotizacionEmpezada) {
-    cotizacionEmpezada = true;
-    if (typeof gtag === 'function') gtag('event', 'iniciar_cotizacion', { destino: dest });
-  }
-}
-
-function toggleMenores(checkbox) {
-  document.getElementById('cq-menores-extra').style.display = checkbox.checked ? 'block' : 'none';
-}
-
-function enviarCotizacion() {
-  const personas = document.getElementById('cq-personas').value;
-  const mes = document.getElementById('cq-mes').value;
-  const dias = document.getElementById('cq-dias').value;
-  const celular = document.getElementById('cq-celular').value.trim();
-  const hayMenores = document.getElementById('cq-hay-menores').checked;
-  const edades = document.getElementById('cq-edades').value.trim();
-  const nota = document.getElementById('cq-nota').value.trim();
-
-  if (!destSeleccionado) { alert('Por favor elegí un destino 🏰'); return; }
-  if (!personas) { alert('Por favor indicá cuántas personas son'); return; }
-  if (!celular) { alert('Por favor ingresá tu celular para poder contactarte'); return; }
-
-  let msg = `Hola Sofi! Quiero cotizar un viaje:\n\n`;
-  msg += `• Destino: ${destSeleccionado}\n`;
-  msg += `• Personas: ${personas}\n`;
-  if (mes) msg += `• Mes: ${mes}\n`;
-  if (dias) msg += `• Duración: ${dias}\n`;
-  if (hayMenores) msg += `• Hay menores${edades ? ': ' + edades : ''}\n`;
-  msg += `• Celular: ${celular}\n`;
-  if (nota) msg += `• Comentario: ${nota}\n`;
-
-  if (typeof gtag === 'function') {
-    gtag('event', 'enviar_cotizacion', {
-      destino: destSeleccionado,
-      personas: personas,
-      mes: mes || '(sin definir)',
-      dias: dias || '(sin definir)',
-      menores: hayMenores ? 'si' : 'no'
-    });
-  }
-
-  const url = `https://wa.me/5491132924274?text=${encodeURIComponent(msg)}`;
-  window.open(url, '_blank');
-}
 </script>
 
 <!-- FOOTER -->
@@ -1474,48 +1089,10 @@ function enviarCotizacion() {
   <span class="footer-copy">Sofi Valle Mayorga · Agente autorizada Disney &amp; Universal</span>
 </footer>
 
-<!-- WHATSAPP SIEMPRE A MANO -->
-<a href="https://wa.me/5491132924274?text=Hola%20Sofi!%20Vi%20tu%20p%C3%A1gina%20y%20quiero%20cotizar%20mi%20viaje" class="wa-flotante" id="wa-flotante" aria-label="Escribile a Sofi por WhatsApp">
-  <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.558 4.136 1.535 5.874L.057 23.882a.5.5 0 0 0 .61.61l6.008-1.478A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a10 10 0 0 1-5.13-1.406l-.367-.22-3.566.878.893-3.458-.24-.377A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-  Cotizá gratis
-</a>
 
-<script>
-/* El botón flotante entra cuando el visitante ya pasó el hero, y se esconde
-   mientras está a la vista el formulario: ahí tapaba los desplegables en
-   celular, y además el formulario ya tiene su propio botón. */
-(function(){
-  var b = document.getElementById('wa-flotante');
-  var form = document.getElementById('cotiza');
-  if (!b) return;
-  /* "A la vista" = se ve un pedazo real, no un pixel suelto al borde */
-  function aLaVista(el){
-    if (!el) return false;
-    var r = el.getBoundingClientRect();
-    var visible = Math.min(r.bottom, window.innerHeight) - Math.max(r.top, 0);
-    return visible > 80;
-  }
-  /* Se esconde si ya hay otro boton de WhatsApp a la vista: el del formulario
-     o el de un presupuesto abierto. Si no, tapa justo el que importa. */
-  function otroCtaALaVista(){
-    if (aLaVista(form)) return true;
-    var botones = document.querySelectorAll('.pr-det:not([hidden]) .pr-wa');
-    for (var i = 0; i < botones.length; i++) {
-      if (aLaVista(botones[i])) return true;
-    }
-    return false;
-  }
-  function revisar(){
-    if (window.scrollY > 500 && !otroCtaALaVista()) b.classList.add('visible');
-    else b.classList.remove('visible');
-  }
-  document.addEventListener('click', function(){ setTimeout(revisar, 60); }, true);
-  window.addEventListener('scroll', revisar, { passive: true });
-  window.addEventListener('resize', revisar, { passive: true });
-  revisar();
-})();
-</script>
+<script src="/wa-flotante.js"></script>
 
+<script src="/formulario.js"></script>
 <script src="presupuestos.js"></script>
 
 <!-- MEDICIÓN: qué toca la gente antes de escribir por WhatsApp -->

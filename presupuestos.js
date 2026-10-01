@@ -272,6 +272,11 @@ const FILTROS = {
 
 var filtroActual = { destino: '', quienes: '', anio: '' };
 
+/* Las páginas de un destino (por ejemplo /disney-orlando/) definen PR_DESTINO
+   antes de cargar este archivo: muestran solo ese destino, ya desplegados y
+   sin los filtros de arriba. */
+var SOLO = window.PR_DESTINO || null;
+
 function pMoneda(n) {
   return 'USD ' + n.toLocaleString('es-AR');
 }
@@ -321,6 +326,7 @@ function pDetalle(p) {
 
 function pRender() {
   var lista = PRESUPUESTOS.filter(function (p) {
+    if (SOLO) return p.destino === SOLO;
     return (!filtroActual.destino || p.destino === filtroActual.destino) &&
            (!filtroActual.quienes || p.quienes === filtroActual.quienes) &&
            (!filtroActual.anio || String(p.anio) === filtroActual.anio);
@@ -332,17 +338,20 @@ function pRender() {
   if (!lista.length) {
     cont.innerHTML = '<p class="pr-vacio">No hay presupuestos armados con esa combinación todavía — ' +
       'pero <a href="#cotiza">pedime el tuyo</a> y te lo armo.</p>';
-    cuenta.textContent = 'Ninguno con ese filtro';
+    if (cuenta) cuenta.textContent = SOLO ? 'Todavía ninguno armado' : 'Ninguno con ese filtro';
     return;
   }
 
-  cuenta.textContent = lista.length === PRESUPUESTOS.length
-    ? PRESUPUESTOS.length + ' presupuestos reales'
-    : 'Mostrando ' + lista.length + ' de ' + PRESUPUESTOS.length;
+  if (cuenta) {
+    cuenta.textContent = (SOLO || lista.length === PRESUPUESTOS.length)
+      ? lista.length + (lista.length === 1 ? ' presupuesto real' : ' presupuestos reales')
+      : 'Mostrando ' + lista.length + ' de ' + PRESUPUESTOS.length;
+  }
 
   cont.innerHTML = lista.map(function (p) {
-    return '<article class="pr" data-tema="' + (p.tema || 'disney') + '" id="p-' + p.id + '">' +
-      '<button class="pr-cab" aria-expanded="false" data-id="' + p.id + '">' +
+    return '<article class="pr' + (SOLO ? ' abierto' : '') + '" data-tema="' +
+      (p.tema || 'disney') + '" id="p-' + p.id + '">' +
+      '<button class="pr-cab" aria-expanded="' + (SOLO ? 'true' : 'false') + '" data-id="' + p.id + '">' +
         '<span class="pr-emoji">' + p.emoji + '</span>' +
         '<span class="pr-cab-txt">' +
           '<span class="pr-titulo">' + p.titulo + '</span>' +
@@ -351,7 +360,7 @@ function pRender() {
         '<span class="pr-desde"><small>desde</small>' + pMoneda(p.desde) + '</span>' +
         '<span class="pr-flecha" aria-hidden="true">⌄</span>' +
       '</button>' +
-      '<div class="pr-det" hidden>' + pDetalle(p) + '</div>' +
+      '<div class="pr-det"' + (SOLO ? '' : ' hidden') + '>' + pDetalle(p) + '</div>' +
     '</article>';
   }).join('');
 }

@@ -1,0 +1,82 @@
+/* Estilos del formulario "Cotizá tu viaje". Los usan la home y las páginas por destino. */
+    /* ══════════════════════════════════
+       FORMULARIO COTIZACIÓN
+    ══════════════════════════════════ */
+    .cq-group { margin-bottom: 1.4rem; }
+    .cq-label {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      margin-bottom: 0.6rem;
+    }
+    .cq-dest-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.7rem;
+    }
+    .cq-dest-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 0.5rem;
+      border: 1.5px solid var(--warm);
+      border-radius: 14px;
+      background: white;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .cq-dest-btn:hover { border-color: var(--sky-soft); }
+    .cq-dest-btn.selected { border-color: var(--sky-soft); background: var(--sky-pale); }
+    .cq-dest-icon { font-size: 1.8rem; }
+    .cq-dest-name { font-size: 0.6rem; letter-spacing: 0.15em; font-weight: 600; color: var(--text-mid); }
+    .cq-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .cq-select, .cq-input, .cq-textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid var(--warm);
+      border-radius: 10px;
+      background: white;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.85rem;
+      color: var(--text);
+      appearance: none;
+      -webkit-appearance: none;
+      box-sizing: border-box;
+      transition: border-color 0.2s;
+    }
+    .cq-select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239e9189' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.9rem center; padding-right: 2.2rem; }
+    .cq-select:focus, .cq-input:focus, .cq-textarea:focus { outline: none; border-color: var(--sky-soft); }
+    .cq-textarea { resize: vertical; min-height: 80px; }
+    .cq-check-label {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      cursor: pointer;
+    }
+    .cq-check-label input { width: 16px; height: 16px; accent-color: var(--sky-soft); cursor: pointer; }
+    .cq-submit {
+      width: 100%;
+      padding: 1rem;
+      background: var(--sky-soft);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      transition: background 0.2s;
+    }
+    .cq-submit:hover { background: var(--sky-mid); filter: brightness(0.92); }

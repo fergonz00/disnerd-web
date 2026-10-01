@@ -1,0 +1,146 @@
+/* Estilos de la lista de presupuestos. Los usan la home y las páginas por destino. */
+    /* ── Presupuestos: filtros + lista que se abre ── */
+    .pr-filtros { max-width: 780px; margin: 0 auto 2rem; }
+    .pr-f-linea { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.7rem; flex-wrap: wrap; }
+    .pr-f-tit { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+                color: var(--text-soft); min-width: 104px; text-align: right; }
+    .pr-f-chips { display: flex; gap: 0.4rem; flex-wrap: wrap; flex: 1; }
+    .pr-chip { font-family: 'Raleway', sans-serif; font-size: 0.78rem; font-weight: 500;
+               color: var(--text-mid); background: #fff; border: 1px solid var(--warm);
+               padding: 0.42rem 0.85rem; border-radius: 100px; cursor: pointer;
+               transition: background .15s, border-color .15s, color .15s; }
+    .pr-chip:hover { border-color: var(--sky-mid); }
+    .pr-chip.on { background: var(--sky-soft); border-color: var(--sky-soft); color: var(--ivory); }
+    .pr-cuenta { text-align: center; font-size: 0.78rem; color: var(--text-soft);
+                 font-style: italic; font-family: 'Playfair Display', serif; margin-top: 1rem; }
+
+    .pr-lista { max-width: 780px; margin: 0 auto; }
+    .pr { border: 1px solid var(--warm); border-radius: 1.1rem; background: #fff;
+          margin-bottom: 0.75rem; overflow: hidden; transition: box-shadow .2s, border-color .2s; }
+    .pr.abierto { border-color: var(--sky-mid); box-shadow: 0 6px 22px var(--sombra); }
+    .pr-cab { display: flex; align-items: center; gap: 0.85rem; width: 100%; text-align: left;
+              background: none; border: none; padding: 1.05rem 1.15rem; cursor: pointer;
+              font-family: 'Raleway', sans-serif; color: var(--text); }
+    .pr-emoji { font-size: 1.55rem; flex-shrink: 0; }
+    .pr-cab-txt { flex: 1; min-width: 0; }
+    .pr-titulo { display: block; font-family: 'Playfair Display', serif; font-size: 1.05rem;
+                 line-height: 1.2; }
+    .pr-sub { display: block; font-size: 0.75rem; color: var(--text-mid); margin-top: 0.18rem; }
+    .pr-desde { flex-shrink: 0; text-align: right; font-family: 'Playfair Display', serif;
+                font-size: 1.05rem; color: var(--text); line-height: 1.1; }
+    .pr-desde small { display: block; font-family: 'Raleway', sans-serif; font-size: 0.58rem;
+                      letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-soft); }
+    .pr-flecha { flex-shrink: 0; color: var(--text-soft); font-size: 1.1rem; line-height: 1;
+                 transition: transform .2s; }
+    .pr.abierto .pr-flecha { transform: rotate(180deg); }
+
+    .pr-det { padding: 0 1.15rem 1.3rem; border-top: 1px solid var(--cream); }
+    .pr-fechas { font-size: 0.86rem; color: var(--text); margin: 1rem 0 0.4rem; font-weight: 500; }
+    .pr-meta { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; font-size: 0.8rem;
+               color: var(--text-mid); margin-bottom: 1rem; }
+    .pr-caja { background: var(--ivory); border-radius: 0.9rem; padding: 0.9rem 1rem; margin-bottom: 0.8rem; }
+    .pr-caja h4 { font-family: 'Raleway', sans-serif; font-size: 0.7rem; font-weight: 600;
+                  letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-soft);
+                  margin-bottom: 0.6rem; }
+    .pr-dia, .pr-item { font-size: 0.84rem; line-height: 1.55; color: var(--text); margin-bottom: 0.3rem; }
+    .pr-dia b { color: var(--sky-soft); margin-right: 0.35rem; }
+    .pr-fila { display: flex; justify-content: space-between; align-items: center; gap: 0.8rem;
+               padding: 0.5rem 0; border-bottom: 1px solid var(--warm); }
+    .pr-fila:last-child { border-bottom: none; }
+    .pr-f-nom { font-size: 0.86rem; font-weight: 500; }
+    .pr-f-sub { font-size: 0.72rem; color: var(--text-soft); font-weight: 400; }
+    .pr-f-precio { font-family: 'Playfair Display', serif; font-size: 1rem; white-space: nowrap; }
+    .pr-promo { font-size: 0.78rem; color: var(--gold); margin-bottom: 0.8rem; }
+    .pr-precio-row { display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; margin: 0.4rem 0 0.9rem; }
+    .pr-precio { font-family: 'Playfair Display', serif; font-size: 1.75rem; }
+    .pr-precio-nota { font-size: 0.76rem; color: var(--text-mid); }
+    .pr-nota { font-size: 0.8rem; color: var(--text-mid); line-height: 1.5; margin-bottom: 0.9rem; }
+    .pr-wa { display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
+             background: #25D366; color: #fff; text-decoration: none; font-size: 0.82rem;
+             font-weight: 600; padding: 0.75rem 1.4rem; border-radius: 100px; }
+    .pr-wa:hover { background: #1fb855; }
+    .pr-legal { font-size: 0.68rem; color: var(--text-soft); margin-top: 0.7rem; }
+    .pr-vacio { text-align: center; color: var(--text-mid); font-size: 0.9rem; padding: 2rem 1rem; }
+    .pr-pie { text-align: center; font-size: 0.85rem; color: var(--text-mid); margin-top: 2rem; }
+
+    @media (max-width: 560px) {
+      .pr-f-tit { min-width: 0; text-align: left; width: 100%; margin-bottom: 0.1rem; }
+      .pr-cab { padding: 0.9rem; gap: 0.6rem; }
+      .pr-emoji { font-size: 1.3rem; }
+      .pr-titulo { font-size: 0.95rem; }
+      .pr-desde { font-size: 0.95rem; }
+      .pr-wa { width: 100%; }
+    }
+
+
+    /* ── Temas de color. El destino define el color; Navidad y Año Nuevo lo pisan.
+         t1..t3 = el degradé del fondo cuando se abre · acc = el color que resalta
+         tint = el fondo suave del emoji cuando está cerrado ── */
+    .pr[data-tema="navidad"]  { --t1:#123d2e; --t2:#1c5a42; --t3:#8f1d2c;
+                                --acc:#d9b56a; --acc2:#f1d38f; --tint:#e8f0ea; --deco:"✦ ❄ ✦ ❄ ✦"; }
+    .pr[data-tema="oceano"]   { --t1:#0b3a4f; --t2:#0f6a80; --t3:#1b8a9a;
+                                --acc:#7fd4d4; --acc2:#b6ecea; --tint:#e4f2f4; --deco:"〰 ⚓ 〰 ⚓ 〰"; }
+    .pr[data-tema="disney"]   { --t1:#16325c; --t2:#24508f; --t3:#5a3f8f;
+                                --acc:#e8c46a; --acc2:#f6dfa4; --tint:#e8edf6; --deco:"✦ ✧ ✦ ✧ ✦"; }
+    .pr[data-tema="universal"]{ --t1:#123f3a; --t2:#1d6b5c; --t3:#3f8f57;
+                                --acc:#f0a84e; --acc2:#f8cb92; --tint:#e6f1ee; --deco:"◆ ◈ ◆ ◈ ◆"; }
+    .pr[data-tema="paris"]    { --t1:#4a2040; --t2:#7a3560; --t3:#b06a86;
+                                --acc:#f0b7c8; --acc2:#f8d9e2; --tint:#f7ebf0; --deco:"✦ ⚜ ✦ ⚜ ✦"; }
+    .pr[data-tema="anonuevo"] { --t1:#2b1b4a; --t2:#4a3a8f; --t3:#8f6ac0;
+                                --acc:#f2d98b; --acc2:#fbeec1; --tint:#eeeaf7; --deco:"✦ 🎆 ✦ 🎆 ✦"; }
+
+    /* cerrado: una barra de color a la izquierda y el emoji sobre su tono */
+    .pr { border-left: 4px solid var(--acc); }
+    .pr-emoji { background: var(--tint); border-radius: 50%; width: 2.5rem; height: 2.5rem;
+                display: inline-flex; align-items: center; justify-content: center;
+                font-size: 1.25rem; transition: background .2s; }
+    .pr-desde { color: var(--t2); }
+    .pr:hover { border-color: var(--acc); }
+
+    /* abierto: la tarjeta entera se pone de gala, como las de antes */
+    .pr.abierto { position: relative; overflow: hidden; color: #fff; border-color: var(--acc);
+                  background: linear-gradient(135deg, var(--t1) 0%, var(--t2) 58%, var(--t3) 135%);
+                  box-shadow: 0 18px 44px rgba(18,40,60,0.3); }
+    .pr.abierto::after { content: var(--deco); position: absolute; top: .7rem; right: -1rem;
+                         font-size: 1.15rem; letter-spacing: .55rem; color: rgba(255,255,255,.13);
+                         transform: rotate(8deg); pointer-events: none; }
+    .pr.abierto .pr-cab { color: #fff; position: relative; z-index: 1; }
+    .pr.abierto .pr-emoji { background: rgba(255,255,255,.16); }
+    .pr.abierto .pr-titulo { color: #fff; }
+    .pr.abierto .pr-sub { color: rgba(255,255,255,.72); }
+    .pr.abierto .pr-desde { color: var(--acc2); }
+    .pr.abierto .pr-desde small { color: rgba(255,255,255,.6); }
+    .pr.abierto .pr-flecha { color: var(--acc); }
+
+    .pr.abierto .pr-det { border-top-color: rgba(255,255,255,.18); position: relative; z-index: 1; }
+    .pr.abierto .pr-fechas { color: #fff; }
+    .pr.abierto .pr-meta { color: rgba(255,255,255,.85); }
+    .pr.abierto .pr-caja { background: rgba(255,255,255,.09); border: 1px solid rgba(255,255,255,.18); }
+    .pr.abierto .pr-caja h4 { color: var(--acc2); }
+    .pr.abierto .pr-dia, .pr.abierto .pr-item { color: rgba(255,255,255,.94); }
+    .pr.abierto .pr-dia b { color: var(--acc2); }
+    .pr.abierto .pr-fila { border-bottom-color: rgba(255,255,255,.16); }
+    .pr.abierto .pr-f-sub { color: rgba(255,255,255,.62); }
+    .pr.abierto .pr-f-precio { color: var(--acc2); }
+    .pr.abierto .pr-promo { color: var(--acc2); background: rgba(255,255,255,.1);
+                            border: 1px dashed var(--acc); border-radius: 12px;
+                            padding: .55rem .85rem; }
+    .pr.abierto .pr-precio { color: #fff; }
+    .pr.abierto .pr-precio-nota { color: rgba(255,255,255,.8); }
+    .pr.abierto .pr-nota { color: rgba(255,255,255,.88); }
+    .pr.abierto .pr-nota strong { color: var(--acc2); }
+    .pr.abierto .pr-legal { color: rgba(255,255,255,.55); }
+    .pr.abierto .pr-wa { background: var(--acc); color: var(--t1); font-weight: 700;
+                         letter-spacing: .04em; }
+    .pr.abierto .pr-wa:hover { background: var(--acc2); }
+
+  /* Enlaces a las páginas de cada destino */
+  .pr-destinos { max-width: 780px; margin: 2.4rem auto 0; padding-top: 1.8rem;
+                 border-top: 1px solid var(--warm); display: flex; flex-wrap: wrap;
+                 gap: .5rem; justify-content: center; align-items: center; }
+  .pr-destinos p { width: 100%; text-align: center; font-size: .78rem; color: var(--text-soft);
+                   font-style: italic; font-family: 'Playfair Display', serif; margin-bottom: .5rem; }
+  .pr-destinos a { text-decoration: none; color: var(--text-mid); font-size: .82rem;
+                   padding: .5rem 1rem; border: 1px solid var(--warm); border-radius: 100px;
+                   background: #fff; transition: border-color .12s, color .12s; }
+  .pr-destinos a:hover { border-color: var(--sky-mid); color: var(--text); }
