@@ -35,18 +35,13 @@
     }
     return false;
   }
-  /* En la home aparece pasados 500 px. En páginas cortas —los juegos— ese
-     umbral no se alcanza nunca, así que se adapta a lo que se puede scrollear. */
-  function umbral(){
-    var scrolleable = document.body.scrollHeight - window.innerHeight;
-    return Math.min(500, Math.max(120, scrolleable * 0.35));
-  }
+  /* El botón está SIEMPRE a la vista. Cuando hay otro botón de WhatsApp en
+     pantalla —el del formulario o el de un presupuesto abierto— se achica a
+     solo el ícono, para no taparlo ni competir con él. */
   function revisar(){
-    var scrolleable = document.body.scrollHeight - window.innerHeight;
-    // si la página entra entera en la pantalla no hay scroll que esperar
-    var corresponde = scrolleable < 60 ? true : window.scrollY > umbral();
-    if (corresponde && !otroCtaALaVista()) b.classList.add('visible');
-    else b.classList.remove('visible');
+    b.classList.add('visible');
+    if (otroCtaALaVista()) b.classList.add('compacto');
+    else b.classList.remove('compacto');
   }
   document.addEventListener('click', function(){ setTimeout(revisar, 60); }, true);
   window.addEventListener('scroll', revisar, { passive: true });

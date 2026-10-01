@@ -144,3 +144,7 @@
                    padding: .5rem 1rem; border: 1px solid var(--warm); border-radius: 100px;
                    background: #fff; transition: border-color .12s, color .12s; }
   .pr-destinos a:hover { border-color: var(--sky-mid); color: var(--text); }
+
+  /* Arriba de los filtros no lleva línea: viene pegado al encabezado */
+  .pr-destinos.arriba { margin: 0 auto 2.2rem; padding-top: 0; border-top: none; }
+  .pr-destinos.arriba p { font-size: .8rem; }
