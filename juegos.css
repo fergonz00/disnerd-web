@@ -127,3 +127,11 @@
                 margin-top: 1rem; color: var(--text-mid); }
   .sh-aviso { font-size: .72rem; color: var(--text-soft); line-height: 1.5; margin-top: 2rem;
               padding-top: 1rem; border-top: 1px solid var(--warm); }
+
+  /* ── El sombrero dibujado, en lugar del emoji de galera ── */
+  img.sh-hat { width: 5.4rem; height: 5.4rem; display: inline-block;
+               animation: shWobble 2.4s ease-in-out infinite;
+               filter: drop-shadow(0 6px 10px rgba(60,50,40,.18)); }
+  img.m-emoji { width: 2.1rem; height: 2.1rem; flex-shrink: 0; }
+  .ico-sombrero { width: 1.25em; height: 1.25em; vertical-align: -.3em; flex-shrink: 0; }
+  .sh-susurro .ico-sombrero { vertical-align: -.25em; }

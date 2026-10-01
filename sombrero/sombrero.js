@@ -337,7 +337,7 @@ function shRenderQ(){
   let susurro = '';
   if(s.i===7 || s.i===14){
     const lider = shPuntuar(s.pts)[0].k;
-    susurro = `<div class="sh-susurro fade-in">🎩 <i>«${SH_CASAS[lider].susurros[s.i===7?0:1]}»</i></div>`;
+    susurro = `<div class="sh-susurro fade-in"><img class="ico-sombrero" src="/sombrero/sombrero-128.png" alt="" width="128" height="128"> <i>«${SH_CASAS[lider].susurros[s.i===7?0:1]}»</i></div>`;
   }
   const ops = shMezclar(q.ops.map((o,idx)=>({o,idx})));
   document.getElementById('sh-body').innerHTML = susurro +
@@ -377,7 +377,7 @@ function shDuda(k1, k2){
   const par = shMezclar([k1,k2]);
   document.getElementById('sh-duda').innerHTML = `
     <div class="fade-in" style="text-align:center">
-      <div class="sh-hat">🎩</div>
+      <img class="sh-hat" src="/sombrero/sombrero-256.png" alt="" width="256" height="256">
       <p class="sh-voz">«No me decido… Tenés tanto de ${SH_CASAS[k1].nombre} como de ${SH_CASAS[k2].nombre}. Esta vez, tu elección también cuenta.»</p>
       <p style="font-weight:700;margin:1.2rem 0 .8rem">¿Adónde querés ir?</p>
       ${par.map(k=>`<button class="modo-card" style="background:linear-gradient(135deg,${SH_CASAS[k].grad[0]},${SH_CASAS[k].grad[1]})" onclick="shResultado('${k}','${k===k1?k2:k1}',true)">
