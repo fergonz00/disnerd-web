@@ -71,6 +71,23 @@ const PRESUPUESTOS = [
   },
 
   {
+    id: 'disney-enero-chicos', tema: 'disney', destino: 'disney', quienes: 'familia', anio: 2027,
+    emoji: '👨‍👩‍👧‍👦', badge: 'Nuevo',
+    titulo: 'Disney con chicos · All Star Movies',
+    cuando: 'Ene 2027', personas: '2 adultos + 2 menores', noches: '4 noches', desde: 2900,
+    fechas: 'Del 4 al 8 de enero 2027',
+    meta: ['🌙 4 noches · 2 adultos + 2 menores (6 y 10 años)'],
+    incluye: ['🏨 Hotel Disney All Star Movies (el más económico y súper temático)',
+              '🎟️ 3 días de parques Disney base (un parque por día)',
+              '🗺️ Sofi haría Magic Kingdom, Epcot y Hollywood Studios'],
+    precio: 'USD 2.900', precioNota: 'total por los cuatro · sin plan de comidas',
+    comidas: [['Quick Service', 'USD 3.757'], ['Dining Plan', 'USD 4.226']],
+    nota: 'No hay costo extra por reservar conmigo, relax! ✨',
+    cta: 'Quiero este paquete',
+    wa: 'Hola Sofi! Me interesa el paquete Disney en familia del 4 al 8 de enero 2027'
+  },
+
+  {
     id: 'disney-enero-familia', tema: 'disney', destino: 'disney', quienes: 'familia', anio: 2027,
     emoji: '👨‍👩‍👦', badge: 'Nuevo',
     titulo: 'Disney en familia · All Star Movies',
@@ -194,6 +211,23 @@ const PRESUPUESTOS = [
     comidas: [['Quick Service', 'USD 7.587'], ['Dining Plan', 'USD 8.626']],
     cta: 'Quiero este paquete',
     wa: 'Hola Sofi! Me interesa el paquete Disney en familia del 14 al 21 de mayo 2027'
+  },
+
+  {
+    id: 'paris-septiembre', tema: 'paris', destino: 'paris', quienes: 'pareja', anio: 2027,
+    emoji: '🩷', badge: 'Nuevo',
+    titulo: 'Disneyland París · Septiembre 2027',
+    cuando: 'Sep 2027', personas: '2 adultos', noches: '2 noches', desde: 1566,
+    fechas: 'Del 7 al 9 de septiembre 2027',
+    meta: ['🌙 2 noches · 2 adultos'],
+    incluye: ['🏨 Hotel Cheyenne (temático de Toy Story)',
+              '🎟️ Tickets parques · entrada ilimitada desde el día de check in a check out incluido',
+              '🥐 Desayuno en los parques',
+              '🥘 1 comida por noche FULL · el plan que incluye todos los restaurantes temáticos'],
+    precio: 'USD 1.566', precioNota: 'total por dos adultos',
+    nota: 'No hay costo extra por reservar conmigo, relax! ✨',
+    cta: 'Quiero este paquete',
+    wa: 'Hola Sofi! Me interesa Disneyland París del 7 al 9 de septiembre 2027'
   },
 
   {
