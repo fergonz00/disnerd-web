@@ -80,3 +80,6 @@
       transition: background 0.2s;
     }
     .cq-submit:hover { background: var(--sky-mid); filter: brightness(0.92); }
+
+    .cq-aclara { font-size: 0.72rem; line-height: 1.5; color: var(--text-soft);
+                 text-align: center; margin-top: 0.8rem; }
