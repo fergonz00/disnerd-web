@@ -60,13 +60,15 @@ const FORM_HTML = `
 const MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio',
                'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
 
-/* Los meses se arman solos desde el mes que viene, así la lista nunca queda vieja */
+/* Los meses se arman solos desde el mes que viene, así la lista nunca queda
+   vieja. Llegan hasta 18 meses adelante: un año para planearlo con tiempo,
+   más medio año de aire. Más lejos que eso no hay precio que valga. */
 function llenarCuando() {
   const sel = document.getElementById('cq-cuando');
   if (!sel) return;
   const hoy = new Date();
   let html = '<option value="">Seleccioná</option>';
-  for (let i = 1; i <= 27; i++) {
+  for (let i = 1; i <= 18; i++) {
     const d = new Date(hoy.getFullYear(), hoy.getMonth() + i, 1);
     const nombre = MESES[d.getMonth()];
     html += '<option>' + nombre.charAt(0).toUpperCase() + nombre.slice(1) +
