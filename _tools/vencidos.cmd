@@ -4,7 +4,10 @@ REM vencieron (el dia del check in) y avisa a Fer por WhatsApp. Si no hay nada
 REM que hacer no molesta a nadie; el dia 1 de cada mes avisa igual, para que el
 REM silencio no se confunda con "se murio la tarea".
 REM
-REM Tarea programada: "Disnerd - presupuestos vencidos", 09:20 todos los dias.
+REM Tarea programada: "Disnerd - presupuestos vencidos", 09:20 todos los dias, con
+REM "iniciar lo antes posible si se paso la hora": si la PC estaba apagada, corre
+REM al prenderla. No importa cuantos dias falte: compara contra la fecha de hoy,
+REM no contra la ultima corrida.
 REM
 REM OJO: hay que apuntar al python del venv. El Programador de tareas no hereda
 REM el PATH y "python" le resuelve al del sistema.
