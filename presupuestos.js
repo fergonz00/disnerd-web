@@ -12,7 +12,9 @@
    quienes: solo | pareja | familia | grupo
    desde:   el numero mas bajo, para ordenar y mostrar "desde USD ..."
    tema:    el color. Lo define el DESTINO (disney | universal | oceano | paris),
-            salvo los de temporada que lo pisan: navidad | anonuevo.
+            salvo los que lo pisan: navidad | anonuevo | alaska.
+            Dos tarjetas seguidas nunca muestran el mismo color: cuando se
+            repite, pColores() usa el segundo tono del destino (disney-b, etc).
 */
 
 const PRESUPUESTOS = [
@@ -37,7 +39,7 @@ const PRESUPUESTOS = [
   },
 
   {
-    id: 'crucero-alaska', tema: 'oceano', destino: 'crucero', quienes: 'familia', anio: 2027,
+    id: 'crucero-alaska', tema: 'alaska', destino: 'crucero', quienes: 'familia', anio: 2027,
     emoji: '🏔️', badge: 'Vacaciones de invierno',
     titulo: 'Crucero Alaska en familia · Disney Wonder',
     cuando: 'Jul 2027', personas: '2 adultos + 2 menores', noches: '7 noches', desde: 7931,
@@ -397,6 +399,22 @@ function pDetalle(p) {
   return h;
 }
 
+/* Dos tarjetas del mismo color pegadas se leen como una sola mancha. El orden
+   lo manda el precio (de menor a mayor), asi que el color se resuelve al pintar:
+   si una repite el color de la de arriba, va en el segundo tono de ese destino. */
+/* Cada destino tiene un segundo tono, para cuando le tocan dos seguidas. */
+var TEMA_ALTERNO = { disney: 'disney-b', universal: 'universal-b', paris: 'paris-b' };
+
+function pColores(lista) {
+  var anterior = null;
+  return lista.map(function (p) {
+    var color = p.tema || 'disney';
+    if (color === anterior && TEMA_ALTERNO[color]) color = TEMA_ALTERNO[color];
+    anterior = color;
+    return { p: p, color: color };
+  });
+}
+
 function pRender() {
   var lista = PRESUPUESTOS.filter(function (p) {
     if (SOLO) return p.destino === SOLO;
@@ -404,6 +422,8 @@ function pRender() {
            (!filtroActual.quienes || p.quienes === filtroActual.quienes) &&
            (!filtroActual.anio || String(p.anio) === filtroActual.anio);
   }).sort(function (a, b) { return a.desde - b.desde; });
+
+  var pintados = pColores(lista);
 
   var cont = document.getElementById('pr-lista');
   var cuenta = document.getElementById('pr-cuenta');
@@ -421,9 +441,10 @@ function pRender() {
       : 'Mostrando ' + lista.length + ' de ' + PRESUPUESTOS.length;
   }
 
-  cont.innerHTML = lista.map(function (p) {
+  cont.innerHTML = pintados.map(function (x) {
+    var p = x.p;
     return '<article class="pr' + (SOLO ? ' abierto' : '') + '" data-tema="' +
-      (p.tema || 'disney') + '" id="p-' + p.id + '">' +
+      x.color + '" id="p-' + p.id + '">' +
       '<button class="pr-cab" aria-expanded="' + (SOLO ? 'true' : 'false') + '" data-id="' + p.id + '">' +
         '<span class="pr-emoji">' + p.emoji + '</span>' +
         '<span class="pr-cab-txt">' +

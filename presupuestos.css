@@ -80,12 +80,20 @@
                                 --acc:#d9b56a; --acc2:#f1d38f; --tint:#e8f0ea; --deco:"✦ ❄ ✦ ❄ ✦"; }
     .pr[data-tema="oceano"]   { --t1:#0b3a4f; --t2:#0f6a80; --t3:#1b8a9a;
                                 --acc:#7fd4d4; --acc2:#b6ecea; --tint:#e4f2f4; --deco:"〰 ⚓ 〰 ⚓ 〰"; }
+    .pr[data-tema="alaska"]   { --t1:#0e2a3f; --t2:#2f7fa6; --t3:#9fd4e3;
+                                --acc:#a9e0f0; --acc2:#dcf3fa; --tint:#e7f4f9; --deco:"❄ 🏔 ❄ 🏔 ❄"; }
     .pr[data-tema="disney"]   { --t1:#16325c; --t2:#24508f; --t3:#5a3f8f;
                                 --acc:#e8c46a; --acc2:#f6dfa4; --tint:#e8edf6; --deco:"✦ ✧ ✦ ✧ ✦"; }
+    .pr[data-tema="disney-b"] { --t1:#1f3b86; --t2:#3f7ad1; --t3:#86c6f0;
+                                --acc:#f2d58c; --acc2:#f9e9bd; --tint:#eaf0fb; --deco:"✧ ✦ ✧ ✦ ✧"; }
     .pr[data-tema="universal"]{ --t1:#123f3a; --t2:#1d6b5c; --t3:#3f8f57;
                                 --acc:#f0a84e; --acc2:#f8cb92; --tint:#e6f1ee; --deco:"◆ ◈ ◆ ◈ ◆"; }
+    .pr[data-tema="universal-b"]{ --t1:#1d3a1f; --t2:#3d7a33; --t3:#7fb04e;
+                                --acc:#f5c04e; --acc2:#fade9b; --tint:#ecf3e6; --deco:"◈ ◆ ◈ ◆ ◈"; }
     .pr[data-tema="paris"]    { --t1:#4a2040; --t2:#7a3560; --t3:#b06a86;
                                 --acc:#f0b7c8; --acc2:#f8d9e2; --tint:#f7ebf0; --deco:"✦ ⚜ ✦ ⚜ ✦"; }
+    .pr[data-tema="paris-b"]  { --t1:#5c2030; --t2:#9c4254; --t3:#d08a92;
+                                --acc:#f6c3a8; --acc2:#fbe0d1; --tint:#f9eeea; --deco:"⚜ ✦ ⚜ ✦ ⚜"; }
     .pr[data-tema="anonuevo"] { --t1:#2b1b4a; --t2:#4a3a8f; --t3:#8f6ac0;
                                 --acc:#f2d98b; --acc2:#fbeec1; --tint:#eeeaf7; --deco:"✦ 🎆 ✦ 🎆 ✦"; }
 
