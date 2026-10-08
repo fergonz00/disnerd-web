@@ -37,6 +37,28 @@ const PRESUPUESTOS = [
   },
 
   {
+    id: 'crucero-alaska', tema: 'oceano', destino: 'crucero', quienes: 'familia', anio: 2027,
+    emoji: '🏔️', badge: 'Vacaciones de invierno',
+    titulo: 'Crucero Alaska en familia · Disney Wonder',
+    cuando: 'Jul 2027', personas: '2 adultos + 2 menores', noches: '7 noches', desde: 7931,
+    fechas: 'Del 19 al 26 de julio 2027',
+    vence: '2027-07-19',
+    meta: ['🚢 Barco Disney Wonder', '📍 Desde Vancouver, Canadá 🇨🇦',
+           '🌙 7 noches · 2 adultos + 2 menores (9 y 11 años)'],
+    itinerario: [['Día 1', 'Abordaje en Vancouver'], ['Día 2', 'Día en el mar'],
+                 ['Día 3', 'Observación de glaciares'], ['Día 4', 'Skagway, Alaska'],
+                 ['Día 5', 'Juneau, Alaska'], ['Día 6', 'Ketchikan, Alaska'],
+                 ['Día 7', 'Día en el mar'], ['Día 8', 'Desembarque en Vancouver']],
+    tabla: { titulo: '🛏️ Camarotes · 2 adultos + 2 menores', filas: [
+      ['Inside', 'sin vista', 'desde USD 7.931'],
+      ['Oceanview', 'vista al mar', 'desde USD 9.770'],
+      ['Verandah', 'con balcón', 'desde USD 15.448']] },
+    nota: '<strong>Valores totales por los cuatro.</strong> Lo único que no está incluido es el alcohol y las propinas (aprox. USD 17 por persona por noche). 🇨🇦 Sofi recomienda quedarse unos días en Vancouver: por lo menos 1 noche antes de abordar para tener margen, y unos días más después, porque es una ciudad muy linda.',
+    cta: 'Quiero este crucero',
+    wa: 'Hola Sofi! Me interesa el crucero de Alaska en el Disney Wonder, del 19 al 26 de julio 2027'
+  },
+
+  {
     id: 'crucero-destiny', tema: 'oceano', destino: 'crucero', quienes: 'familia', anio: 2027,
     emoji: '🚢', badge: '¡El barco nuevo!',
     titulo: 'Crucero Disney Destiny',
