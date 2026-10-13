@@ -111,6 +111,17 @@ def main():
     quedan = len(presupuestos) - len(vencidos)
     detalle.append("quedan %d presupuestos publicados" % quedan)
 
+    # /cuanto-cuesta-ir-a-disney/ tiene los precios escritos en el HTML para que
+    # Google los lea de una. Si una baja los movio, la pagina quedo mintiendo y
+    # hay que arreglarla a mano: el numero suele venir con una frase alrededor.
+    try:
+        import precios_pagina
+        if precios_pagina.main() != 0:
+            mirar.append("la pagina /cuanto-cuesta-ir-a-disney/ quedo con precios viejos — "
+                         "hay que actualizarla a mano")
+    except Exception as e:
+        mirar.append("no pude chequear la pagina de precios: " + str(e)[:90])
+
     # El silencio no puede significar "todo bien": el dia 1 avisa aunque no haya novedad.
     novedad = bool(hecho or mirar) or hoy.day == 1
     print(("[dry] " if dry else "") + "hoy=%s bajas=%d porvencer=%d quedan=%d aviso=%s%s"
