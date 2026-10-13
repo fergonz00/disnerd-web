@@ -48,13 +48,21 @@
   .dst-cab h1 em { font-style: italic; color: var(--sky-soft); }
   .dst-cab p { font-size: .95rem; line-height: 1.65; color: var(--text-mid); max-width: 540px;
                margin: 0 auto; }
-  .dst-info { max-width: 720px; margin: 3rem auto 0; padding: 2.4rem 1.5rem 0;
-              border-top: 1px solid var(--warm); }
-  .dst-info h2 { font-family: 'Playfair Display', serif; font-size: 1.45rem; font-weight: 400;
-                 margin: 2rem 0 .7rem; }
-  .dst-info h2:first-child { margin-top: 0; }
-  .dst-info h2 em { font-style: italic; color: var(--sky-soft); }
+  /* Se abren al tocarlos, igual que los presupuestos de abajo */
+  .dst-info { max-width: 780px; margin: 0 auto 2rem; padding: 0 1.2rem; }
+  .dst-info details { border: 1px solid var(--warm); border-radius: 1.1rem; background: #fff;
+                      margin-bottom: .6rem; overflow: hidden; transition: border-color .2s; }
+  .dst-info details[open] { border-color: var(--sky-mid); }
+  .dst-info summary { list-style: none; cursor: pointer; padding: .95rem 2.6rem .95rem 1.1rem;
+                      font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--text);
+                      position: relative; }
+  .dst-info summary::-webkit-details-marker { display: none; }
+  .dst-info summary::after { content: '+'; position: absolute; right: 1.1rem; top: .8rem;
+                             font-size: 1.3rem; color: var(--sky-soft); line-height: 1; }
+  .dst-info details[open] summary::after { content: '–'; }
+  .dst-info details > div { padding: 0 1.1rem 1.1rem; }
   .dst-info p { font-size: .92rem; line-height: 1.7; color: var(--text-mid); margin-bottom: .8rem; }
+  .dst-info p:last-child { margin-bottom: 0; }
   .dst-info b { color: var(--text); font-weight: 600; }
   .dst-destinos { list-style: none; }
   .dst-destinos li { position: relative; padding-left: 1.6rem; margin-bottom: .8rem;
@@ -95,40 +103,54 @@
     <p class="pr-cuenta" id="pr-cuenta"></p>
   </header>
 
+  <div class="dst-info">
+    <details>
+      <summary>¿Qué está incluido y qué no?</summary>
+      <div>
+        <p>En un crucero Disney ya está casi todo pago antes de subir: las comidas en los salones
+           principales, el buffet, la comida rápida, el helado, los shows del teatro, las piletas y
+           toboganes, los clubes de chicos y el gimnasio. El room service al camarote también está
+           incluido y funciona las 24 horas — solo se pagan aparte el alcohol, los cafés especiales
+           y las gaseosas en lata.</p>
+        <p>Lo que no entra es el alcohol y las propinas: unos <b>USD 17 por persona y por noche</b>,
+           que se cargan solas a tu cuenta de a bordo y se pagan al final. Los restaurantes de solo
+           adultos tienen un costo aparte y son de las reservas que más rápido se agotan, así que
+           conviene sacarlas apenas se abre la ventana.</p>
+      </div>
+    </details>
+    <details>
+      <summary>¿Cómo se come a bordo?</summary>
+      <div>
+        <p>Cenás con el sistema de Rotational Dining: cada noche cambiás de salón, pero te acompañan
+           siempre los mismos mozos, que te van conociendo y se acuerdan de tus gustos y de tus
+           alergias. Tenés tu horario fijo, siempre a la misma hora. Los salones principales ya vienen
+           incluidos y asignados a tu familia.</p>
+      </div>
+    </details>
+    <details>
+      <summary>¿A dónde van estos cruceros?</summary>
+      <div>
+        <ul class="dst-destinos">
+          <li><b>Alaska</b>, saliendo siempre de Vancouver: el glaciar, Skagway, Juneau, Icy Strait,
+              Sitka y Ketchikan.</li>
+          <li><b>Bahamas</b>, saliendo de Fort Lauderdale u Orlando: Nassau, Castaway Cay y Lookout
+              Cay, los destinos privados de Disney.</li>
+          <li><b>California y Baja</b>, saliendo de San Diego: Ensenada, Catalina, Cabo y Puerto
+              Vallarta.</li>
+        </ul>
+      </div>
+    </details>
+    <details>
+      <summary>¿Cómo se arma el precio?</summary>
+      <div>
+        <p>Cambia según el camarote: interior, con ventana o con balcón. Por eso cada presupuesto
+           de acá abajo muestra el valor de cada tipo, y no un precio único.</p>
+      </div>
+    </details>
+  </div>
+
   <div class="pr-lista" id="pr-lista"></div>
 </div>
-
-<section class="dst-info">
-  <h2>Cómo se arma el <em>precio</em></h2>
-  <p>Cambia según el camarote: interior, con ventana o con balcón. Por eso los presupuestos
-     de acá arriba muestran el valor de cada tipo, y no un precio único.</p>
-
-  <h2>Qué está <em>incluido</em> y qué no</h2>
-  <p>En un crucero Disney ya está casi todo pago antes de subir: las comidas en los salones
-     principales, el buffet, la comida rápida, el helado, los shows del teatro, las piletas y
-     toboganes, los clubes de chicos y el gimnasio. El room service al camarote también está
-     incluido y funciona las 24 horas — solo se pagan aparte el alcohol, los cafés especiales
-     y las gaseosas en lata.</p>
-  <p>Lo que no entra es el alcohol y las propinas: unos <b>USD 17 por persona y por noche</b>,
-     que se cargan solas a tu cuenta de a bordo y se pagan al final. Los restaurantes de solo
-     adultos tienen un costo aparte y son de las reservas que más rápido se agotan, así que
-     conviene sacarlas apenas se abre la ventana.</p>
-
-  <h2>Cómo se <em>come</em> a bordo</h2>
-  <p>Cenás con el sistema de Rotational Dining: cada noche cambiás de salón, pero te acompañan
-     siempre los mismos mozos, que te van conociendo y se acuerdan de tus gustos y de tus
-     alergias. Tenés tu horario fijo, siempre a la misma hora. Los salones principales ya vienen
-     incluidos y asignados a tu familia.</p>
-
-  <h2>A dónde te <em>llevo</em></h2>
-  <ul class="dst-destinos">
-    <li><b>Alaska</b>, saliendo siempre de Vancouver: el glaciar, Skagway, Juneau, Icy Strait,
-        Sitka y Ketchikan.</li>
-    <li><b>Bahamas</b>, saliendo de Fort Lauderdale u Orlando: Nassau, Castaway Cay y Lookout Cay,
-        los destinos privados de Disney.</li>
-    <li><b>California y Baja</b>, saliendo de San Diego: Ensenada, Catalina, Cabo y Puerto Vallarta.</li>
-  </ul>
-</section>
 
 <section class="dst-sep" id="cotiza">
   <h2>¿Ninguno te <em>cierra</em>?</h2>
@@ -153,5 +175,18 @@
 <script src="/formulario.js"></script>
 <script src="/wa-flotante.js"></script>
 <script src="/juegos-medicion.js"></script>
+<script>
+/* Se mide cuando alguien abre una de las preguntas: contra las visitas de la
+   pagina dice si el texto le sirve a la gente o le estorba. */
+document.querySelectorAll('.dst-info details').forEach(function (d) {
+  d.addEventListener('toggle', function () {
+    if (!d.open || typeof gtag !== 'function') return;
+    gtag('event', 'ver_info_destino', {
+      destino: window.PR_DESTINO || '(sin destino)',
+      item: (d.querySelector('summary') || {}).textContent.trim()
+    });
+  });
+});
+</script>
 </body>
 </html>
