@@ -1,0 +1,25 @@
+/* Las preguntas que se abren al tocarlas, arriba de los presupuestos.
+   Las usan las páginas por destino. Mismo gesto que los presupuestos de abajo. */
+
+  .dst-info { max-width: 780px; margin: 0 auto 2rem; padding: 0 1.2rem; }
+  .dst-info details { border: 1px solid var(--warm); border-radius: 1.1rem; background: #fff;
+                      margin-bottom: .6rem; overflow: hidden; transition: border-color .2s; }
+  .dst-info details[open] { border-color: var(--sky-mid); }
+  .dst-info summary { list-style: none; cursor: pointer; padding: .95rem 2.6rem .95rem 1.1rem;
+                      font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--text);
+                      position: relative; }
+  .dst-info summary::-webkit-details-marker { display: none; }
+  .dst-info summary::after { content: '+'; position: absolute; right: 1.1rem; top: .8rem;
+                             font-size: 1.3rem; color: var(--sky-soft); line-height: 1; }
+  .dst-info details[open] summary::after { content: '–'; }
+  .dst-info details > div { padding: 0 1.1rem 1.1rem; }
+  .dst-info p { font-size: .92rem; line-height: 1.7; color: var(--text-mid); margin-bottom: .8rem; }
+  .dst-info p:last-child { margin-bottom: 0; }
+  .dst-info b { color: var(--text); font-weight: 600; }
+  .dst-destinos { list-style: none; }
+  .dst-destinos li { position: relative; padding-left: 1.6rem; margin-bottom: .8rem;
+                     font-size: .92rem; line-height: 1.7; color: var(--text-mid); }
+  .dst-destinos li:last-child { margin-bottom: 0; }
+  .dst-destinos li::before { content: ''; position: absolute; left: 0; top: .6rem;
+                             width: .5rem; height: .5rem; border-radius: 50%;
+                             background: var(--sky-soft); }
