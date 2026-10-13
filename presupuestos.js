@@ -23,10 +23,10 @@ const PRESUPUESTOS = [
     id: 'crucero-navidad', tema: 'navidad', destino: 'crucero', quienes: 'pareja', anio: 2026,
     emoji: '🎄', badge: 'Presupuesto actualizado',
     titulo: 'Crucero Disney temático de Navidad',
-    cuando: 'Nov 2026', personas: '2 adultos', noches: '4 noches', desde: 1636,
+    cuando: 'Nov 2026', personas: '2 adultos', noches: '3 noches', desde: 1636,
     fechas: 'Del 20 al 24 de noviembre 2026',
     vence: '2026-11-20',
-    meta: ['🚢 Barco Disney Dream', '📍 Desde Miami · Fort Lauderdale', '🌙 4 noches · 2 adultos'],
+    meta: ['🚢 Barco Disney Dream', '📍 Desde Miami · Fort Lauderdale', '🌙 3 noches · 2 adultos'],
     itinerario: [['Día 1', 'Abordaje Fort Lauderdale'], ['Día 2', 'Nassau, Bahamas'],
                  ['Día 3', 'Isla de Disney'], ['Día 4', 'Desembarque']],
     tabla: { titulo: '🛏️ Camarotes · 2 adultos', filas: [
