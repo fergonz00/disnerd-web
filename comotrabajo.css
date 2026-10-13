@@ -1,0 +1,50 @@
+/* Sección "Cómo trabajo": por qué es gratis, qué hace Sofi y cómo funciona.
+   La usa la home. Mismos tokens de color y tipografías que el resto. */
+
+    .ct-remate { font-family: 'Playfair Display', serif; font-style: italic;
+                 font-size: 1.05rem; color: var(--text); margin-top: 0.9rem; }
+
+    /* ── Lo que hace Sofi ── */
+    .ct-lista { max-width: 720px; margin: 2.4rem auto 0; padding: 0 1.5rem; list-style: none; }
+    .ct-lista li { position: relative; padding: 0 0 0 1.9rem; margin-bottom: 1.15rem;
+                   font-size: 0.92rem; line-height: 1.65; color: var(--text-mid); }
+    .ct-lista li::before { content: ''; position: absolute; left: 0; top: 0.55rem;
+                           width: 0.55rem; height: 0.55rem; border-radius: 50%;
+                           background: var(--sky-soft); }
+    .ct-lista b { color: var(--text); font-weight: 600; }
+
+    /* El de los descuentos: es el que más convence, va con su propio recuadro */
+    .ct-lista li.ct-destaca { background: #fff; border: 1px solid var(--sky-mid);
+                              border-radius: 1rem; padding: 1rem 1.1rem 1rem 2.2rem;
+                              margin: 1.4rem 0; box-shadow: 0 4px 16px var(--sombra); }
+    .ct-lista li.ct-destaca::before { left: 1.1rem; top: 1.5rem; }
+
+    /* ── Los tres pasos ── */
+    .ct-pasos { max-width: 720px; margin: 2.6rem auto 0; padding: 0 1.5rem; }
+    .ct-pasos h3 { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 600;
+                   text-align: center; color: var(--text); margin-bottom: 1.4rem; }
+    .ct-pasos ol { list-style: none; counter-reset: paso; display: grid; gap: 0.8rem; }
+    .ct-pasos li { counter-increment: paso; position: relative; background: var(--ivory);
+                   border: 1px solid var(--warm); border-radius: 1rem;
+                   padding: 1rem 1.1rem 1rem 3.4rem; font-size: 0.9rem; line-height: 1.6;
+                   color: var(--text-mid); }
+    .ct-pasos li::before { content: counter(paso); position: absolute; left: 1.1rem; top: 0.95rem;
+                           width: 1.7rem; height: 1.7rem; border-radius: 50%;
+                           background: var(--sky-soft); color: var(--ivory);
+                           font-family: 'Playfair Display', serif; font-size: 0.95rem;
+                           display: flex; align-items: center; justify-content: center; }
+    .ct-pasos li b { color: var(--text); font-weight: 600; }
+
+    .ct-salvedad { font-size: 0.8rem; font-style: italic; color: var(--text-soft);
+                   text-align: center; line-height: 1.6; margin-top: 1.1rem; }
+
+    /* ── Las certificaciones ── */
+    .ct-cert { max-width: 720px; margin: 2.4rem auto 0; padding: 0 1.5rem;
+               text-align: center; font-size: 0.85rem; line-height: 1.7; color: var(--text-mid); }
+    .ct-cert b { color: var(--text); font-weight: 600; }
+
+    @media (min-width: 720px) {
+      .ct-pasos ol { grid-template-columns: repeat(3, 1fr); }
+      .ct-pasos li { padding: 2.9rem 1.1rem 1.2rem; }
+      .ct-pasos li::before { top: 1.1rem; left: 1.1rem; }
+    }
