@@ -857,15 +857,17 @@ function renderResultado(){
         <div class="res-tag">${g.p.tag}</div>
       </div>
       <div class="res-desc">${g.p.desc}</div>
+      <div class="cta-sofi">
+        <div class="cta-tit">¿Y si conocés a <em>${g.p.nombre}</em> en persona?</div>
+        <p>Soy Sofi, agente de viajes especializada en Disney y Universal. Te lo cotizo gratis y sin compromiso.</p>
+        <a href="https://wa.me/5491132924274?text=${encodeURIComponent(`Hola Sofi! Hice el test de tu página (me salió ${g.p.nombre} ${g.p.emoji}) y quiero cotizar mi viaje a Disney`)}" target="_blank">Cotizá tu viaje gratis 💬</a>
+      </div>
       <div class="res-btns">
-        <button class="btn-again" onclick="startQuiz('${estado.modo}')">Jugar de nuevo 🔄</button>
         <button class="btn-share" onclick="compartir()">Compartir ✨</button>
       </div>
-      <button class="btn-menu" onclick="resetQuiz()">← Elegir otro test</button>
-      <div class="cta-sofi">
-        <div class="cta-tit">¿Y si lo vivís <em>en Disney</em>?</div>
-        <p>Soy Sofi, agente de viajes especializada en Disney y Universal. Contame tu viaje soñado y te lo cotizo gratis.</p>
-        <a href="https://wa.me/5491132924274?text=${encodeURIComponent(`Hola Sofi! Hice el test de tu página (me salió ${g.p.nombre} ${g.p.emoji}) y quiero cotizar mi viaje a Disney`)}" target="_blank">Cotizá tu viaje gratis 💬</a>
+      <div class="res-btns res-pie">
+        <button class="btn-again" onclick="startQuiz('${estado.modo}')">Jugar de nuevo 🔄</button>
+        <button class="btn-again" onclick="resetQuiz()">Elegir otro test</button>
       </div>
     </div>`;
   cont.dataset.ganador = JSON.stringify({nombre:g.p.nombre, pct:g.pct, emoji:g.p.emoji, titulo:m.titulo});

@@ -411,15 +411,17 @@ function shResultado(k, k2, elegida){
         <div><span>Compartís casa con</span>${c.famosos}</div>
       </div>
       <p class="sh-disnerd">🧣 Cuando vayas a The Wizarding World of Harry Potter en Universal, ya sabés de qué color es tu bufanda.</p>
+      <div class="cta-sofi">
+        <div class="cta-tit">¿Y si usás tu bufanda de <em>${c.nombre}</em> en Hogwarts?</div>
+        <p>Soy Sofi, agente de viajes especializada en Disney y Universal. Te lo cotizo gratis y sin compromiso.</p>
+        <a href="https://wa.me/5491132924274?text=${encodeURIComponent(`Hola Sofi! Hice el test del Sombrero en tu página (me tocó ${c.nombre} ${c.emoji}) y quiero cotizar mi viaje`)}" target="_blank">Cotizá tu viaje gratis 💬</a>
+      </div>
       <div class="res-btns">
-        <button class="btn-again" onclick="shStart()">Jugar de nuevo 🔄</button>
         <button class="btn-share" onclick="shCompartir('${k}')">Compartir ✨</button>
       </div>
-      <button class="btn-menu" onclick="shVolverIntro()">← Volver al principio</button>
-      <div class="cta-sofi">
-        <div class="cta-tit">¿Y si lo vivís <em>en Universal</em>?</div>
-        <p>Soy Sofi, agente de viajes especializada en Disney y Universal. Contame tu viaje soñado y te lo cotizo gratis.</p>
-        <a href="https://wa.me/5491132924274?text=${encodeURIComponent(`Hola Sofi! Hice el test del Sombrero en tu página (me tocó ${c.nombre} ${c.emoji}) y quiero cotizar mi viaje`)}" target="_blank">Cotizá tu viaje gratis 💬</a>
+      <div class="res-btns res-pie">
+        <button class="btn-again" onclick="shStart()">Jugar de nuevo 🔄</button>
+        <button class="btn-again" onclick="shVolverIntro()">Volver al principio</button>
       </div>
     </div>`;
   document.getElementById('sh-res').dataset.ganador = JSON.stringify({nombre: c.nombre, emoji: c.emoji});

@@ -73,6 +73,10 @@
   .res-btns button { flex: 1; padding: .85rem 0; border: none; border-radius: 2rem; cursor: pointer; font-family: 'Raleway', sans-serif; font-size: .88rem; font-weight: 600; box-shadow: 0 3px 12px var(--sombra); }
   .btn-again { background: var(--sky-pale); color: var(--text); border: 1px solid var(--sky-mid) !important; }
   .btn-share { background: var(--sky-soft); color: var(--ivory); }
+  /* Volver a jugar pasa al pie: son las salidas, no la oferta */
+  .res-pie { margin-top: 1.5rem; }
+  .res-pie button { background: none !important; border: 1px solid var(--sky-mid) !important;
+                    color: var(--text-soft); box-shadow: none; font-size: .8rem; padding: .7rem 0; }
   .btn-menu { display: block; margin: 1rem auto 0; background: none; border: none; color: var(--text-soft); font-size: .8rem; cursor: pointer; text-decoration: underline; font-family: 'Raleway', sans-serif; }
 
   /* ── CTA Sofi ── */

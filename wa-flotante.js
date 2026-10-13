@@ -18,18 +18,21 @@
   var b = document.getElementById('wa-flotante');
   var form = document.getElementById('cotiza');
   if (!b) return;
-  /* "A la vista" = se ve un pedazo real, no un pixel suelto al borde */
+  /* "A la vista" = se ve un pedazo real, no un pixel suelto al borde.
+     80 px para los bloques grandes (el formulario, un presupuesto abierto);
+     para un boton suelto, que mide 40, alcanza con verlo casi entero. */
   function aLaVista(el){
     if (!el) return false;
     var r = el.getBoundingClientRect();
     var visible = Math.min(r.bottom, window.innerHeight) - Math.max(r.top, 0);
-    return visible > 80;
+    return visible > Math.min(80, r.height * 0.8);
   }
-  /* Se esconde si ya hay otro boton de WhatsApp a la vista: el del formulario
-     o el de un presupuesto abierto. Si no, tapa justo el que importa. */
+  /* Se esconde si ya hay otro boton de WhatsApp a la vista: el del formulario,
+     el de un presupuesto abierto o el del resultado de un test. Si no, tapa
+     justo el que importa. */
   function otroCtaALaVista(){
     if (aLaVista(form)) return true;
-    var botones = document.querySelectorAll('.pr-det:not([hidden]) .pr-wa');
+    var botones = document.querySelectorAll('.pr-det:not([hidden]) .pr-wa, .cta-sofi a');
     for (var i = 0; i < botones.length; i++) {
       if (aLaVista(botones[i])) return true;
     }
@@ -46,5 +49,15 @@
   document.addEventListener('click', function(){ setTimeout(revisar, 60); }, true);
   window.addEventListener('scroll', revisar, { passive: true });
   window.addEventListener('resize', revisar, { passive: true });
+  /* Los juegos dibujan el resultado bastante despues del ultimo clic, asi que
+     hay que mirar de nuevo cuando la pagina cambia sola. */
+  if (window.MutationObserver) {
+    var pedido = false;
+    new MutationObserver(function(){
+      if (pedido) return;
+      pedido = true;
+      requestAnimationFrame(function(){ pedido = false; revisar(); });
+    }).observe(document.body, { childList: true, subtree: true });
+  }
   revisar();
 })();
