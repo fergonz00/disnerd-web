@@ -62,6 +62,10 @@ TARJETAS = [
          titulo="<em>Cruceros</em><br>Disney",
          bajada="Casi todo incluido. Presupuestos reales con el precio de cada camarote.",
          pie="Precios reales · disnerd.com.ar"),
+    dict(archivo="og-cuanto-cuesta.jpg", foto=B + "/foto-01.webp", tam=50,
+         titulo="¿Cuánto <em>cuesta</em><br>ir a Disney?",
+         bajada="De USD 1.056 a USD 7.931, con 18 presupuestos que pagaron clientes reales. Qué incluye cada precio y qué se suma aparte.",
+         pie="Precios reales · disnerd.com.ar"),
     dict(archivo="og-disneyland-paris.jpg", foto=B + "/foto-06.webp", tam=52,
          titulo="Viajes a <em>Disneyland</em><br>París",
          bajada="La opción más corta y económica para conocer un parque Disney.",
@@ -136,11 +140,14 @@ def main():
         base = os.path.join(DESTINO, "icono-512.png")
         pgi.screenshot(path=base)
         im = Image.open(base).convert("RGB")
-        raiz_iconos = RAIZ if PUBLICAR else DESTINO
-        im.resize((180, 180), Image.LANCZOS).save(os.path.join(raiz_iconos, "apple-touch-icon.png"))
-        im.resize((32, 32), Image.LANCZOS).save(os.path.join(raiz_iconos, "favicon.ico"),
+        # ⚠️ NO escribe el favicon del sitio, ni con --publicar. Desde el
+        # 13-10-2026 el favicon es la cara de Sofi con las orejas (recorte de
+        # foto-04, tamaños 16/32/48/96/180 + favicon-192.png). Esto generaba
+        # una "D" dibujada y lo pisaba sin que nadie se enterara.
+        im.resize((180, 180), Image.LANCZOS).save(os.path.join(DESTINO, "apple-touch-icon.png"))
+        im.resize((32, 32), Image.LANCZOS).save(os.path.join(DESTINO, "favicon.ico"),
                                                 sizes=[(16, 16), (32, 32), (48, 48)])
-        print("  favicon.ico y apple-touch-icon.png")
+        print("  icono de muestra (NO se publica: el favicon del sitio es la cara de Sofi)")
         nav.close()
     print()
     print("quedaron en:", DESTINO)
