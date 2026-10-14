@@ -7,7 +7,7 @@
       if (!d.open || typeof gtag !== 'function') return;
       var s = d.querySelector('summary');
       gtag('event', 'ver_info_destino', {
-        destino: window.PR_DESTINO || '(sin destino)',
+        destino: window.INFO_DESTINO || window.PR_DESTINO || '(sin destino)',
         item: s ? s.textContent.trim() : '(sin titulo)'
       });
     });
