@@ -156,3 +156,8 @@
   /* Arriba de los filtros no lleva línea: viene pegado al encabezado */
   .pr-destinos.arriba { margin: 0 auto 2.2rem; padding-top: 0; border-top: none; }
   .pr-destinos.arriba p { font-size: .8rem; }
+
+    /* Los destinos al pie de la home: una fila mas, chiquita, arriba de
+       Instagram y WhatsApp. Para saltar a cualquier destino desde donde sea. */
+    .footer-destinos { margin-bottom: .5rem; }
+    .footer-destinos a { font-size: .78rem; }
