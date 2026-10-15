@@ -221,9 +221,12 @@
                       box-shadow: 0 4px 16px var(--sombra); }
     .rs-grid > figure > img { width: 100%; aspect-ratio: 1 / 1; height: auto;
                               display: block; background: #fff; }
+    /* El alto minimo empareja las tarjetas de una fila: un pie de dos lineas
+       dejaba una 18 px mas alta que las otras dos. */
     .rs-grid figcaption { padding: .7rem .9rem; font-size: .82rem; color: var(--text-soft);
                           font-style: italic; font-family: 'Playfair Display', serif;
-                          text-align: center; line-height: 1.35; }
+                          text-align: center; line-height: 1.35; min-height: 3.6rem;
+                          display: flex; align-items: center; justify-content: center; }
     .rs-pie { max-width: 1140px; margin: 1.2rem auto 0; padding: 0 1.2rem;
               text-align: center; font-size: .78rem; color: var(--text-soft);
               font-style: italic; }
