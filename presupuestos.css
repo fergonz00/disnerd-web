@@ -210,8 +210,8 @@
        Capturas de WhatsApp de verdad: el apellido y la foto de perfil van
        tapados. Se muestran enteras, nunca recortadas, porque lo que vale es
        que se lea el mensaje. */
-    .rs-grid { max-width: 1040px; margin: 0 auto; padding: 0 1.2rem;
-               display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem;
+    .rs-grid { max-width: 860px; margin: 0 auto; padding: 0 1.2rem;
+               display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem;
                align-items: start; }
     .rs-grid figure { background: #fff; border: 1px solid var(--warm);
                       border-radius: 1.1rem; overflow: hidden;
