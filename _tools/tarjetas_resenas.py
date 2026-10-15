@@ -42,8 +42,9 @@ for nombre, pos in ELEGIDAS.items():
 # Su captura es una historia de 900x1600 con el chat adentro: en un celular
 # entra a 342 px de ancho, o sea a escala 0,38, y la conversacion no se lee.
 # Asi que al agrandarla no se abre la historia entera: se arma una imagen con
-# lo que ella escribio y, debajo, la conversacion, cada parte recortada y
-# ampliada. En el mismo celular el chat entra casi a tamanio real.
+# quien es, lo que escribio y la conversacion, cada parte recortada y ampliada
+# por separado. En el mismo celular el chat entra casi a tamanio real.
+CABEZA = (112, 186, 505, 262)    # su foto, "tupisaravia" y el tilde de verificada
 TEXTO = (225, 285, 675, 420)     # "@disnerd.sofi / ella nos organiza todo..."
 CHAT = (263, 420, 640, 1175)     # la conversacion
 ANCHO = 754                      # el doble del ancho del chat, para que se vea nitido
@@ -52,7 +53,7 @@ FONDO = (26, 24, 22)
 
 im = Image.open(R / "resena-tupi-charla.jpg").convert("RGB")
 partes = []
-for caja in (TEXTO, CHAT):
+for caja in (CABEZA, TEXTO, CHAT):
     p = im.crop(caja)
     partes.append(p.resize((ANCHO, round(p.height * ANCHO / p.width)), Image.LANCZOS))
 
@@ -65,5 +66,5 @@ for p in partes:
 
 destino = R / "lupa-tupi-charla.webp"
 hoja.save(destino, "WEBP", quality=85, method=6)
-print("  lupa-tupi-charla  lo que escribio + la conversacion, %dx%d  %3.0f KB"
+print("  lupa-tupi-charla  quien es + lo que escribio + la charla, %dx%d  %3.0f KB"
       % (ANCHO, alto, destino.stat().st_size / 1024))
