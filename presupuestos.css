@@ -212,18 +212,18 @@
        elige mirando cada una, y la apaisada va entera sobre blanco. El
        navegador no recorta nada, por eso no corta frases por la mitad.
        Leerlas de verdad es tocarlas: resenas.js abre la captura original. */
-    .rs-grid { max-width: 1060px; margin: 0 auto; padding: 0 1.2rem;
-               display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
+    .rs-grid { max-width: 980px; margin: 0 auto; padding: 0 1.2rem;
+               display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.4rem;
                align-items: start; }
     .rs-grid figure { background: #fff; border: 1px solid var(--warm);
                       border-radius: 1.1rem; overflow: hidden;
                       box-shadow: 0 4px 16px var(--sombra); }
     .rs-grid > figure > img { width: 100%; aspect-ratio: 1 / 1; height: auto;
                               display: block; background: #fff; }
-    .rs-grid figcaption { padding: .6rem .7rem; font-size: .74rem; color: var(--text-soft);
+    .rs-grid figcaption { padding: .7rem .9rem; font-size: .82rem; color: var(--text-soft);
                           font-style: italic; font-family: 'Playfair Display', serif;
                           text-align: center; line-height: 1.35; }
-    .rs-pie { max-width: 1060px; margin: 1.2rem auto 0; padding: 0 1.2rem;
+    .rs-pie { max-width: 980px; margin: 1.2rem auto 0; padding: 0 1.2rem;
               text-align: center; font-size: .78rem; color: var(--text-soft);
               font-style: italic; }
     .rs-pie-celu { display: none; }
@@ -256,7 +256,8 @@
                  border: none; border-radius: 50%; background: rgba(255,255,255,.14);
                  color: #fff; font-size: 1.6rem; line-height: 1; cursor: pointer; }
 
-    @media (max-width: 920px) { .rs-grid { grid-template-columns: repeat(2, 1fr); } }
+    .rs-mas summary { font-size: .82rem; }
+    .rs-fotos { grid-template-columns: repeat(3, 1fr); }
 
     /* En el celular apiladas median casi dos pantallas. Van en una fila que se
        desliza, como las historias: se ven las cuatro igual y entra en una. La

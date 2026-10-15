@@ -2,7 +2,7 @@
 """Las capturas en cuadrado, recortadas con criterio.
 
 Dejarselo al CSS cortaba frases por la mitad. Aca se elige la franja mirando
-cada una: Tupi arriba (se ve el usuario y el texto de la historia), Gaston al
+cada una: Tupi arriba (se ve el usuario y el texto de la historia), Gaston abajo
 medio y Agustina al final, que es donde cada mensaje entra entero. La de Jaz
 es apaisada y no se recorta: va centrada sobre blanco, el mismo blanco de la
 tarjeta, asi no se pierde una sola palabra.
@@ -17,7 +17,7 @@ from PIL import Image
 sys.stdout.reconfigure(encoding="utf-8")
 R = pathlib.Path(r"C:\proyectos\disnerd-web\resenas")
 
-ELEGIDAS = {"tupi": 0.00, "gaston": 0.50, "agustina": 1.00, "jaz": None}
+ELEGIDAS = {"tupi": 0.00, "gaston": 0.78, "agustina": 1.00, "jaz": None}
 LADO = 760
 
 for nombre, pos in ELEGIDAS.items():
