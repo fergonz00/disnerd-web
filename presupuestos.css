@@ -100,6 +100,22 @@
     /* ── Los cuatro destinos, con el color de cada uno ──
        Mismo degrade y mismo acento que los presupuestos de ese destino: el
        color significa lo mismo en toda la pagina. */
+    /* El link a la pagina de precios: era una pildora blanca mas entre otras
+       y se perdia. Ahora es una tarjeta con el color de la marca. */
+    .pr-cuanto { display: block; max-width: 780px; margin: 0 auto 2rem;
+                 padding: 1.3rem 1.4rem; border-radius: 1.2rem; text-decoration: none;
+                 background: linear-gradient(135deg, var(--sky-pale) 0%, #dceaf3 100%);
+                 border: 1px solid var(--sky-mid); text-align: center;
+                 transition: transform .15s, box-shadow .15s; }
+    .pr-cuanto:hover { transform: translateY(-2px); box-shadow: 0 8px 24px var(--sombra); }
+    .pr-cuanto-tit { display: block; font-family: 'Playfair Display', serif;
+                     font-size: 1.35rem; color: var(--text); margin-bottom: .4rem; }
+    .pr-cuanto-sub { display: block; font-size: .88rem; line-height: 1.6;
+                     color: var(--text-mid); max-width: 520px; margin: 0 auto .7rem; }
+    .pr-cuanto-ir { display: inline-block; font-size: .8rem; font-weight: 600;
+                    letter-spacing: .04em; color: var(--sky-soft); }
+    @media (max-width: 560px) { .pr-cuanto-tit { font-size: 1.15rem; } }
+
     .pr-dest-cab { max-width: 780px; margin: 0 auto .9rem; padding: 0 1.2rem;
                     text-align: center; }
     .pr-dest-cab h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem;
