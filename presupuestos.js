@@ -499,5 +499,17 @@ document.addEventListener('click', function (e) {
   }
 });
 
+/* Los contadores de las tarjetas de destino salen de aca, no escritos a mano:
+   si vence uno y se da de baja, la tarjeta se corrige sola. */
+function pContarDestinos() {
+  document.querySelectorAll('.pr-dest a[data-destino]').forEach(function (a) {
+    var d = a.getAttribute('data-destino');
+    var n = PRESUPUESTOS.filter(function (p) { return p.destino === d; }).length;
+    var pie = a.querySelector('.pr-dest-pie');
+    if (pie) pie.textContent = n + (n === 1 ? ' presupuesto' : ' presupuestos');
+  });
+}
+
+pContarDestinos();
 pChips();
 pRender();
