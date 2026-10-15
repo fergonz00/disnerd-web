@@ -205,3 +205,21 @@
        Instagram y WhatsApp. Para saltar a cualquier destino desde donde sea. */
     .footer-destinos { margin-bottom: .5rem; }
     .footer-destinos a { font-size: .78rem; }
+
+    /* ── Mensajes de viajeros ──
+       Capturas de WhatsApp de verdad: el apellido y la foto de perfil van
+       tapados. Se muestran enteras, nunca recortadas, porque lo que vale es
+       que se lea el mensaje. */
+    .rs-grid { max-width: 1040px; margin: 0 auto; padding: 0 1.2rem;
+               display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem;
+               align-items: start; }
+    .rs-grid figure { background: #fff; border: 1px solid var(--warm);
+                      border-radius: 1.1rem; overflow: hidden;
+                      box-shadow: 0 5px 20px var(--sombra); }
+    .rs-grid img { width: 100%; height: auto; display: block; }
+    .rs-grid figcaption { padding: .7rem .9rem; font-size: .8rem; color: var(--text-soft);
+                          font-style: italic; font-family: 'Playfair Display', serif;
+                          text-align: center; }
+    @media (max-width: 860px) {
+      .rs-grid { grid-template-columns: 1fr; max-width: 420px; }
+    }
