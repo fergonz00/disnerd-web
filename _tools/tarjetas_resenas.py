@@ -38,3 +38,17 @@ for nombre, pos in ELEGIDAS.items():
     destino = R / ("tarjeta-%s.webp" % nombre)
     cuad.resize((LADO, LADO), Image.LANCZOS).save(destino, "WEBP", quality=82, method=6)
     print("  tarjeta-%-9s %-20s %4.0f KB" % (nombre, nota, destino.stat().st_size / 1024))
+
+# ── La lupa de la historia de Tupi ──
+# Su captura es una historia de 900x1600 con el chat adentro: en un celular
+# entra a 342 px de ancho, o sea a escala 0,38, y la conversacion no se lee.
+# Asi que al agrandarla no se abre la historia entera sino la conversacion
+# sola, que a esa misma pantalla entra casi a tamanio real.
+CHAT = (263, 420, 640, 1175)
+im = Image.open(R / "resena-tupi-charla.jpg").convert("RGB")
+c = im.crop(CHAT)
+destino = R / "lupa-tupi-charla.webp"
+c.resize((c.width * 2, c.height * 2), Image.LANCZOS).save(
+    destino, "WEBP", quality=85, method=6)
+print("  lupa-tupi-charla  la conversacion sola, %dx%d  %3.0f KB"
+      % (c.width * 2, c.height * 2, destino.stat().st_size / 1024))
