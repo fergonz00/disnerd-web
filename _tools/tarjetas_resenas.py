@@ -38,17 +38,32 @@ for nombre, pos in ELEGIDAS.items():
     destino = R / ("tarjeta-%s.webp" % nombre)
     cuad.resize((LADO, LADO), Image.LANCZOS).save(destino, "WEBP", quality=82, method=6)
     print("  tarjeta-%-9s %-20s %4.0f KB" % (nombre, nota, destino.stat().st_size / 1024))
-
 # ── La lupa de la historia de Tupi ──
 # Su captura es una historia de 900x1600 con el chat adentro: en un celular
 # entra a 342 px de ancho, o sea a escala 0,38, y la conversacion no se lee.
-# Asi que al agrandarla no se abre la historia entera sino la conversacion
-# sola, que a esa misma pantalla entra casi a tamanio real.
-CHAT = (263, 420, 640, 1175)
+# Asi que al agrandarla no se abre la historia entera: se arma una imagen con
+# lo que ella escribio y, debajo, la conversacion, cada parte recortada y
+# ampliada. En el mismo celular el chat entra casi a tamanio real.
+TEXTO = (225, 285, 675, 420)     # "@disnerd.sofi / ella nos organiza todo..."
+CHAT = (263, 420, 640, 1175)     # la conversacion
+ANCHO = 754                      # el doble del ancho del chat, para que se vea nitido
+AIRE = 18                        # separacion, del color del fondo de la lupa
+FONDO = (26, 24, 22)
+
 im = Image.open(R / "resena-tupi-charla.jpg").convert("RGB")
-c = im.crop(CHAT)
+partes = []
+for caja in (TEXTO, CHAT):
+    p = im.crop(caja)
+    partes.append(p.resize((ANCHO, round(p.height * ANCHO / p.width)), Image.LANCZOS))
+
+alto = sum(p.height for p in partes) + AIRE
+hoja = Image.new("RGB", (ANCHO, alto), FONDO)
+y = 0
+for p in partes:
+    hoja.paste(p, (0, y))
+    y += p.height + AIRE
+
 destino = R / "lupa-tupi-charla.webp"
-c.resize((c.width * 2, c.height * 2), Image.LANCZOS).save(
-    destino, "WEBP", quality=85, method=6)
-print("  lupa-tupi-charla  la conversacion sola, %dx%d  %3.0f KB"
-      % (c.width * 2, c.height * 2, destino.stat().st_size / 1024))
+hoja.save(destino, "WEBP", quality=85, method=6)
+print("  lupa-tupi-charla  lo que escribio + la conversacion, %dx%d  %3.0f KB"
+      % (ANCHO, alto, destino.stat().st_size / 1024))
