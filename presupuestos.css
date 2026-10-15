@@ -100,6 +100,13 @@
     /* ── Los cuatro destinos, con el color de cada uno ──
        Mismo degrade y mismo acento que los presupuestos de ese destino: el
        color significa lo mismo en toda la pagina. */
+    .pr-dest-cab { max-width: 780px; margin: 0 auto .9rem; padding: 0 1.2rem;
+                    text-align: center; }
+    .pr-dest-cab h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem;
+                      font-weight: 400; color: var(--text); margin-bottom: .3rem; }
+    .pr-dest-cab p { font-size: .88rem; line-height: 1.6; color: var(--text-mid);
+                     max-width: 480px; margin: 0 auto; }
+
     .pr-dest { max-width: 780px; margin: 0 auto 2rem; padding: 0 1.2rem;
                display: grid; grid-template-columns: repeat(4, 1fr); gap: .7rem; }
     .pr-dest a { display: flex; flex-direction: column; align-items: center; justify-content: center;
