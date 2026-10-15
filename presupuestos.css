@@ -212,9 +212,10 @@
        elige mirando cada una, y la apaisada va entera sobre blanco. El
        navegador no recorta nada, por eso no corta frases por la mitad.
        Leerlas de verdad es tocarlas: resenas.js abre la captura original. */
-    .rs-grid { max-width: 980px; margin: 0 auto; padding: 0 1.2rem;
-               display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.4rem;
+    .rs-grid { max-width: 1140px; margin: 0 auto; padding: 0 1.2rem;
+               display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem;
                align-items: start; }
+    .rs-grid-2 { margin-top: 1.2rem; }
     .rs-grid figure { background: #fff; border: 1px solid var(--warm);
                       border-radius: 1.1rem; overflow: hidden;
                       box-shadow: 0 4px 16px var(--sombra); }
@@ -223,7 +224,7 @@
     .rs-grid figcaption { padding: .7rem .9rem; font-size: .82rem; color: var(--text-soft);
                           font-style: italic; font-family: 'Playfair Display', serif;
                           text-align: center; line-height: 1.35; }
-    .rs-pie { max-width: 980px; margin: 1.2rem auto 0; padding: 0 1.2rem;
+    .rs-pie { max-width: 1140px; margin: 1.2rem auto 0; padding: 0 1.2rem;
               text-align: center; font-size: .78rem; color: var(--text-soft);
               font-style: italic; }
     .rs-pie-celu { display: none; }
@@ -231,15 +232,15 @@
 
     /* Las fotos del viaje de Tupi: plegadas, porque cinco mas ocupaban media
        pantalla. Mismo gesto que las preguntas de las paginas de destino. */
-    .rs-mas { border-top: 1px solid var(--warm); }
-    .rs-mas summary { list-style: none; cursor: pointer; padding: .6rem .5rem;
-                      font-size: .74rem; color: var(--sky-soft); text-align: center;
+    .rs-mas { max-width: 1140px; margin: .9rem auto 0; padding: 0 1.2rem; }
+    .rs-mas summary { list-style: none; cursor: pointer; padding: .5rem;
+                      font-size: .82rem; color: var(--sky-soft); text-align: center;
                       font-weight: 600; }
     .rs-mas summary::-webkit-details-marker { display: none; }
     .rs-mas summary::after { content: ' +'; }
     .rs-mas[open] summary::after { content: ' –'; }
-    .rs-fotos { display: grid; grid-template-columns: repeat(2, 1fr); gap: .3rem;
-                padding: 0 .45rem .6rem; }
+    .rs-fotos { display: grid; grid-template-columns: repeat(5, 1fr); gap: .6rem;
+                padding: .6rem 0 .2rem; }
     .rs-fotos img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover;
                     border-radius: .45rem; display: block; }
 
@@ -256,8 +257,7 @@
                  border: none; border-radius: 50%; background: rgba(255,255,255,.14);
                  color: #fff; font-size: 1.6rem; line-height: 1; cursor: pointer; }
 
-    .rs-mas summary { font-size: .82rem; }
-    .rs-fotos { grid-template-columns: repeat(3, 1fr); }
+
 
     /* En el celular apiladas median casi dos pantallas. Van en una fila que se
        desliza, como las historias: se ven las cuatro igual y entra en una. La
@@ -269,5 +269,7 @@
                  -webkit-overflow-scrolling: touch; scrollbar-width: none; }
       .rs-grid::-webkit-scrollbar { display: none; }
       .rs-grid > figure { flex: 0 0 78%; scroll-snap-align: center; }
+      .rs-grid-2 { margin-top: 0; }
+      .rs-mas { padding: 0 1.2rem; }
       .rs-fotos { grid-template-columns: repeat(3, 1fr); }
     }
