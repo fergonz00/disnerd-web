@@ -17,7 +17,11 @@ from PIL import Image
 sys.stdout.reconfigure(encoding="utf-8")
 R = pathlib.Path(r"C:\proyectos\disnerd-web\resenas")
 
-ELEGIDAS = {"tupi": 0.00, "gaston": 0.78, "agustina": 1.00, "jaz": None}
+# la segunda historia de Tupi muestra el chat del grupo del viaje: el recorte
+# arranca en 0.29 para que entren su usuario verificado, el texto donde nombra
+# a Sofi y la charla casi entera
+ELEGIDAS = {"tupi": 0.00, "tupi-charla": 0.29, "gaston": 0.78,
+            "agustina": 1.00, "jaz": None}
 LADO = 760
 
 for nombre, pos in ELEGIDAS.items():
