@@ -223,3 +223,17 @@
     @media (max-width: 860px) {
       .rs-grid { grid-template-columns: 1fr; max-width: 420px; }
     }
+
+    /* Las fotos del viaje de Tupi: plegadas, porque cinco mas ocupaban media
+       pantalla. Mismo gesto que las preguntas de las paginas de destino. */
+    .rs-mas { border-top: 1px solid var(--warm); }
+    .rs-mas summary { list-style: none; cursor: pointer; padding: .7rem .9rem;
+                      font-size: .82rem; color: var(--sky-soft); text-align: center;
+                      font-weight: 600; letter-spacing: .02em; }
+    .rs-mas summary::-webkit-details-marker { display: none; }
+    .rs-mas summary::after { content: ' +'; }
+    .rs-mas[open] summary::after { content: ' –'; }
+    .rs-fotos { display: grid; grid-template-columns: repeat(3, 1fr); gap: .35rem;
+                padding: 0 .55rem .7rem; }
+    .rs-fotos img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover;
+                    border-radius: .5rem; display: block; }

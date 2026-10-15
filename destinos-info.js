@@ -2,7 +2,7 @@
    Contra las visitas dice si el texto le sirve a la gente o le estorba, y si
    una pregunta no la abre nadie, se saca. */
 (function () {
-  document.querySelectorAll('.dst-info details').forEach(function (d) {
+  document.querySelectorAll('.dst-info details, .rs-mas').forEach(function (d) {
     d.addEventListener('toggle', function () {
       if (!d.open || typeof gtag !== 'function') return;
       var s = d.querySelector('summary');
