@@ -61,6 +61,10 @@
                  font-size: .92rem; color: var(--text-mid); }
   .cc-casos li:last-child { border-bottom: none; }
   .cc-casos b { color: var(--text); font-weight: 600; white-space: nowrap; }
+  /* Que incluye cada ejemplo: sin esto "7 noches en Universal" no decia si entraba Disney */
+  .cc-casos .cc-inc { display: block; margin-top: .25rem; font-size: .8rem; line-height: 1.45;
+                      color: var(--text-soft); }
+  .cc-casos .cc-inc strong { color: var(--text-mid); font-weight: 600; }
 
   /* El aviso del pasaje: no puede pasar desapercibido */
   .cc-ojo { border: 1px solid #e3cfa6; background: #fdf7ea; border-radius: 1rem;
@@ -134,10 +138,23 @@
   </div>
 
   <ul class="cc-casos">
-    <li><span>Una pareja, 2 noches en <b>París</b></span> <b>desde USD 1.056</b></li>
-    <li><span>Una persona sola, 7 noches en <b>Universal</b></span> <b>desde USD 1.473</b></li>
-    <li><span>Una pareja, 3 noches de <b>crucero</b></span> <b>desde USD 1.636</b></li>
-    <li><span>Un grupo de 3, 3 noches en <b>Disney Orlando</b></span> <b>desde USD 1.715</b></li>
+    <li><span>Una pareja, 2 noches en <b>Disneyland París</b>
+          <small class="cc-inc">En total por los dos. Hotel de Disney (Santa Fe) + entradas a los
+          dos parques todos los días de la estadía. Sin comidas.</small></span>
+        <b>desde USD 1.056</b></li>
+    <li><span>Una persona sola, 7 noches en <b>Universal Orlando</b>
+          <small class="cc-inc">Hotel de Universal (Stella Nova) + 4 días en los parques de Universal,
+          pudiendo pasar de uno a otro el mismo día. <strong>Solo Universal: no incluye los parques
+          de Disney.</strong></small></span>
+        <b>desde USD 1.473</b></li>
+    <li><span>Una pareja, 3 noches de <b>crucero Disney</b>
+          <small class="cc-inc">En total por los dos. Camarote interior, saliendo de Fort Lauderdale a
+          Bahamas y la isla de Disney. Con todas las comidas y los shows incluidos.</small></span>
+        <b>desde USD 1.636</b></li>
+    <li><span>Un grupo de 3 adultos, 3 noches en <b>Disney Orlando</b>
+          <small class="cc-inc">En total por los tres. Hotel de Disney (All Star) + 2 días de parques
+          de Disney, un parque por día. Sin comidas.</small></span>
+        <b>desde USD 1.715</b></li>
   </ul>
 
   <div class="cc-ojo">
