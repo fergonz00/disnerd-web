@@ -49,6 +49,16 @@
   .dst-cab h1 em { font-style: italic; color: var(--sky-soft); }
   .dst-cab p { font-size: .95rem; line-height: 1.65; color: var(--text-mid); max-width: 540px;
                margin: 0 auto; }
+  /* Tres fotos en fila, Donald en el medio. En el celular: la de Sofi de espaldas
+     en la cubierta arriba, sola y mas grande; las otras dos abajo. */
+  .dst-fotos { max-width: 820px; margin: 0 auto 2rem; padding: 0 1.2rem;
+               display: grid; grid-template-columns: repeat(3, 1fr); gap: .6rem; }
+  .dst-fotos img { width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover;
+                   border-radius: 1rem; display: block; box-shadow: 0 4px 16px var(--sombra); }
+  @media (max-width: 560px) {
+    .dst-fotos { grid-template-columns: repeat(2, 1fr); }
+    .dst-fotos .principal { grid-column: 1 / -1; order: -1; aspect-ratio: 4 / 5; object-position: center 45%; }
+  }
   .dst-sep { max-width: 820px; margin: 3rem auto 0; padding: 2.2rem 1.2rem 0;
              border-top: 1px solid var(--warm); text-align: center; }
   .dst-sep h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 400;
@@ -81,6 +91,12 @@
     <p>En un crucero Disney está casi todo incluido: comidas, shows y actividades. Acá te cuento qué entra, qué se hace a bordo y a dónde van. Y más abajo, presupuestos reales con el precio de cada tipo de camarote.</p>
     <p class="pr-cuenta" id="pr-cuenta"></p>
   </header>
+
+  <div class="dst-fotos">
+    <img class="principal" src="/foto-crucero-cubierta.webp" alt="Sofi en la cubierta de un crucero Disney, frente a la pantalla gigante y la chimenea" width="720" height="960">
+    <img src="/foto-crucero-donald.webp" alt="Sofi con el Pato Donald vestido de marinero a bordo de un crucero Disney" width="720" height="960">
+    <img src="/foto-crucero-helado.webp" alt="Helado de Mickey con el mar de fondo, en un crucero Disney" width="720" height="960">
+  </div>
 
   <div class="dst-info">
     <details>
