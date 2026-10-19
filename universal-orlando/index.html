@@ -57,6 +57,11 @@
                display: grid; grid-template-columns: repeat(3, 1fr); gap: .6rem; }
   .dst-fotos img { width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover;
                    border-radius: 1rem; display: block; box-shadow: 0 4px 16px var(--sombra); }
+  /* En el celular: Epic arriba, sola y mas grande; las otras dos abajo, una al lado de la otra */
+  @media (max-width: 560px) {
+    .dst-fotos { grid-template-columns: repeat(2, 1fr); }
+    .dst-fotos .principal { grid-column: 1 / -1; order: -1; aspect-ratio: 4 / 5; object-position: center 35%; }
+  }
   .dst-foto { margin: 0 auto 2rem; padding: 0 1.2rem; text-align: center; }
   .dst-foto img { width: 100%; max-width: 420px; height: auto; aspect-ratio: 1 / 1;
                   object-fit: cover; object-position: center 52%;
@@ -97,7 +102,7 @@
 
   <div class="dst-fotos">
     <img src="/foto-universal-studios.webp" alt="Sofi en el Callejón Diagon de Universal Studios Florida" width="720" height="960">
-    <img src="/foto-universal-epic.webp" alt="Sofi en la Isla de Berk de Epic Universe" width="720" height="960">
+    <img class="principal" src="/foto-universal-epic.webp" alt="Sofi en la Isla de Berk de Epic Universe" width="720" height="960">
     <img src="/foto-universal-ioa.webp" alt="Sofi frente al castillo de Hogwarts en Islands of Adventure" width="720" height="960">
   </div>
 
