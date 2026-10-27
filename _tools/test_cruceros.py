@@ -53,21 +53,31 @@ with sync_playwright() as p:
 
     # Lo que importa desde que se saco el dataset del sitemap: una ficha sin
     # salidas publicadas NO puede afirmar barco ni duracion.
-    inventa = pg.evaluate("""() => RUTAS.filter(x => !x.v && (x.b.length || String(x.n).match(/^[0-9]+$/)))
+    # f:0 es "solo sé el destino": no puede traer barco ni un número de noches.
+    inventa = pg.evaluate("""() => RUTAS.filter(x => x.f === 0 && ((x.b||[]).length || String(x.n).match(/^[0-9]+$/)))
                                         .map(x => x.d)""")
-    ok("los destinos sin salidas publicadas no inventan barco ni noches", not inventa, inventa)
-    verif = pg.evaluate("RUTAS.filter(x => x.v).length")
-    ok("hay rutas verificadas con barco y puerto", verif >= 15, verif)
+    ok("lo que no tiene fuente no inventa barco ni noches", not inventa, inventa)
+    # y nada puede quedar sin nivel de respaldo
+    sinf = pg.evaluate("RUTAS.filter(x => ![0,1,2].includes(x.f)).map(x => x.d)")
+    ok("toda ficha declara de dónde salió el dato", not sinf, sinf)
+    conFechas = pg.evaluate("RUTAS.filter(x => x.f && x.sal > 0).length")
+    ok("la mayoría trae salidas reales del calendario de Disney", conFechas >= 40, conFechas)
+    salidas = pg.evaluate("RUTAS.reduce((a, x) => a + (x.sal || 0), 0)")
+    ok("suman cientos de salidas", salidas > 250, salidas)
+    # una ficha sin salidas no puede mostrar la linea de salidas
+    malas = pg.evaluate("""() => [...document.querySelectorAll('.cru')]
+        .filter(c => c.querySelector('.cru-sal') && !c.querySelector('.cru-sal').innerText.trim()).length""")
+    ok("no hay línea de salidas vacía", malas == 0, malas)
     ok("están los 14 destinos en el filtro",
        pg.locator("#cru-f-r .pr-chip").count() == 15, pg.locator("#cru-f-r .pr-chip").count())
 
     # noches, barco y puerto van plegados: cuatro grupos de chips se comian dos
     # pantallas de celular. Se abren para probarlos.
     ok("los filtros de más están plegados",
-       not pg.locator("#cru-f-b .pr-chip").first.is_visible())
+       not pg.locator("#cru-f-n .pr-chip").first.is_visible())
     pg.locator(".cru-mas summary").click()
     pg.wait_for_timeout(300)
-    ok("y se abren al tocarlos", pg.locator("#cru-f-b .pr-chip").first.is_visible())
+    ok("y se abren al tocarlos", pg.locator("#cru-f-n .pr-chip").first.is_visible())
 
     # el filtro de noches solo ofrece numeros: "7 a 8" confundiria al lado de "7 noches"
     noches = [t.strip() for t in pg.locator("#cru-f-n .pr-chip").all_text_contents()]
@@ -81,9 +91,9 @@ with sync_playwright() as p:
     ok("el contador lo dice", "de %d" % total in pg.locator("#cru-cuenta").text_content(),
        pg.locator("#cru-cuenta").text_content())
 
-    pg.locator('#cru-f-b .pr-chip[data-v="Fantasy"]').click()
+    pg.locator('#cru-f-n .pr-chip').nth(1).click()
     pg.wait_for_timeout(350)
-    ok("sumar el barco afina todavía más", pg.locator(".cru").count() < eu,
+    ok("sumar las noches afina todavía más", pg.locator(".cru").count() < eu,
        pg.locator(".cru").count())
 
     # una combinacion imposible tiene que avisar, no quedar en blanco
@@ -94,7 +104,7 @@ with sync_playwright() as p:
        (pg.locator(".pr-vacio").count(), pg.locator(".cru").count()))
 
     pg.locator('#cru-f-r .pr-chip[data-v=""]').click()
-    pg.locator('#cru-f-b .pr-chip[data-v=""]').click()
+    pg.locator('#cru-f-n .pr-chip[data-v=""]').click()
     pg.wait_for_timeout(350)
     ok("volver a Todos muestra todas otra vez", pg.locator(".cru").count() == total)
 

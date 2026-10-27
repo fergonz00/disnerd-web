@@ -56,3 +56,6 @@
     .cru-mas summary::-webkit-details-marker { display: none; }
     .cru-mas summary::after { content: ' +'; }
     .cru-mas[open] summary::after { content: ' –'; }
+
+    .cru-sal { display: block; font-size: .76rem; color: var(--sky-soft);
+               font-weight: 600; margin-top: .15rem; }

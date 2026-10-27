@@ -98,3 +98,47 @@ piden.
 **Cuándo rehacerlo:** conviene revisar las páginas de destino cada temporada.
 Lo que más se mueve es la duración y el barco de cada ruta, que es
 justamente lo que falló con Alaska.
+
+---
+
+## 27-10-2026, segunda vuelta: el portal de agentes
+
+Fer consiguió el OK de Disney y entramos a **disneytravelagents.com** con la
+cuenta de Sofi (PCO Travel LLC). Ahí está lo que faltaba.
+
+**La fuente buena:** Disney Cruise Line → Destinations → *"View a flyer
+showing an itinerary overview (Adobe PDF)"*. Es el calendario oficial de
+itinerarios de la temporada, 15 páginas, y trae por cada ruta: el itinerario
+con sus noches, los puertos de escala y **las fechas de salida**. La versión
+usada es **otoño 2027 y primavera 2028** (`1146950 AUG26`).
+
+De ahí salieron **128 itinerarios con 301 salidas**, agrupados en 54 fichas.
+
+Los scripts quedaron en el repo:
+- `_tools/cruceros_parsear_pdf.py` — saca los itinerarios del PDF.
+- `_tools/cruceros_armar.py` — los agrupa por ruta y junta las fechas.
+
+**Lo que el PDF NO trae:**
+- **El barco.** Está en el diseño gráfico de cada página, no en el texto. Por
+  eso se sacó el filtro por barco: con dos opciones sueltas confundía.
+- **Alaska y Europa.** Navegan en verano y van en otro flyer. Quedaron con lo
+  verificado en las páginas públicas (`f: 2`), sin fechas.
+- **Los precios.** Siguen sin publicarse: dependen de la promoción, la fecha y
+  el camarote. Los pone Sofi.
+
+**El puerto de salida** se toma sólo si el nombre del itinerario lo dice
+("from Port Canaveral") o si el encabezado de esa página del PDF lo declara.
+Las páginas sin encabezado explícito quedan sin puerto: no se deduce.
+
+**Los tres niveles de respaldo**, que la prueba controla:
+
+| `f` | Qué significa | Qué puede afirmar |
+|---|---|---|
+| 1 | Calendario oficial de agentes | noches, escalas, salidas y meses |
+| 2 | Verificado en la página pública del destino | noches y barco, sin fechas |
+| 0 | Sólo se conoce el destino | ni barco ni duración |
+
+**Condiciones de uso.** Los términos del portal piden que todo material de
+marketing con contenido de Disney destinado a la web sea aprobado por escrito.
+Fer confirmó el 27-10-2026 que está el OK. Si cambia de manos la cuenta o pasa
+mucho tiempo, conviene reconfirmarlo antes de ampliar lo publicado.
