@@ -232,8 +232,6 @@
     .rs-pie { max-width: 1140px; margin: 1.2rem auto 0; padding: 0 1.2rem;
               text-align: center; font-size: .78rem; color: var(--text-soft);
               font-style: italic; }
-    .rs-pie-celu { display: none; }
-    @media (max-width: 560px) { .rs-pie-celu { display: inline; } }
 
     /* Las fotos del viaje de Tupi: plegadas, porque cinco mas ocupaban media
        pantalla. Mismo gesto que las preguntas de las paginas de destino. */
@@ -269,12 +267,19 @@
        tarjeta ocupa el 78% del ancho para que se asome la de al lado y se note
        que hay mas. */
     @media (max-width: 560px) {
-      .rs-grid { display: flex; max-width: none; padding: .2rem 1.2rem 1rem;
-                 gap: .8rem; overflow-x: auto; scroll-snap-type: x mandatory;
-                 -webkit-overflow-scrolling: touch; scrollbar-width: none; }
-      .rs-grid::-webkit-scrollbar { display: none; }
-      .rs-grid > figure { flex: 0 0 78%; scroll-snap-align: center; }
-      .rs-grid-2 { margin-top: 0; }
+      /* Deslizar de costado escondia la mitad: la segunda tarjeta se asomaba
+         cortada y la tercera no se veia nunca. En el celular se apilan, cada
+         una entera y del ancho de la pantalla. */
+      .rs-grid { display: grid; grid-template-columns: 1fr; max-width: none;
+                 padding: .2rem 1.2rem 1rem; gap: .9rem; }
+      .rs-grid > figure { width: 100%; }
+      /* Los mensajes no se deslizan: son cuatro y entran de a dos por fila,
+         que se leen de un vistazo sin tener que descubrir que hay mas. */
+      .rs-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem;
+                   margin-top: .2rem; overflow: visible; }
+      .rs-grid-2 > figure { flex: none; }
+      .rs-grid-2 figcaption { font-size: .74rem; padding: .5rem .5rem;
+                              min-height: 3rem; }
       .rs-mas { padding: 0 1.2rem; }
       .rs-fotos { grid-template-columns: repeat(3, 1fr); }
     }

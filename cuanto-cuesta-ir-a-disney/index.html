@@ -90,7 +90,9 @@
   .cc-fuente { font-size: .8rem; font-style: italic; color: var(--text-soft);
                line-height: 1.6; margin-top: .6rem; }
 
-  .cc-presu { max-width: 820px; margin: 3rem auto 0; padding: 2.4rem 0 0;
+  /* El costado hace falta: sin el, en el celular los filtros y los presupuestos
+     quedaban pegados a los bordes de la pantalla. */
+  .cc-presu { max-width: 820px; margin: 3rem auto 0; padding: 2.4rem 1.2rem 0;
               border-top: 1px solid var(--warm); }
   .cc-presu h2 { text-align: center; margin-top: 0; }
   .cc-presu > p { text-align: center; max-width: 540px; margin: 0 auto 2rem; padding: 0 1.2rem; }

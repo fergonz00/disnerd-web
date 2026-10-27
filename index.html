@@ -832,6 +832,7 @@
     }
     .footer-links {
       display: flex;
+      flex-wrap: wrap;          /* en el celular los cinco destinos no entran en una linea */
       gap: 2rem;
       list-style: none;
     }
@@ -868,6 +869,8 @@
       .scroll-hint { display: none; }
       .pricing-section { padding: 5rem 1.5rem; }
       .footer-strip { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; }
+      .footer-links { gap: .7rem 1.4rem; }
+      .footer-links a { font-size: .68rem; letter-spacing: .1em; }
     }
   </style>
 </head>
@@ -1101,7 +1104,7 @@
     </figure>
   </div>
 
-  <p class="rs-pie">Tocá cualquiera para leerla entera.<span class="rs-pie-celu"> Deslizá para ver las demás.</span></p>
+  <p class="rs-pie">Tocá cualquiera para leerla entera.</p>
 </section>
 
 <!-- ══════════════════════════════════
