@@ -23,3 +23,36 @@
   .dst-destinos li::before { content: ''; position: absolute; left: 0; top: .6rem;
                              width: .5rem; height: .5rem; border-radius: 50%;
                              background: var(--sky-soft); }
+
+    /* ── El catálogo de rutas ── */
+    .cru-wrap { max-width: 860px; margin: 0 auto 2.5rem; padding: 0 1.2rem; }
+    .cru { display: flex; align-items: center; gap: .8rem; background: #fff;
+           border: 1px solid var(--warm); border-radius: .9rem; padding: .7rem .9rem;
+           margin-bottom: .5rem; }
+    .cru-emoji { font-size: 1.5rem; line-height: 1; flex: 0 0 auto; }
+    .cru-txt { flex: 1 1 auto; min-width: 0; }
+    .cru-dest { display: block; font-weight: 600; font-size: .95rem; color: var(--text); }
+    .cru-tema { font-weight: 400; font-size: .76rem; color: var(--text-soft); }
+    .cru-sub { display: block; font-size: .8rem; color: var(--text-soft); margin-top: .1rem; }
+    .cru-nota { display: block; font-size: .76rem; color: var(--text-soft);
+                font-style: italic; margin-top: .15rem; }
+    .cru-cta { flex: 0 0 auto; background: var(--sky-soft); color: #fff; text-decoration: none;
+               font-size: .78rem; font-weight: 600; padding: .5rem .8rem; border-radius: 2rem;
+               white-space: nowrap; }
+    .cru-pie { text-align: center; font-size: .78rem; color: var(--text-soft);
+               font-style: italic; margin-top: 1.2rem; }
+    /* En el celular el boton se queda al costado, no abajo: a lo ancho cada
+       tarjeta medía 150 px y son 46, casi 7.000 px de lista. */
+    @media (max-width: 520px) {
+      .cru { gap: .6rem; padding: .6rem .7rem; }
+      .cru-dest { font-size: .9rem; }
+      .cru-sub { font-size: .75rem; }
+      .cru-cta { font-size: .72rem; padding: .45rem .65rem; }
+    }
+
+    .cru-mas { margin-top: .4rem; }
+    .cru-mas summary { list-style: none; cursor: pointer; font-size: .8rem;
+                       color: var(--sky-soft); font-weight: 600; padding: .4rem 0; }
+    .cru-mas summary::-webkit-details-marker { display: none; }
+    .cru-mas summary::after { content: ' +'; }
+    .cru-mas[open] summary::after { content: ' –'; }
