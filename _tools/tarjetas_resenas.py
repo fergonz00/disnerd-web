@@ -5,7 +5,8 @@ Dejarselo al CSS cortaba frases por la mitad. Aca se elige la franja mirando
 cada una: Tupi arriba (se ve el usuario y el texto de la historia), Gaston abajo
 medio y Agustina al final, que es donde cada mensaje entra entero. La de Jaz
 es apaisada y no se recorta: va centrada sobre blanco, el mismo blanco de la
-tarjeta, asi no se pierde una sola palabra.
+tarjeta, asi no se pierde una sola palabra. La del cumple es un collage con el
+mensaje al pie, asi que tambien va al final.
 
 La tarjeta usa este cuadrado; la lupa sigue abriendo la captura original.
 """
@@ -21,7 +22,7 @@ R = pathlib.Path(r"C:\proyectos\disnerd-web\resenas")
 # arranca en 0.29 para que entren su usuario verificado, el texto donde nombra
 # a Sofi y la charla casi entera
 ELEGIDAS = {"tupi": 0.00, "tupi-charla": 0.29, "gaston": 0.78,
-            "agustina": 1.00, "jaz": None}
+            "agustina": 1.00, "jaz": None, "cumple": 1.00}
 LADO = 760
 
 for nombre, pos in ELEGIDAS.items():

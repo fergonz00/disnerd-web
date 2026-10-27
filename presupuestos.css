@@ -215,7 +215,9 @@
     .rs-grid { max-width: 1140px; margin: 0 auto; padding: 0 1.2rem;
                display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem;
                align-items: start; }
-    .rs-grid-2 { margin-top: 1.2rem; }
+    /* La fila de mensajes va de a cuatro: con tres columnas quedaba uno
+       solo en una segunda fila. */
+    .rs-grid-2 { margin-top: 1.2rem; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
     .rs-grid figure { background: #fff; border: 1px solid var(--warm);
                       border-radius: 1.1rem; overflow: hidden;
                       box-shadow: 0 4px 16px var(--sombra); }
