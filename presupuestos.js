@@ -184,6 +184,37 @@ const PRESUPUESTOS = [
   },
 
   {
+    id: 'disney-abril-pareja', tema: 'disney', destino: 'disney', quienes: 'pareja', anio: 2027,
+    emoji: '🏰', badge: 'Nuevo',
+    titulo: 'Disney en abril · All Star Movies',
+    cuando: 'Abr 2027', personas: '2 adultos', noches: '4 noches', desde: 2303,
+    fechas: 'Del 17 al 21 de abril 2027',
+    vence: '2027-04-17',
+    meta: ['🌙 4 noches · 2 adultos'],
+    incluye: ['🏨 Hotel Disney All Star Movies (el más económico y súper temático)',
+              '🎟️ 4 días de parques Disney base (un parque por día)'],
+    precio: 'USD 2.303', precioNota: 'total por los dos · sin plan de comidas',
+    comidas: [['Quick Service', 'USD 2.805'], ['Dining Plan', 'USD 3.102']],
+    nota: '🏷️ Este precio tiene una promoción aplicada, que se puede agotar. Escribime y te digo si sigue abierta.',
+    cta: 'Quiero este paquete',
+    wa: 'Hola Sofi! Me interesa el paquete Disney del 17 al 21 de abril 2027'
+  },
+  {
+    id: 'universal-abril-pareja', tema: 'universal', destino: 'universal', quienes: 'pareja', anio: 2027,
+    emoji: '🩵', badge: 'Nuevo',
+    titulo: 'Universal en abril · Endless Summer Dockside Inn',
+    cuando: 'Abr 2027', personas: '2 adultos', noches: '3 noches', desde: 1760,
+    fechas: 'Del 21 al 24 de abril 2027',
+    vence: '2027-04-21',
+    meta: ['🌙 3 noches · 2 adultos'],
+    incluye: ['🏨 Universal Endless Summer Dockside Inn (¡el más económico!)',
+              '🎫 3 días de parques Universal base (un parque por día)'],
+    precio: 'USD 1.760', precioNota: 'total por los dos',
+    nota: '🥗 Universal no tiene planes de comidas.',
+    cta: 'Quiero este paquete',
+    wa: 'Hola Sofi! Me interesa el paquete Universal del 21 al 24 de abril 2027'
+  },
+  {
     id: 'disney-abril-grupo', tema: 'disney', destino: 'disney', quienes: 'grupo', anio: 2027,
     emoji: '👑', badge: 'Con promo',
     titulo: 'Disney en grupo · All Star',
