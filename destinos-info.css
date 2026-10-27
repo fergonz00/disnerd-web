@@ -59,3 +59,9 @@
 
     .cru-sal { display: block; font-size: .76rem; color: var(--sky-soft);
                font-weight: 600; margin-top: .15rem; }
+
+    .pr-cuenta a { color: inherit; text-decoration: none; border-bottom: 1px solid currentColor;
+                   padding-bottom: 1px; }
+    /* El cartel que invita a elegir un destino, mientras no se eligio ninguno */
+    .cru-elegi { text-align: center; color: var(--text-soft); font-style: italic;
+                 padding: 1.4rem 1rem; margin: 0; }

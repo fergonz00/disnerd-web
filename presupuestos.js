@@ -467,9 +467,16 @@ function pRender() {
   }
 
   if (cuenta) {
-    cuenta.textContent = (SOLO || lista.length === PRESUPUESTOS.length)
+    var txt = (SOLO || lista.length === PRESUPUESTOS.length)
       ? lista.length + (lista.length === 1 ? ' presupuesto real' : ' presupuestos reales')
       : 'Mostrando ' + lista.length + ' de ' + PRESUPUESTOS.length;
+    /* En las paginas de destino el contador vive en el encabezado y la lista
+       queda mucho mas abajo: se vuelve un enlace que baja hasta ella. */
+    if (SOLO && cuenta.id === 'pr-cuenta' && document.getElementById('pr-lista')) {
+      cuenta.innerHTML = '<a href="#pr-lista">' + txt + ' ↓</a>';
+    } else {
+      cuenta.textContent = txt;
+    }
   }
 
   cont.innerHTML = pintados.map(function (x) {
