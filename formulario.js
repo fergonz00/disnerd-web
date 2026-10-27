@@ -80,11 +80,47 @@ function llenarCuando() {
 
 (function () {
   var cont = document.getElementById('form-cotiza');
-  if (cont) {
-    cont.innerHTML = FORM_HTML;
-    llenarCuando();
+  if (!cont) return;
+  cont.innerHTML = FORM_HTML;
+  llenarCuando();
+
+  ['cq-quienes', 'cq-cuando'].forEach(function (id) {
+    var sel = document.getElementById(id);
+    if (!sel) return;
+    sel.addEventListener('change', function () {
+      if (!sel.value) return;
+      pasoDado(id === 'cq-quienes' ? '2-quienes' : '3-cuando', sel.value);
+    });
+  });
+
+  /* Cuantos LLEGAN a verlo. Sin este dato no se distingue "no les interesa"
+     de "no bajaron hasta aca", que se arreglan de maneras opuestas. */
+  if ('IntersectionObserver' in window) {
+    var visto = false;
+    new IntersectionObserver(function (entradas, obs) {
+      if (visto || !entradas.some(function (e) { return e.isIntersecting; })) return;
+      visto = true;
+      obs.disconnect();
+      if (typeof gtag === 'function') gtag('event', 'ver_formulario');
+    }, { threshold: 0.4 }).observe(cont);
   }
 })();
+
+/* El embudo: cada paso se cuenta UNA sola vez por visita, asi cambiar de
+   opcion no infla el numero. Con esto se ve en que campo se cae la gente. */
+var pasosDados = {};
+
+function pasoDado(paso, valor) {
+  if (pasosDados[paso]) return;
+  pasosDados[paso] = true;
+  if (typeof gtag === 'function') {
+    /* Va en `item` porque es uno de los dos parametros que GA4 tiene
+       registrados como dimension; uno nuevo lo tiene que dar de alta una
+       persona con permiso de edicion en la propiedad. `paso` y `valor` se
+       mandan igual, para el dia que eso pase. */
+    gtag('event', 'cotiza_paso', { item: paso, paso: paso, valor: valor || '' });
+  }
+}
 
 function selectDest(btn, dest) {
   document.querySelectorAll('.cq-dest-btn').forEach(b => b.classList.remove('selected'));
@@ -97,6 +133,7 @@ function selectDest(btn, dest) {
     cotizacionEmpezada = true;
     if (typeof gtag === 'function') gtag('event', 'iniciar_cotizacion', { destino: dest });
   }
+  pasoDado('1-destino', dest);
 }
 
 function enviarCotizacion() {
