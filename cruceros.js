@@ -1,63 +1,51 @@
 /* ═══════════════ A DÓNDE VA DISNEY ═══════════════
-   El catálogo de rutas de Disney Cruise Line. NO lleva precios ni fechas de
-   salida a propósito: eso vive detrás del buscador de Disney, que rechaza la
-   lectura automática, y además cambia con cada promoción. Acá se muestra a
-   dónde va, con qué barco, desde qué puerto y cuántas noches; el precio y la
-   fecha los da Sofi.
+   El catálogo de rutas de Disney Cruise Line.
 
-   Los datos salen del sitemap público de disneycruise.disney.go.com (que
-   robots.txt ofrece para ser leído y no bloquea /cruises-destinations/) más
-   las páginas de cada destino. Para regenerarlo: _tools/cruceros_datos.md.
+   ⚠️ Acá sólo va lo CONSTATADO en las páginas de Disney, con fecha. La
+   primera versión salió del sitemap, cuyas salidas van de ago-2025 a
+   nov-2026 y en su mayoría ya zarparon: ahí Alaska figuraba de 7 noches
+   cuando la página dice 6. El dato era de una temporada vieja.
+
+   v: 1  ruta verificada el 27-10-2026 en la página de ese destino.
+   v: 0  destino que Disney ofrece pero cuyas salidas no publica abiertas.
+         No se le inventa barco ni duración.
+
+   NO lleva precios ni fechas de salida: eso vive detrás del buscador de
+   Disney, que rechaza la lectura automática. Cómo rehacerlo y qué se
+   constató: _tools/cruceros_datos.md.
 
    r=región · d=destino · e=emoji · n=noches · s=puerto de salida
-   b=barcos · t/tt=temporada temática · x=escalas o nota */
+   b=barcos · t/tt=temporada temática · x=escalas o nota · v=verificada */
 var RUTAS = [
-  {r:"alaska",d:"Alaska",e:"🏔️",n:7,s:"Vancouver",b:["Magic"],t:"",tt:"",x:""},
-  {r:"bahamas",d:"Bahamas",e:"🏝️",n:3,s:"Fort Lauderdale",b:["Dream"],t:"",tt:"",x:""},
-  {r:"bahamas",d:"Bahamas",e:"🏝️",n:3,s:"Fort Lauderdale",b:["Dream"],t:"halloween",tt:"🎃 Halloween",x:""},
-  {r:"bahamas",d:"Bahamas",e:"🏝️",n:3,s:"Fort Lauderdale",b:["Dream"],t:"navidad",tt:"🎄 Navidad",x:""},
-  {r:"bahamas",d:"Bahamas",e:"🏝️",n:3,s:"Port Canaveral",b:["Wish"],t:"",tt:"",x:""},
-  {r:"bahamas",d:"Bahamas",e:"🏝️",n:3,s:"Port Canaveral",b:["Wish"],t:"halloween",tt:"🎃 Halloween",x:""},
-  {r:"bahamas",d:"Bahamas",e:"🏝️",n:3,s:"Port Canaveral",b:["Wish"],t:"navidad",tt:"🎄 Navidad",x:""},
-  {r:"bahamas",d:"Bahamas",e:"🏝️",n:4,s:"Fort Lauderdale",b:["Dream"],t:"",tt:"",x:""},
-  {r:"bahamas",d:"Bahamas",e:"🏝️",n:4,s:"Fort Lauderdale",b:["Dream"],t:"halloween",tt:"🎃 Halloween",x:""},
-  {r:"bahamas",d:"Bahamas",e:"🏝️",n:4,s:"Fort Lauderdale",b:["Dream"],t:"navidad",tt:"🎄 Navidad",x:""},
-  {r:"bahamas",d:"Bahamas",e:"🏝️",n:4,s:"Port Canaveral",b:["Fantasy", "Wish"],t:"navidad",tt:"🎄 Navidad",x:""},
-  {r:"bahamas",d:"Bahamas",e:"🏝️",n:4,s:"Port Canaveral",b:["Fantasy", "Wish"],t:"",tt:"",x:""},
-  {r:"bahamas",d:"Bahamas",e:"🏝️",n:4,s:"Port Canaveral",b:["Magic", "Wish"],t:"halloween",tt:"🎃 Halloween",x:""},
-  {r:"bahamas",d:"Bahamas",e:"🏝️",n:5,s:"Fort Lauderdale",b:["Dream"],t:"halloween",tt:"🎃 Halloween",x:""},
-  {r:"bahamas",d:"Bahamas",e:"🏝️",n:5,s:"Fort Lauderdale",b:["Dream"],t:"",tt:"",x:""},
-  {r:"bahamas",d:"Bahamas",e:"🏝️",n:5,s:"Fort Lauderdale",b:["Destiny", "Dream"],t:"navidad",tt:"🎄 Navidad",x:""},
-  {r:"bahamas",d:"Bahamas",e:"🏝️",n:5,s:"Port Canaveral",b:["Fantasy"],t:"navidad",tt:"🎄 Navidad",x:""},
-  {r:"bahamas",d:"Bahamas",e:"🏝️",n:5,s:"Port Canaveral",b:["Fantasy"],t:"",tt:"",x:""},
-  {r:"bermuda",d:"Bermuda",e:"🐠",n:4,s:"Nueva York",b:["Wish"],t:"",tt:"",x:"King's Wharf, Gran Bermuda"},
-  {r:"caribe",d:"Caribe occidental",e:"🌴",n:4,s:"Galveston",b:["Magic"],t:"navidad",tt:"🎄 Navidad",x:""},
-  {r:"caribe",d:"Caribe occidental",e:"🌴",n:4,s:"Galveston",b:["Magic"],t:"",tt:"",x:""},
-  {r:"caribe",d:"Caribe occidental",e:"🌴",n:5,s:"Fort Lauderdale",b:["Dream"],t:"halloween",tt:"🎃 Halloween",x:""},
-  {r:"caribe",d:"Caribe oriental",e:"🌴",n:7,s:"Port Canaveral",b:["Treasure"],t:"",tt:"",x:""},
-  {r:"caribe",d:"Caribe occidental",e:"🌴",n:7,s:"Port Canaveral",b:["Treasure"],t:"",tt:"",x:""},
-  {r:"caribe",d:"Caribe oriental",e:"🌴",n:7,s:"Port Canaveral",b:["Treasure"],t:"navidad",tt:"🎄 Navidad",x:""},
-  {r:"caribe",d:"Caribe sur",e:"🌴",n:7,s:"San Juan",b:["Magic"],t:"halloween",tt:"🎃 Halloween",x:""},
-  {r:"caribe",d:"Caribe sur",e:"🌴",n:7,s:"San Juan",b:["Magic"],t:"",tt:"",x:""},
-  {r:"europa",d:"Europa del Norte",e:"⛵",n:3,s:"Southampton",b:["Wish"],t:"",tt:"",x:"Rotterdam (Ámsterdam), Países Bajos"},
-  {r:"europa",d:"Bélgica",e:"🧇",n:3,s:"Southampton",b:["Wish"],t:"",tt:"",x:"Zeebrugge (Bruselas), Bélgica"},
-  {r:"europa",d:"Mediterráneo",e:"🏛️",n:7,s:"Barcelona",b:["Dream"],t:"",tt:"",x:""},
-  {r:"europa",d:"Islas Británicas",e:"🫖",n:7,s:"Southampton",b:["Fantasy"],t:"",tt:"",x:""},
-  {r:"europa",d:"Fiordos Noruegos",e:"⛰️",n:7,s:"Southampton",b:["Fantasy"],t:"",tt:"",x:""},
-  {r:"europa",d:"Europa occidental",e:"⛵",n:7,s:"Southampton",b:["Fantasy"],t:"",tt:"",x:""},
-  {r:"europa",d:"Mediterráneo con islas griegas",e:"🏛️",n:9,s:"Barcelona",b:["Dream"],t:"",tt:"",x:""},
-  {r:"hawai",d:"Hawái",e:"🌺",n:10,s:"Vancouver",b:["Wonder"],t:"",tt:"",x:""},
-  {r:"mexico",d:"Baja California",e:"🌵",n:3,s:"San Diego",b:["Wonder"],t:"",tt:"",x:""},
-  {r:"mexico",d:"Baja California",e:"🌵",n:4,s:"San Diego",b:["Magic"],t:"",tt:"",x:""},
-  {r:"mexico",d:"Riviera Mexicana",e:"🌮",n:7,s:"San Diego",b:["Wonder"],t:"",tt:"",x:""},
-  {r:"mexico",d:"Riviera Mexicana",e:"🌮",n:7,s:"San Diego",b:["Wonder"],t:"navidad",tt:"🎄 Navidad",x:""},
-  {r:"pacifico",d:"Pacífico Sur",e:"🐚",n:14,s:"Honolulu",b:["Wonder"],t:"",tt:"",x:""},
-  {r:"transatlantico",d:"Transatlántico",e:"🌊",n:14,s:"Fort Lauderdale",b:["Dream"],t:"",tt:"",x:""},
-  {r:"canada",d:"Canadá",e:"🍁",n:null,s:"Nueva York o Quebec",b:[],t:"",tt:"",x:"Costa este de Canadá y Nueva Inglaterra."},
-  {r:"panama",d:"Canal de Panamá",e:"⚓",n:"7 a 8",s:"Port Canaveral o San Diego",b:[],t:"",tt:"",x:"Cruza el canal, con escalas en la Riviera Maya, la Riviera Mexicana y Colombia."},
-  {r:"pacifico-costa",d:"Costa del Pacífico",e:"🌲",n:"4 o 5",s:"San Diego o Vancouver",b:[],t:"",tt:"",x:"Navega entre San Diego y Vancouver."},
-  {r:"singapur",d:"Singapur",e:"🏙️",n:null,s:"Singapur",b:[],t:"",tt:"",x:"Con el Disney Adventure, el barco más nuevo de la flota."},
-  {r:"oceania",d:"Nueva Zelanda y Australia",e:"🦘",n:null,s:"Sídney",b:[],t:"",tt:"",x:""}
+  {"r": "bahamas","d": "Bahamas","e": "🏝️","n": 3, "s": "Fort Lauderdale","b": ["Dream"], "t": "","tt": "","x": "Disney Lookout Cay","v": 1},
+  {"r": "bahamas","d": "Bahamas","e": "🏝️","n": 3, "s": "Port Canaveral","b": ["Dream","Fantasy","Wish"], "t": "","tt": "","x": "Nassau y Castaway Cay","v": 1},
+  {"r": "bahamas","d": "Bahamas","e": "🏝️","n": 3, "s": "Fort Lauderdale","b": ["Dream"], "t": "navidad","tt": "🎄 Navidad","x": "Disney Lookout Cay y Nassau","v": 1},
+  {"r": "bahamas","d": "Bahamas","e": "🏝️","n": 3, "s": "Port Canaveral","b": ["Dream","Wish"], "t": "navidad","tt": "🎄 Navidad","x": "Nassau y Castaway Cay","v": 1},
+  {"r": "bahamas","d": "Bahamas","e": "🏝️","n": 3, "s": "Fort Lauderdale","b": ["Dream"], "t": "halloween","tt": "🎃 Halloween","x": "Disney Lookout Cay","v": 1},
+  {"r": "bahamas","d": "Bahamas","e": "🏝️","n": 3, "s": "Port Canaveral","b": ["Dream","Wish"], "t": "halloween","tt": "🎃 Halloween","x": "Nassau y Castaway Cay","v": 1},
+  {"r": "caribe","d": "Caribe occidental","e": "🌴","n": 4, "s": "Galveston","b": ["Magic"], "t": "","tt": "","x": "","v": 1},
+  {"r": "caribe","d": "Caribe occidental","e": "🌴","n": 4, "s": "Galveston","b": ["Magic"], "t": "navidad","tt": "🎄 Navidad","x": "","v": 1},
+  {"r": "caribe","d": "Caribe occidental","e": "🌴","n": 4, "s": "Galveston","b": ["Magic"], "t": "marvel","tt": "🦸 Marvel","x": "","v": 1},
+  {"r": "caribe","d": "Caribe oriental","e": "🌴","n": 4, "s": "San Juan","b": ["Dream","Wish"], "t": "","tt": "","x": "Termina en Port Canaveral","v": 1},
+  {"r": "caribe","d": "Caribe oriental","e": "🌴","n": 4, "s": "Fort Lauderdale","b": ["Dream"], "t": "","tt": "","x": "Termina en San Juan","v": 1},
+  {"r": "alaska","d": "Alaska","e": "🏔️","n": 6, "s": "Vancouver","b": ["Magic"], "t": "","tt": "","x": "Glaciar Stikine, Icy Strait Point y Ketchikan","v": 1},
+  {"r": "europa","d": "Europa del Norte","e": "⛵","n": 3, "s": "Southampton","b": ["Wish"], "t": "","tt": "","x": "Rotterdam (Ámsterdam)","v": 1},
+  {"r": "europa","d": "Bélgica","e": "🧇","n": 3, "s": "Southampton","b": ["Wish"], "t": "","tt": "","x": "Zeebrugge (Bruselas)","v": 1},
+  {"r": "bermuda","d": "Bermuda","e": "🐠","n": 4, "s": "Nueva York","b": ["Wish"], "t": "","tt": "","x": "King's Wharf","v": 1},
+  {"r": "caribe","d": "Caribe sur","e": "🌴","n": "","s": "San Juan","b": [], "t": "","tt": "","x": "Varias rutas de 7 noches.","v": 0},
+  {"r": "europa","d": "Mediterráneo","e": "🏛️","n": "","s": "Barcelona","b": [], "t": "","tt": "","x": "Empieza y termina en Barcelona.","v": 0},
+  {"r": "europa","d": "Fiordos Noruegos","e": "⛰️","n": "","s": "Copenhague o Dover","b": [], "t": "","tt": "","x": "","v": 0},
+  {"r": "europa","d": "Islas Británicas","e": "🫖","n": "","s": "Southampton","b": [], "t": "","tt": "","x": "","v": 0},
+  {"r": "canada","d": "Canadá","e": "🍁","n": "","s": "Nueva York o Quebec","b": [], "t": "","tt": "","x": "Costa este de Canadá y Nueva Inglaterra.","v": 0},
+  {"r": "mexico","d": "Riviera Mexicana","e": "🌮","n": "","s": "San Diego","b": [], "t": "","tt": "","x": "","v": 0},
+  {"r": "mexico","d": "Baja California","e": "🌵","n": "2 a 5","s": "San Diego","b": [], "t": "","tt": "","x": "","v": 0},
+  {"r": "panama","d": "Canal de Panamá","e": "⚓","n": "7 a 8","s": "Port Canaveral o San Diego","b": [], "t": "","tt": "","x": "Escalas en la Riviera Maya, la Riviera Mexicana y Colombia.","v": 0},
+  {"r": "pacifico-costa","d": "Costa del Pacífico","e": "🌲","n": "4 o 5","s": "San Diego o Vancouver","b": [], "t": "","tt": "","x": "Navega entre San Diego y Vancouver.","v": 0},
+  {"r": "transatlantico","d": "Transatlántico","e": "🌊","n": "11 a 15","s": "","b": [], "t": "","tt": "","x": "Cruza entre Estados Unidos y Europa.","v": 0},
+  {"r": "hawai","d": "Hawái","e": "🌺","n": "","s": "","b": [], "t": "","tt": "","x": "Sale de la costa oeste.","v": 0},
+  {"r": "pacifico","d": "Pacífico Sur","e": "🐚","n": "","s": "Honolulu o Sídney","b": [], "t": "","tt": "","x": "Entre Honolulú y Sídney.","v": 0},
+  {"r": "singapur","d": "Singapur","e": "🏙️","n": "","s": "Singapur","b": [], "t": "","tt": "","x": "Con el Disney Adventure, el barco más nuevo.","v": 0},
+  {"r": "oceania","d": "Nueva Zelanda y Australia","e": "🦘","n": "","s": "Sídney","b": [], "t": "","tt": "","x": "","v": 0}
 ];
 
 var REGIONES = [["bahamas", "🏝️ Bahamas"], ["caribe", "🌴 Caribe"], ["alaska", "🏔️ Alaska"], ["europa", "🇪🇺 Europa"], ["mexico", "🌮 México"], ["bermuda", "🐠 Bermuda"], ["canada", "🍁 Canadá"], ["panama", "⚓ Canal de Panamá"], ["pacifico-costa", "🌲 Costa del Pacífico"], ["hawai", "🌺 Hawái"], ["pacifico", "🐚 Pacífico Sur"], ["transatlantico", "🌊 Transatlántico"], ["singapur", "🏙️ Singapur"], ["oceania", "🦘 Nueva Zelanda y Australia"]];
@@ -126,9 +114,11 @@ function cruRender() {
   }
   cont.innerHTML = l.map(function (x) {
     var sub = [];
-    if (x.n) sub.push(x.n + (String(x.n).match(/^\d+$/) ? ' noches' : ' noches'));
+    if (x.n) sub.push(x.n + ' noches');
     if (x.s) sub.push('sale de ' + x.s);
     if (x.b.length) sub.push(x.b.map(function (b) { return 'Disney ' + b; }).join(' o '));
+    /* Los destinos sin salidas publicadas no inventan barco ni duración. */
+    if (!x.v && !x.n) sub.push('varias rutas');
     var msg = 'Hola Sofi! Me interesa el crucero a ' + x.d +
               (x.n ? ' de ' + x.n + ' noches' : '') +
               (x.s ? ' saliendo de ' + x.s : '') + '. Me pasás fechas y precio?';

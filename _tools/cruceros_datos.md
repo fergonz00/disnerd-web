@@ -66,3 +66,35 @@ Dos cosas que ya se corrigieron y conviene no repetir:
 
 Sofi la tiene en el sistema de agente, con fechas y precios. Eso es lo único
 que da el calendario entero; desde afuera no está publicado.
+
+## Lo que se constató el 27-10-2026 (y por qué se rehizo el catálogo)
+
+La primera versión salió entera del sitemap. Al revisarla aparecieron dos
+cosas:
+
+**1. El sitemap es histórico, no es la oferta vigente.** Sus 94 salidas van
+del 11-08-2025 al 25-11-2026 y, a la fecha del chequeo, **sólo 6 de las 40
+rutas tenían alguna salida futura** — y las seis eran de Navidad, que
+terminan el 25 de noviembre. No hay una sola salida de 2027 ahí, aunque
+Disney ya vende hasta 2028.
+
+**2. Por eso había un dato mal publicado.** El sitemap daba *Alaska, 7 noches
+desde Vancouver*; la página de Alaska dice hoy **6 noches**. Era una
+temporada vieja.
+
+Desde entonces el catálogo lleva sólo lo verificado en las páginas de
+destino, con la marca `v: 1`, y los demás destinos van sin barco ni duración
+inventados (`v: 0`). `_tools/test_cruceros.py` lo controla: si alguna ficha
+`v: 0` aparece con barco o con un número de noches, la prueba falla.
+
+**Sobre las fechas: sí cambian, y está constatado.** Una misma ruta sale
+varias veces al año — la "Bahamas 4 noches desde Port Canaveral" tiene 14
+salidas distintas entre agosto de 2025 y abril de 2026, y 19 de las 40 rutas
+del sitemap tienen más de una fecha. Además Disney renueva los itinerarios
+por temporada: su propia navegación anuncia "nuevos itinerarios de septiembre
+2027 a mayo 2028". Por eso la página dice que las fechas cambian y que se
+piden.
+
+**Cuándo rehacerlo:** conviene revisar las páginas de destino cada temporada.
+Lo que más se mueve es la duración y el barco de cada ruta, que es
+justamente lo que falló con Alaska.

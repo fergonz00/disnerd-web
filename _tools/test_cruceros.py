@@ -49,7 +49,15 @@ with sync_playwright() as p:
     pg.wait_for_timeout(1200)
 
     total = pg.locator(".cru").count()
-    ok("el catálogo se dibuja", total > 40, total)
+    ok("el catálogo se dibuja", total > 25, total)
+
+    # Lo que importa desde que se saco el dataset del sitemap: una ficha sin
+    # salidas publicadas NO puede afirmar barco ni duracion.
+    inventa = pg.evaluate("""() => RUTAS.filter(x => !x.v && (x.b.length || String(x.n).match(/^[0-9]+$/)))
+                                        .map(x => x.d)""")
+    ok("los destinos sin salidas publicadas no inventan barco ni noches", not inventa, inventa)
+    verif = pg.evaluate("RUTAS.filter(x => x.v).length")
+    ok("hay rutas verificadas con barco y puerto", verif >= 15, verif)
     ok("están los 14 destinos en el filtro",
        pg.locator("#cru-f-r .pr-chip").count() == 15, pg.locator("#cru-f-r .pr-chip").count())
 
