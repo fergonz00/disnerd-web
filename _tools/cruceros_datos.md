@@ -142,3 +142,32 @@ Las páginas sin encabezado explícito quedan sin puerto: no se deduce.
 marketing con contenido de Disney destinado a la web sea aprobado por escrito.
 Fer confirmó el 27-10-2026 que está el OK. Si cambia de manos la cuenta o pasa
 mucho tiempo, conviene reconfirmarlo antes de ampliar lo publicado.
+
+### El barco de cada salida (27-10-2026, tercera vuelta)
+
+Fer: *"sumalo"*. El barco **sí está** en el flyer, pero como imagen: cada
+página es un par (puerto, barco) — el puerto va resaltado en la barra de
+arriba y el barco es el logo grande. Por eso no salía con `extract_text()`,
+ni estaba en los nombres de los recursos del PDF, ni en las secciones de
+destino del portal (que son descriptivas y no listan salidas).
+
+Se resolvió mirándolas: `_tools/cruceros_encabezados.py` parte el PDF en una
+hoja por página, las abre en el Chrome de Claude y arma una tira con los 15
+encabezados. Lo que se lee ahí se carga en la tabla `PAGINA` de
+`cruceros_armar.py`:
+
+| Puerto | Barcos |
+|---|---|
+| Port Canaveral | Dream, Fantasy, Wish, Treasure, Destiny |
+| Fort Lauderdale | Dream, Fantasy, Destiny |
+| Nueva York | Wish |
+| Galveston | Magic |
+| San Diego | Magic, Wonder |
+| San Juan | Fantasy, Wish |
+| Singapur | Adventure |
+
+Con eso volvió el filtro por barco y **todas las fichas del calendario tienen
+puerto**, no sólo las de las 7 páginas que lo decían en texto.
+
+Al regenerar una temporada nueva hay que volver a leer esos encabezados: el
+reparto de barcos por puerto cambia de una temporada a otra.

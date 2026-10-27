@@ -17,10 +17,22 @@ from collections import defaultdict
 sys.stdout.reconfigure(encoding="utf-8")
 AQUI = pathlib.Path(__file__).resolve().parent
 
-# paginas cuyo encabezado declara el puerto, textual
-PUERTO_PAG = {1: "Port Canaveral", 2: "Port Canaveral", 5: "Port Canaveral",
-              7: "Fort Lauderdale", 11: "San Diego", 12: "San Diego",
-              15: "Singapur"}
+# Cada pagina del PDF es un (puerto, barco): el puerto va resaltado en la
+# barra de arriba y el barco es el logo grande. Como son imagenes, no salen
+# con extract_text(): esta tabla se leyo mirando las 15 paginas renderizadas
+# (_tools/cruceros_encabezados.py las vuelve a sacar).
+PAGINA = {
+    1:  ("Port Canaveral", "Dream"),    2:  ("Port Canaveral", "Fantasy"),
+    3:  ("Port Canaveral", "Wish"),     4:  ("Port Canaveral", "Treasure"),
+    5:  ("Port Canaveral", "Destiny"),  6:  ("Fort Lauderdale", "Dream"),
+    7:  ("Fort Lauderdale", "Fantasy"), 8:  ("Fort Lauderdale", "Destiny"),
+    9:  ("Nueva York", "Wish"),         10: ("Galveston", "Magic"),
+    11: ("San Diego", "Magic"),         12: ("San Diego", "Wonder"),
+    13: ("San Juan", "Fantasy"),        14: ("San Juan", "Wish"),
+    15: ("Singapur", "Adventure"),
+}
+PUERTO_PAG = {k: v[0] for k, v in PAGINA.items()}
+BARCO_PAG = {k: v[1] for k, v in PAGINA.items()}
 
 REGION = [
     ("Bahamian", "bahamas", "Bahamas", "\U0001F3DD️"),
@@ -80,6 +92,9 @@ for it in datos:
     g = grupos[k]
     if puerto:
         g.setdefault("puertos", set()).add(puerto)
+    barco = BARCO_PAG.get(it["pag"])
+    if barco:
+        g.setdefault("barcos", set()).add(barco)
     if it["termina"]:
         g.setdefault("fin", set()).add(it["termina"])
     g["fechas"].update(tuple(f) for f in it["fechas"])
@@ -95,11 +110,12 @@ if sin_region:
 salida = []
 for (reg, lindo, emoji, noches, tema, temaTxt), g in grupos.items():
     puerto = " o ".join(sorted(g.get("puertos", ())))
+    barcos = sorted(g.get("barcos", ()))
     termina = " o ".join(sorted(g.get("fin", ())))
     fs = sorted(g["fechas"])
     meses = sorted({(a, m) for a, m, _ in fs})
     salida.append({
-        "r": reg, "d": lindo, "e": emoji, "n": noches, "s": puerto,
+        "r": reg, "d": lindo, "e": emoji, "n": noches, "s": puerto, "b": barcos,
         "fin": termina, "t": tema, "tt": temaTxt,
         "x": max(g["escalas"], key=len)[:150] if g["escalas"] else "",
         "sal": len(fs),
