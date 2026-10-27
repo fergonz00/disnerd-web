@@ -8,7 +8,10 @@
     .pr-chip { font-family: 'Raleway', sans-serif; font-size: 0.78rem; font-weight: 500;
                color: var(--text-mid); background: #fff; border: 1px solid var(--warm);
                padding: 0.42rem 0.85rem; border-radius: 100px; cursor: pointer;
-               transition: background .15s, border-color .15s, color .15s; }
+               transition: background .15s, border-color .15s, color .15s; 
+                /* 44 px es el minimo comodo para tocar con el dedo;
+                   venian midiendo 32 y se erraba el chip. */
+                min-height: 44px; display: inline-flex; align-items: center; }
     .pr-chip:hover { border-color: var(--sky-mid); }
     .pr-chip.on { background: var(--sky-soft); border-color: var(--sky-soft); color: var(--ivory); }
     .pr-cuenta { text-align: center; font-size: 0.78rem; color: var(--text-soft);
