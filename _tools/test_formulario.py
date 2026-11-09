@@ -92,6 +92,15 @@ with sync_playwright() as p:
 
     ok("antes de bajar NO se contó que lo vieron", "ver_formulario" not in nombres(pg),
        nombres(pg))
+
+    # Prueba del 9-11-2026: el boton del hero lleva al formulario, no a
+    # WhatsApp pelado. Si alguien lo devuelve a wa.me, esto falla.
+    hero = pg.locator("#hero-cotizar")
+    ok("el botón del hero lleva al formulario, no a WhatsApp suelto",
+       hero.get_attribute("href") == "#cotiza", hero.get_attribute("href"))
+    hero.click()
+    pg.wait_for_timeout(900)
+    ok("y ese camino se mide aparte", "ir_al_formulario" in nombres(pg), nombres(pg))
     pg.locator("#cotiza").scroll_into_view_if_needed()
     pg.wait_for_timeout(800)
     ok("al llegar hasta él se cuenta ver_formulario", "ver_formulario" in nombres(pg),

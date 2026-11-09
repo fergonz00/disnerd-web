@@ -93,6 +93,16 @@ function llenarCuando() {
     });
   });
 
+  /* El boton del hero manda aca desde el 9-11-2026. Antes iba derecho a
+     WhatsApp y Sofi recibia un "hola" sin destino ni fechas. Se cuenta aparte
+     para saber cuanta gente llega al formulario por ese camino. */
+  var desdeHero = document.getElementById('hero-cotizar');
+  if (desdeHero) {
+    desdeHero.addEventListener('click', function () {
+      if (typeof gtag === 'function') gtag('event', 'ir_al_formulario', { item: 'hero' });
+    });
+  }
+
   /* Cuantos LLEGAN a verlo. Sin este dato no se distingue "no les interesa"
      de "no bajaron hasta aca", que se arreglan de maneras opuestas. */
   if ('IntersectionObserver' in window) {
