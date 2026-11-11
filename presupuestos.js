@@ -345,24 +345,6 @@ const PRESUPUESTOS = [
     wa: 'Hola Sofi! Me interesa el paquete Universal sola del 29 de agosto al 5 de septiembre 2027'
   },
 
-  {
-    id: 'paris-noviembre', tema: 'navidad', destino: 'paris', quienes: 'pareja', anio: 2026,
-    emoji: '🎄', badge: 'Época navideña',
-    titulo: 'Disneyland París · Época Navideña',
-    cuando: 'Nov 2026', personas: '2 adultos', noches: '2 noches', desde: 1056,
-    fechas: 'Del 10 al 12 de noviembre 2026',
-    vence: '2026-11-10',
-    meta: ['🌙 2 noches · 2 adultos'],
-    incluye: ['🏨 Hotel Santa Fe · Standard Room (temático Cars)',
-              '🎟️ Tickets con entrada ilimitada · del check in al check out',
-              '🎟️ Pueden entrar y salir del parque, y cruzarse entre ellos'],
-    precio: 'USD 1.056', precioNota: 'total por los dos · sin plan de comidas',
-    comidas: [['🥐 Breakfast · desayuno buffet en el hotel', 'USD 1.155'],
-              ['🥐🍳 Half Board · desayuno + 1 reserva en restaurante', 'USD 1.303'],
-              ['🥐🍳🥘 Full Board Plus · desayuno + 1 quick service + 1 reserva', 'USD 1.393']],
-    cta: 'Quiero este paquete',
-    wa: 'Hola Sofi! Me interesa el paquete Disneyland París navideño noviembre 2026'
-  }
 
 ];
 
