@@ -372,8 +372,20 @@ function pMoneda(n) {
   return 'USD ' + n.toLocaleString('es-AR');
 }
 
+/* Un presupuesto con prorroga sigue publicado despues de su fecha: el viaje ya
+   salio y queda como referencia de precio. Hay que decirlo, para que nadie crea
+   que todavia lo puede reservar. */
+function pYaSalio(p) {
+  return !!(p.quedaHasta && p.vence && new Date().toISOString().slice(0, 10) > p.vence);
+}
+
 function pDetalle(p) {
-  var h = '<div class="pr-fechas">📅 ' + p.fechas + '</div>';
+  var h = '';
+  if (pYaSalio(p)) {
+    h += '<p class="pr-salio">Este viaje ya salió. Lo dejo publicado como referencia de precio: ' +
+         'si te interesa algo parecido, te armo uno con fechas nuevas.</p>';
+  }
+  h += '<div class="pr-fechas">📅 ' + p.fechas + '</div>';
   if (p.meta && p.meta.length) {
     h += '<div class="pr-meta">' + p.meta.map(function (m) { return '<span>' + m + '</span>'; }).join('') + '</div>';
   }
@@ -472,7 +484,8 @@ function pRender() {
         '<span class="pr-emoji">' + p.emoji + '</span>' +
         '<span class="pr-cab-txt">' +
           '<span class="pr-titulo">' + p.titulo + '</span>' +
-          '<span class="pr-sub">' + p.cuando + ' · ' + p.personas + ' · ' + p.noches + '</span>' +
+          '<span class="pr-sub">' + p.cuando + ' · ' + p.personas + ' · ' + p.noches +
+            (pYaSalio(p) ? '<b class="pr-ref">Ya salió · referencia de precio</b>' : '') + '</span>' +
         '</span>' +
         '<span class="pr-desde"><small>desde</small>' + pMoneda(p.desde) + '</span>' +
         '<span class="pr-flecha" aria-hidden="true">⌄</span>' +

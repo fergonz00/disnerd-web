@@ -76,6 +76,17 @@
     }
 
 
+    /* El cartelito de los que ya salieron y quedan de referencia */
+    .pr-ref { display: inline-block; margin-left: .45rem; padding: .08rem .45rem;
+              border-radius: 100px; background: var(--warm); color: var(--text-mid);
+              font-size: .63rem; font-weight: 600; letter-spacing: .04em;
+              text-transform: uppercase; vertical-align: middle; white-space: nowrap; }
+    .pr.abierto .pr-ref { background: rgba(255,255,255,.18); color: #fff; }
+    .pr-salio { margin: 0 0 .9rem; padding: .7rem .9rem; border-radius: .8rem;
+                background: rgba(255,255,255,.1); border: 1px dashed var(--acc);
+                font-size: .82rem; line-height: 1.5; }
+    @media (max-width: 560px) { .pr-ref { margin-left: 0; margin-top: .25rem; display: table; } }
+
     /* ── Temas de color. El destino define el color; Navidad y Año Nuevo lo pisan.
          t1..t3 = el degradé del fondo cuando se abre · acc = el color que resalta
          tint = el fondo suave del emoji cuando está cerrado ── */
