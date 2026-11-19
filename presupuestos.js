@@ -26,6 +26,9 @@ const PRESUPUESTOS = [
     cuando: 'Nov 2026', personas: '2 adultos', noches: '3 noches', desde: 1636,
     fechas: 'Del 20 al 24 de noviembre 2026',
     vence: '2026-11-20',
+    // El viaje ya salio, pero Fer lo deja un mes mas (19-11-2026) porque sirve
+    // de referencia de precio para los cruceros.
+    quedaHasta: '2026-12-20',
     meta: ['🚢 Barco Disney Dream', '📍 Desde Miami · Fort Lauderdale', '🌙 3 noches · 2 adultos'],
     itinerario: [['Día 1', 'Abordaje Fort Lauderdale'], ['Día 2', 'Nassau, Bahamas'],
                  ['Día 3', 'Isla de Disney'], ['Día 4', 'Desembarque']],

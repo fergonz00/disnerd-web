@@ -41,8 +41,13 @@ def leer(texto):
         def campo(nombre):
             c = re.search(nombre + r": '([^']*)'", bloque)
             return c.group(1) if c else ""
-        out.append({"id": m.group("id"), "bloque": bloque, "vence": campo("vence"),
-                    "titulo": campo("titulo"), "fechas": campo("fechas")})
+        # `quedaHasta` es una prorroga a mano: el viaje ya salio, pero el
+        # presupuesto se deja publicado un tiempo mas porque sirve de referencia
+        # de precio. Manda la fecha mas lejana de las dos.
+        vence = max(campo("vence"), campo("quedaHasta"))
+        out.append({"id": m.group("id"), "bloque": bloque, "vence": vence,
+                    "prorroga": campo("quedaHasta"), "titulo": campo("titulo"),
+                    "fechas": campo("fechas")})
     return out
 
 
@@ -106,7 +111,8 @@ def main():
     for p in vencidos:
         hecho.append("saque «%s» (%s)" % (p["titulo"], p["fechas"]))
     for p in porvencer:
-        mirar.append("«%s» vence el %s — pedile el reemplazo a Sofi" % (p["titulo"], p["vence"]))
+        mirar.append("«%s» %s el %s — pedile el reemplazo a Sofi" % (
+            p["titulo"], "se queda hasta" if p["prorroga"] else "vence", p["vence"]))
 
     quedan = len(presupuestos) - len(vencidos)
     detalle.append("quedan %d presupuestos publicados" % quedan)
